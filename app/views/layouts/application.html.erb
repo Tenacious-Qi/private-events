@@ -11,6 +11,23 @@
   </head>
 
   <body>
+    <div class="nav-container">
+      <nav>
+      <% if current_user %>
+        <p>Logged in as <%=current_user.name%> 
+        <span><%= link_to "Logout", logout_path, method: "delete" %></span>
+        </p>
+        
+      <% else %>
+        <%= link_to "Sign Up", signup_path%>
+        <%= link_to "Login", login_path%>
+      <% end %>
+      </nav>
+    </div>
+    <% flash.each do |message_type, message| %>
+      <p><%=message_type%>: <span><%=message %></span></p>
+    <% end %>
     <%= yield %>
+    <%= debug(params) if Rails.env.development? %>
   </body>
 </html>
