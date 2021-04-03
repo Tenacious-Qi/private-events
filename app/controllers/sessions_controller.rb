@@ -12,7 +12,7 @@ class SessionsController < ApplicationController
     if @user && @user.authenticate(params[:session][:password])
       log_in(@user)
       flash[:success] = 'Logged in!'
-      redirect_to @user
+      redirect_to root_url
     else
       flash[:warning] = 'Incorrect email or password'
       render 'new'
