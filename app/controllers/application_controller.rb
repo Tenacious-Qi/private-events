@@ -11,7 +11,7 @@ class ApplicationController < ActionController::Base
         redirect_to login_path
       end
     end
-
+    
     def log_in(user)
       if params[:remember_me]
         cookies.permanent[:auth_token] = user.auth_token

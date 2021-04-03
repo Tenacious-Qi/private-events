@@ -1,4 +1,9 @@
-<h1>User Details</h1>
-<p>Name: <%= @user.name %></p>
-<p>Email: <%= @user.email %></p>
+<h1>Events hosted by <%= @user.name %>:</h1>
+<div>
+  <% @user.hosted_events.each do |event| %>
+    <ul>
+      <li><%= event.title %> | <%= event.location %></li>
+    </ul>
+  <% end %>
+</div>
 
