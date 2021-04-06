@@ -6,11 +6,11 @@ class User < ApplicationRecord
                               foreign_key: "host_id"
                         
   has_many :received_invitations, class_name: "Invitation",
-                                  foreign_key: "attendee_id"                     
+                                  foreign_key: "invitee_id"                     
 
-  has_many :attended_events, through: :received_invitations, 
+  has_many :invited_events,  through: :received_invitations, 
                              class_name: "Event",
-                             foreign_key: "attendee_id",
+                             foreign_key: "invitee_id",
                              source: :event
                              
   has_secure_password

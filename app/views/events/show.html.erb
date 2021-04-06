@@ -2,6 +2,6 @@
 <h2>Invited Guests</h2>
 <ul>
   <% @event.host.sent_invitations.each do |invitation| %>
-    <li><%= invitation.attendee.name %></li>
+    <li><%= invitation.invitee.name %></li>
   <% end %>
 </ul>

@@ -6,12 +6,15 @@
         <li><%= event.title %> | <%= event.location %></li>
     <% end %>
   </ul>
-  <h3>Attending </h2>
+  <h3>Invited </h3>
   <ul>
-    <% @user.attended_events.each do |event| %>
+    <% @user.invited_events.each do |event| %>
         <li><%= event.title %> | <%= event.location %></li>
     <% end %>
   </ul>
-  
+  <h3>Attending</h3>
+    <ul>
+      <li>show attending events</li>
+    </ul>
 </div>
 
