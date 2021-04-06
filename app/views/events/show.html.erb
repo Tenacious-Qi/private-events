@@ -1,2 +1,7 @@
-<h1>Page for a single event</h1>
-<p><%= @event.host.name %></p>
+<h1><%= @event.title %></h1>
+<h2>Invited Guests</h2>
+<ul>
+  <% @event.host.sent_invitations.each do |invitation| %>
+    <li><%= invitation.attendee.name %></li>
+  <% end %>
+</ul>

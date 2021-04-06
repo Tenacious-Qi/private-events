@@ -1,17 +1,17 @@
 class User < ApplicationRecord
   has_many :hosted_events, class_name: "Event",
                            foreign_key: "host_id"
+  
+  has_many :sent_invitations, class_name: "Invitation",
+                              foreign_key: "host_id"
+                        
+  has_many :received_invitations, class_name: "Invitation",
+                                  foreign_key: "attendee_id"                     
 
-  has_many :attended_events, through: :invitations, 
+  has_many :attended_events, through: :received_invitations, 
                              class_name: "Event",
                              foreign_key: "attendee_id",
                              source: :event
-                             
-  has_many :received_invitations, class_name: "Invitation",
-                                  foreign_key: "attendee_id"
-
-  has_many :sent_invitations, class_name: "Invitation",
-                              foreign_key: "host_id"
                              
   has_secure_password
   validates :name, presence: true, length: { maximum: 50 }

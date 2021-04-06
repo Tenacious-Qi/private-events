@@ -1,9 +1,17 @@
-<h1>Events hosted by <%= @user.name %>:</h1>
+<h1>Events Page for <%= @user.name %>:</h1>
 <div>
-  <% @user.hosted_events.each do |event| %>
-    <ul>
-      <li><%= event.title %> | <%= event.location %></li>
-    </ul>
-  <% end %>
+  <h3> Hosted </h2>
+  <ul>
+    <% @user.hosted_events.each do |event| %>
+        <li><%= event.title %> | <%= event.location %></li>
+    <% end %>
+  </ul>
+  <h3>Attending </h2>
+  <ul>
+    <% @user.attended_events.each do |event| %>
+        <li><%= event.title %> | <%= event.location %></li>
+    <% end %>
+  </ul>
+  
 </div>
 
