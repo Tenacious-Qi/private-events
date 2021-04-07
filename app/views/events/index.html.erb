@@ -1,8 +1,16 @@
 <h1>All Events</h1>
 <div>
-  <ul>
-    <% @events.each do |event| %>
-      <li><%= event.title %></li>
-    <% end %>
-  </ul>
+  <h3>Upcoming Events</h3>
+    <ul>
+      <% Event.upcoming.each do |event| %>
+        <li><%= event.title %></li>
+      <% end %>
+    </ul>
+
+  <h3>Past Events</h3>
+    <ul>
+      <% Event.past.each do |event| %>
+        <li><%= event.title %></li>
+      <% end %>
+    </ul>
 </div>

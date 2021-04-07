@@ -5,4 +5,8 @@ class Event < ApplicationRecord
 
   has_many :invitees, through: :invitations,
                       class_name: "User"
+
+  scope :past,     -> { where("start_time < ?", Time.zone.now)}
+  scope :upcoming, -> { where("start_time > ?", Time.zone.now)}
+
 end

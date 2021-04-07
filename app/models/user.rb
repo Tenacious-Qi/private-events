@@ -12,7 +12,7 @@ class User < ApplicationRecord
                              class_name: "Event",
                              foreign_key: "invitee_id",
                              source: :event
-                             
+
   has_secure_password
   validates :name, presence: true, length: { maximum: 50 }
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i

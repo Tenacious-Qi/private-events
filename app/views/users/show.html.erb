@@ -1,6 +1,6 @@
-<h1>Events Page for <%= @user.name %>:</h1>
+<h1>event info for <%= @user.name %>:</h1>
 <div>
-  <h3> Hosted </h2>
+  <h3> Hosted </h3>
   <ul>
     <% @user.hosted_events.each do |event| %>
         <li><%= event.title %> | <%= event.location %></li>
@@ -12,9 +12,22 @@
         <li><%= event.title %> | <%= event.location %></li>
     <% end %>
   </ul>
-  <h3>Attending</h3>
+  <h3>Upcoming Events</h3>
+      <ul>
+      <% @user.invited_events.upcoming.each do |event| %>
+        <li><%= event.title %></li>
+      <% end %>
+    </ul>
+  <h3>Previously Attended Events</h3>
     <ul>
-      <li>show attending events</li>
+      <% @user.invited_events.past.each do |event| %>
+        <li><%= event.title %></li>
+      <% end %>
     </ul>
 </div>
+
+<% 
+# @past_event_invites = @received_invitations.select { |i| i.attending == "yes" && i.event.past }
+%>
+
 
