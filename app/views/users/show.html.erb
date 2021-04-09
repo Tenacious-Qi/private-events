@@ -8,14 +8,13 @@
   </ul>
 
   <h3>Upcoming</h3>
-  <h5><%= @user.name %> is invited to the following events:</h5>
   <ul>
     <% @user.invited_events.upcoming.each do |event| %>
       <% response = find_attendance_response(event) %>
       <li>
         <%= link_to event.title, event %><span> Attending: <%= response %></span>
         <% if current_user == @user %>
-          <%= link_to "change RSVP", find_invitation(event) %>
+           <p><%= link_to "RSVP", find_invitation(event) %></p>
         <% end %>
       </li>
     <% end %>

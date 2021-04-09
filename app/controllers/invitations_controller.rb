@@ -19,10 +19,6 @@ class InvitationsController < ApplicationController
     @invitation = Invitation.find(params[:id])
   end
 
-  def edit
-    @invitation = Invitation.find(params[:id])
-  end
-
   def update
     @invitation = Invitation.find(params[:id])
     if @invitation.update(attending: params[:attending])
