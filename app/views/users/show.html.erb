@@ -1,33 +1,29 @@
 <h1>event info for <%= @user.name %>:</h1>
 <div>
-  <h3> Hosted </h3>
+  <h3> Hosted Events </h3>
   <ul>
     <% @user.hosted_events.each do |event| %>
-        <li><%= event.title %> | <%= event.location %></li>
+        <li><%= link_to event.title, event %></li>
     <% end %>
   </ul>
-  <h3>Invited </h3>
+
+  <h3>Upcoming</h3>
+  <h5><%= @user.name %> is invited to the following events:</h5>
   <ul>
-    <% @user.invited_events.each do |event| %>
-        <li><%= event.title %> | <%= event.location %></li>
+    <% @user.invited_events.upcoming.each do |event| %>
+      <% response = find_attendance_response(event) %>
+      <li>
+        <%= link_to event.title, event %><span> Attending: <%= response %></span>
+        <% if current_user == @user %>
+          <%= link_to "change RSVP", find_invitation(event) %>
+        <% end %>
+      </li>
     <% end %>
   </ul>
-  <h3>Upcoming Events</h3>
-      <ul>
-      <% @user.invited_events.upcoming.each do |event| %>
-        <li><%= event.title %></li>
-      <% end %>
-    </ul>
-  <h3>Previously Attended Events</h3>
+  <h3>Previously Attended</h3>
     <ul>
-      <% @user.invited_events.past.each do |event| %>
+      <% previously_attended_events.each do |event| %>
         <li><%= event.title %></li>
       <% end %>
     </ul>
 </div>
-
-<% 
-# @past_event_invites = @received_invitations.select { |i| i.attending == "yes" && i.event.past }
-%>
-
-

@@ -1,0 +1,6 @@
+<h1>Invitation status for <%= link_to @invitation.event.title, @invitation %></h1>
+
+<h2>Invited by <%= @invitation.event.host.name %></h2>
+
+<h3>Current RSVP status: <%= @invitation.attending %> </h3>
+<p><%= link_to "Update RSVP", edit_invitation_path(@invitation) %></p>

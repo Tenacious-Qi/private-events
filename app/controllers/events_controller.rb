@@ -1,12 +1,12 @@
 class EventsController < ApplicationController
   before_action :authorize, only: [:new]
-  
+
   def new
     @event = Event.new
   end
 
   def create
-    user = User.find_by(params[:user_id])
+    user = User.find(current_user.id)
     @event = user.hosted_events.build(event_params)
     if @event.save
       flash[:success] = "Event created successfully"
