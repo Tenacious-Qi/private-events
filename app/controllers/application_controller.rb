@@ -13,8 +13,6 @@ class ApplicationController < ActionController::Base
     end
 
     def correct_user
-      invitee = Invitation.find(params[:id]).invitee
-      user = User.find(invitee.id)
       if !current_user == @user
         flash[:warning] = "You can only update your own rsvp."
         redirect_to root_url

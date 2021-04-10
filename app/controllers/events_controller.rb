@@ -6,6 +6,7 @@ class EventsController < ApplicationController
   end
 
   def create
+    @invitation = Invitation.new
     user = User.find(current_user.id)
     @event = user.hosted_events.build(event_params)
     if @event.save

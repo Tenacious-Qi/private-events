@@ -7,11 +7,11 @@ class InvitationsController < ApplicationController
   end
 
   def create
-    user = User.find(current_user.id)
-    @invitation = user.sent_invitations.build(invitation_params)
+    host = User.find(current_user.id)
+    @invitation = host.sent_invitations.build(invitation_params)
     if @invitation.save
       flash[:success] = "Invitation sent!"
-      redirect_to root_url
+      redirect_to @invitation.event
     else
       render 'new'
     end
@@ -33,6 +33,6 @@ class InvitationsController < ApplicationController
 
   private
     def invitation_params
-      params.require(:invitation).permit(:invitee, :event, :attending)
+      params.require(:invitation).permit(:invitee_id, :event_id, :host_id, :attending)
     end
 end

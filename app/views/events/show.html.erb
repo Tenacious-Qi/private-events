@@ -1,5 +1,14 @@
 <h1><%= @event.title %></h1>
 <h2>host: <%= link_to @event.host.name, @event.host %></h2>
+<% if current_user == @event.host %>
+  <%= form_with(model: @event.host.sent_invitations.new ) do |f| %>
+    <%= f.hidden_field :event_id, value: @event.id %>
+    <%= f.collection_select(:invitee_id, User.all.where("id != ?", @event.host.id), :id, :name) %>
+
+    <%= f.submit "Invite" %>
+  <% end %>
+
+<% end %>
 <% if Event.upcoming.include?(@event) %>
   <h3>Invitees</h3>
 <% else %>
