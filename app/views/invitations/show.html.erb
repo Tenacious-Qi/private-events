@@ -8,14 +8,14 @@ to <%= link_to @invitation.event.title, @invitation %>
 <% if current_user == @invitation.invitee %>
   <%= form_with(url: invitation_path, method: :patch, action: :update, local: true) do |f| %>
 
-    <%= f.label :attending, 'Yes' %>
     <%= f.radio_button :attending, 'yes'%>
+    <%= f.label :attending, 'Yes' %>
 
-    <%= f.label :attending, 'No' %>
     <%= f.radio_button :attending, 'no' %>
+    <%= f.label :attending, 'No' %>
 
-    <%= f.label :attending, 'No response'  %>
     <%= f.radio_button :attending, 'no response' %>
+    <%= f.label :attending, 'No response'  %>
 
     <%= f.submit "Update RSVP" %>
   <% end %>

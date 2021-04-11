@@ -14,7 +14,6 @@ class ApplicationController < ActionController::Base
 
     def correct_user
       if !current_user == @user
-        flash[:warning] = "You can only update your own rsvp."
         redirect_to root_url
       end
     end
@@ -26,6 +25,7 @@ class ApplicationController < ActionController::Base
         cookies[:auth_token] = user.auth_token
       end
     end
+
 
     helper_method :current_user
 end

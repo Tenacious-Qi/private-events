@@ -11,10 +11,14 @@ class InvitationsController < ApplicationController
     @invitation = host.sent_invitations.build(invitation_params)
     if @invitation.save
       flash[:success] = "Invitation sent!"
-      redirect_to @invitation.event
     else
-      render 'new'
+      if @invitation.invitee
+        flash[:warning] = "You've already invited this person"
+      else
+        flash[:warning] = "Please select an invitee"
+      end
     end
+    redirect_to @invitation.event
   end
 
   def show
