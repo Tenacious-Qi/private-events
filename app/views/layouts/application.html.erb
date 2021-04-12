@@ -15,12 +15,12 @@
       <nav>
       <% if current_user %>
         <span>Logged in as <%=current_user.name %></span>
-         <%= link_to "Logout", logout_path, method: "delete" %>
+          <%= link_to "Logout", logout_path, method: "delete" %>
+          <%= link_to "My Events", current_user %>
       <% else %>
         <%= link_to "Sign Up", signup_path%>
         <%= link_to "Login", login_path%>
       <% end %>
-      <%= link_to "My Events", current_user %>
       <%= link_to "New Event", new_event_path %>
       <%= link_to "All Events", events_path %>
       </nav>

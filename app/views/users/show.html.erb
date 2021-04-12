@@ -1,28 +1,32 @@
 <h1>event info for <%= @user.name %>:</h1>
 <div>
-  <h3> Hosted Events </h3>
+  <% if @user.hosted_events.any? %>
+    <h3> Hosted Events </h3>
+  <% end %>
   <ul>
     <% @user.hosted_events.each do |event| %>
         <li><%= link_to event.title, event %></li>
     <% end %>
   </ul>
 
-  <h3>Upcoming</h3>
+  <% if @user == current_user %>
+    <h3>You're invited to</h3>
+  <% else %>
+    <h3> <%= @user.name %> is invited to </h3>
+  <% end %>
   <ul>
     <% @user.invited_events.upcoming.each do |event| %>
-      <% response = find_attendance_response(event) %>
       <li>
-        <%= link_to event.title, event %><span> Attending: <%= response %></span>
-        <% if current_user == @user %>
-           <p><%= link_to "RSVP", find_invitation(event) %></p>
-        <% end %>
+        <%= link_to event.title, event %>
       </li>
     <% end %>
   </ul>
   <h3>Previously Attended</h3>
     <ul>
       <% previously_attended_events.each do |event| %>
-        <li><%= event.title %></li>
+        <li>
+          <%= link_to event.title, event %>
+        </li>
       <% end %>
     </ul>
 </div>

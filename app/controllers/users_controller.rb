@@ -1,6 +1,5 @@
 class UsersController < ApplicationController
   before_action :authorize, only: [:show]
-  helper_method :find_attendance_response
   helper_method :previously_attended_events
   helper_method :find_invitation
 
@@ -30,10 +29,6 @@ class UsersController < ApplicationController
   private
     def user_params
       params.require(:user).permit(:name, :email, :password, :password_confirmation)
-    end
-
-    def find_attendance_response(event)
-      event.invitations.find_by(invitee_id: @user.id).attending
     end
 
     def find_invitation(event)

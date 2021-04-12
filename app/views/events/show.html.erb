@@ -1,4 +1,18 @@
 <h1><%= @event.title %></h1>
+<h3>Host: <%= link_to @event.host.name, @event.host %></h3>
+
+<p>
+Location:
+<%= @event.location %>
+</p>
+<p>
+Start Time:
+<%= @event.start_time%>
+</p>
+<p>
+Description:
+<%= @event.description%>
+</p>
 
 <% if current_user == @event.host %>
   <%= form_with(model: @event.host.sent_invitations.new ) do |f| %>
@@ -13,7 +27,9 @@
   <% end %>
 <% end %>
 
-<% unless current_user == @event.host %>
+<!-- only change attendance of future event not hosted by current user -->
+<!-- only logged in users can see attendance details -->
+<% if current_user && future_non_hosted_event?(@event) %>
 
   <%= form_with(model: @rsvp) do |f| %>
 
@@ -34,17 +50,27 @@
   <% end %>
 <% end %>
 
-<h3>Invitees</h3>
-<ul>
-  <% @event.invitations.each do |invitation| %>
-    <li><%= link_to invitation.invitee.name, invitation.invitee %></li>
-  <% end %>
-</ul>
+<!-- only logged in users can see attendance details -->
+<% if current_user %>
+  <% current_is_host = current_user == @event.host %> 
+  <h4>Invitees</h4>
+  <ul>
+    <% @event.invitations.each do |invitation| %>
+      <li><%= link_to invitation.invitee.name, invitation.invitee %></li>
+      <% if current_is_host %>
+        <%= form_with(model: @rsvp, url: invitation_path, method: :delete, action: :destroy) do |f| %>
+          <%= f.hidden_field :event_id, value: @event.id%>
+          <%= f.hidden_field :invitee_id, value: invitation.invitee.id%>
+          <%= f.submit "Cancel Invitation"%>
+        <% end %>
+      <% end %>
+    <% end %>
+  </ul>
 
-<h3>Attendees</h3>
-
-<ul>
-  <% @event.invitations.where(attending: 'yes').each do |invitation| %>
-    <li><%= link_to invitation.invitee.name, invitation.invitee %></li>
-  <% end %>
-</ul>
+  <h4>Attendees</h4>
+  <ul>
+    <% @event.invitations.where(attending: 'yes').each do |invitation| %>
+      <li><%= link_to invitation.invitee.name, invitation.invitee %></li>
+    <% end %>
+  </ul>
+<% end %>

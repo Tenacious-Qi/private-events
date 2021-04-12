@@ -1,5 +1,6 @@
 class EventsController < ApplicationController
   before_action :authorize, only: [:new]
+  helper_method :future_non_hosted_event?
 
   def new
     @event = Event.new
@@ -19,7 +20,9 @@ class EventsController < ApplicationController
 
   def show
     @event = Event.find(params[:id])
-    @rsvp = @event.invitations.find_by(event_id: @event.id, invitee_id: current_user.id)
+    if current_user
+      @rsvp = @event.invitations.find_by(event_id: @event.id, invitee_id: current_user.id)
+    end
   end
 
   def index
@@ -29,5 +32,9 @@ class EventsController < ApplicationController
   private
     def event_params
       params.require(:event).permit(:location, :description, :start_time, :title)
+    end
+
+    def future_non_hosted_event?(event)
+      Event.upcoming.include?(event) && current_user != event.host
     end
 end

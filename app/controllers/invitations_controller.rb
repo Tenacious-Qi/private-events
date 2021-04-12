@@ -28,11 +28,18 @@ class InvitationsController < ApplicationController
   def update
     @invitation = Invitation.find(params[:id])
     if @invitation.update(invitation_params)
-      flash[:success] = "rsvp updated"
+      flash[:success] = "rsvp updated to #{invitation_params[:attending].capitalize}"
       redirect_to @invitation.event
     else
       render 'edit'
     end
+  end
+
+  def destroy
+    @invitation = Invitation.find_by(invitee: params[:invitee_id], event_id: params[:id])
+    @invitation.destroy
+    flash[:success] = 'invitation cancelled'
+    redirect_to Event.find(params[:id])
   end
 
   private
