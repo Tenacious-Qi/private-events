@@ -6,7 +6,10 @@ to <%= link_to @invitation.event.title, @invitation %>
 <h3>Current RSVP status: <%= @invitation.attending %> </h3>
 
 <% if current_user == @invitation.invitee %>
-  <%= form_with(url: invitation_path, method: :patch, action: :update, local: true) do |f| %>
+  <%= form_with(model: @invitation, method: :patch, local: true) do |f| %>
+
+    <%= f.hidden_field :event_id, value: @invitation.event.id %>
+    <%= f.hidden_field :invitee_id, value: @invitation.invitee.id %>
 
     <%= f.radio_button :attending, 'yes'%>
     <%= f.label :attending, 'Yes' %>

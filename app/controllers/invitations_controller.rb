@@ -27,9 +27,9 @@ class InvitationsController < ApplicationController
 
   def update
     @invitation = Invitation.find(params[:id])
-    if @invitation.update(attending: params[:attending])
+    if @invitation.update(invitation_params)
       flash[:success] = "rsvp updated"
-      redirect_to @invitation
+      redirect_to @invitation.event
     else
       render 'edit'
     end

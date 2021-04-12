@@ -1,5 +1,5 @@
 <h1><%= @event.title %></h1>
-<h2>host: <%= link_to @event.host.name, @event.host %></h2>
+
 <% if current_user == @event.host %>
   <%= form_with(model: @event.host.sent_invitations.new ) do |f| %>
     <%= f.hidden_field :event_id, value: @event.id %>
@@ -11,15 +11,40 @@
 
     <%= f.submit "Invite" %>
   <% end %>
+<% end %>
 
+<% unless current_user == @event.host %>
+
+  <%= form_with(model: @rsvp) do |f| %>
+
+    <%= f.hidden_field :event_id, value: @event.id%>
+    <%= f.hidden_field :invitee_id, value: current_user.id%>
+    
+    <% if @event.invitees.include?(current_user) && @rsvp.attending == 'yes' %>
+      <p>You're attending this event</p>
+      <%= f.hidden_field :attending, value: 'no' %>
+      <%= f.submit "Cancel Attendance"%>
+
+    <% else %>
+      <p><%= @event.host.name %> invited you. </p>
+      <%= f.hidden_field :attending, value: 'yes' %>
+      <%= f.submit "Attend Event" %>
+
+    <% end %>
+  <% end %>
 <% end %>
-<% if Event.upcoming.include?(@event) %>
-  <h3>Invitees</h3>
-<% else %>
-  <h3>Attendees</h3>
-<% end %>
+
+<h3>Invitees</h3>
 <ul>
   <% @event.invitations.each do |invitation| %>
+    <li><%= link_to invitation.invitee.name, invitation.invitee %></li>
+  <% end %>
+</ul>
+
+<h3>Attendees</h3>
+
+<ul>
+  <% @event.invitations.where(attending: 'yes').each do |invitation| %>
     <li><%= link_to invitation.invitee.name, invitation.invitee %></li>
   <% end %>
 </ul>
