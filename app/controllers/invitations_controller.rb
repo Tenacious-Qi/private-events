@@ -37,9 +37,10 @@ class InvitationsController < ApplicationController
 
   def destroy
     @invitation = Invitation.find_by(invitee: params[:invitee_id], event_id: params[:id])
+    @event = @invitation.event
     @invitation.destroy
     flash[:success] = 'invitation cancelled'
-    redirect_to Event.find(params[:id])
+    redirect_to @event
   end
 
   private

@@ -56,13 +56,14 @@ Description:
   <h4>Invitees</h4>
   <ul>
     <% @event.invitations.each do |invitation| %>
-      <li><%= link_to invitation.invitee.name, invitation.invitee %></li>
       <% if current_is_host %>
-        <%= form_with(model: @rsvp, url: invitation_path, method: :delete, action: :destroy) do |f| %>
+        <%= form_with(url: invitation_path, method: :delete) do |f| %>
           <%= f.hidden_field :event_id, value: @event.id%>
           <%= f.hidden_field :invitee_id, value: invitation.invitee.id%>
-          <%= f.submit "Cancel Invitation"%>
+          <li><%= link_to invitation.invitee.name, invitation.invitee %><span> <%= f.submit "Cancel Invitation"%></span></li>
         <% end %>
+      <% else %>
+        <li><%= link_to invitation.invitee.name, invitation.invitee %>
       <% end %>
     <% end %>
   </ul>

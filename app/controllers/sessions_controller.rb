@@ -21,7 +21,9 @@ class SessionsController < ApplicationController
 
   def destroy
     cookies.delete(:auth_token)
-    render 'new'
+    # using render 'new' causes routing error after refreshing page
+    # ( No Route matches GET "logout")
+    redirect_to login_path
   end
     
 end
