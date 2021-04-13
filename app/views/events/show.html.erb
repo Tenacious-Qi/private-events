@@ -52,16 +52,17 @@ Description:
 
 <!-- only logged in users can see attendance details -->
 <% if current_user %>
-  <% current_is_host = current_user == @event.host %> 
   <h4>Invitees</h4>
   <ul>
     <% @event.invitations.each do |invitation| %>
-      <% if current_is_host %>
-        <%= form_with(url: invitation_path, method: :delete) do |f| %>
-          <%= f.hidden_field :event_id, value: @event.id%>
-          <%= f.hidden_field :invitee_id, value: invitation.invitee.id%>
-          <li><%= link_to invitation.invitee.name, invitation.invitee %><span> <%= f.submit "Cancel Invitation"%></span></li>
-        <% end %>
+      <% if current_user_is_host? %>
+        <li>
+          <%= link_to invitation.invitee.name, invitation.invitee %>
+          <%= button_to "Uninvite", { controller: :invitations, action: :destroy },
+                                    method: :delete, 
+                                    params: {event_id: @event.id, invitee_id: invitation.invitee.id}, 
+                                    data: { confirm: "Uninvite #{invitation.invitee.name}?" } %>
+        </li>
       <% else %>
         <li><%= link_to invitation.invitee.name, invitation.invitee %>
       <% end %>
