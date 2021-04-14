@@ -1,0 +1,19 @@
+  <!-- only change attendance of future event not hosted by current user -->
+  <!-- only logged in users can see attendance details -->
+<% if future_non_hosted_event?(@event) %>
+  <div id="rsvp">
+  <% if @event.invitees.include?(current_user) && @rsvp.attending == 'yes' %>
+    <p>You're attending this event</p>
+    <%= button_to "Leave Event", { controller: :invitations, action: :update, id: @rsvp.id },
+                                 method: :patch, 
+                                 params: {attending: 'no' },
+                                 remote: true %>
+  <% else %>
+    <p><%= @event.host.name %> invited you.</p>
+    <%= button_to "Attend Event", { controller: :invitations, action: :update, id: @rsvp.id },
+                                  method: :patch, 
+                                  params: {attending: 'yes' },
+                                  remote: true %>
+  <% end %>                              
+  </div>
+<% end %>

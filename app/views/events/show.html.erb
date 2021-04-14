@@ -14,65 +14,20 @@ Description:
 <%= @event.description%>
 </p>
 
-<% if current_user == @event.host %>
-  <%= form_with(model: @event.host.sent_invitations.new ) do |f| %>
-    <%= f.hidden_field :event_id, value: @event.id %>
-    <%= f.collection_select(:invitee_id, 
-                            User.all.where("id != ?", @event.host.id), 
-                            :id, 
-                            :name, 
-                            prompt: 'Select an invitee') %>
 
-    <%= f.submit "Invite" %>
-  <% end %>
+<% if current_user_is_host? %>
+  <div id="invitation-form">
+    <%= render 'select-invitee-form' %>
+  </div>
 <% end %>
 
-<!-- only change attendance of future event not hosted by current user -->
-<!-- only logged in users can see attendance details -->
-<% if current_user && future_non_hosted_event?(@event) %>
-
-  <%= form_with(model: @rsvp) do |f| %>
-
-    <%= f.hidden_field :event_id, value: @event.id%>
-    <%= f.hidden_field :invitee_id, value: current_user.id%>
-    
-    <% if @event.invitees.include?(current_user) && @rsvp.attending == 'yes' %>
-      <p>You're attending this event</p>
-      <%= f.hidden_field :attending, value: 'no' %>
-      <%= f.submit "Cancel Attendance"%>
-
-    <% else %>
-      <p><%= @event.host.name %> invited you. </p>
-      <%= f.hidden_field :attending, value: 'yes' %>
-      <%= f.submit "Attend Event" %>
-
-    <% end %>
-  <% end %>
+<% if current_user %>
+  <%= render 'rsvp' %>
 <% end %>
 
 <!-- only logged in users can see attendance details -->
 <% if current_user %>
-  <h4>Invitees</h4>
-  <ul>
-    <% @event.invitations.each do |invitation| %>
-      <% if current_user_is_host? %>
-        <li>
-          <%= link_to invitation.invitee.name, invitation.invitee %>
-          <%= button_to "Uninvite", { controller: :invitations, action: :destroy },
-                                    method: :delete, 
-                                    params: {event_id: @event.id, invitee_id: invitation.invitee.id}, 
-                                    data: { confirm: "Uninvite #{invitation.invitee.name}?" } %>
-        </li>
-      <% else %>
-        <li><%= link_to invitation.invitee.name, invitation.invitee %>
-      <% end %>
-    <% end %>
-  </ul>
-
-  <h4>Attendees</h4>
-  <ul>
-    <% @event.invitations.where(attending: 'yes').each do |invitation| %>
-      <li><%= link_to invitation.invitee.name, invitation.invitee %></li>
-    <% end %>
-  </ul>
+  <div id="attendance-details">
+    <%= render 'attendance-details'%>
+  </div>
 <% end %>

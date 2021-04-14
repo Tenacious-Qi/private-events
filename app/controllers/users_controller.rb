@@ -1,7 +1,5 @@
 class UsersController < ApplicationController
   before_action :authorize, only: [:show]
-  helper_method :previously_attended_events
-  helper_method :find_invitation
 
   def new
     if current_user
@@ -30,13 +28,4 @@ class UsersController < ApplicationController
     def user_params
       params.require(:user).permit(:name, :email, :password, :password_confirmation)
     end
-
-    def find_invitation(event)
-      event.invitations.find_by(invitee_id: @user.id)
-    end
-
-    def previously_attended_events
-      @user.invited_events.past.includes(:invitations).where("attending = 'yes'")      
-    end
-
 end

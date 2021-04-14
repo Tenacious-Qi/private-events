@@ -1,7 +1,6 @@
 class EventsController < ApplicationController
   before_action :authorize, only: [:new]
-  helper_method :future_non_hosted_event?
-  helper_method :current_user_is_host?
+
   def new
     @event = Event.new
   end
@@ -32,13 +31,5 @@ class EventsController < ApplicationController
   private
     def event_params
       params.require(:event).permit(:location, :description, :start_time, :title)
-    end
-
-    def future_non_hosted_event?(event)
-      Event.upcoming.include?(event) && current_user != event.host
-    end
-
-    def current_user_is_host?
-      current_user == @event.host
     end
 end

@@ -1,4 +1,5 @@
 class InvitationsController < ApplicationController
+
   before_action :authorize, only: [:create, :update]
   before_action :correct_user, only: [:create, :update, :new]
 
@@ -9,16 +10,13 @@ class InvitationsController < ApplicationController
   def create
     host = User.find(current_user.id)
     @invitation = host.sent_invitations.build(invitation_params)
+    @event = @invitation.event
     if @invitation.save
-      flash[:success] = "Invitation sent!"
-    else
-      if @invitation.invitee
-        flash[:warning] = "You've already invited this person"
-      else
-        flash[:warning] = "Please select an invitee"
+      respond_to do |format|
+        format.html { redirect_to @event }
+        format.js
       end
     end
-    redirect_to @invitation.event
   end
 
   def show
@@ -27,11 +25,12 @@ class InvitationsController < ApplicationController
 
   def update
     @invitation = Invitation.find(params[:id])
-    if @invitation.update(invitation_params)
-      flash[:success] = "rsvp updated to #{invitation_params[:attending].capitalize}"
-      redirect_to @invitation.event
-    else
-      render 'edit'
+    @event = @invitation.event
+    @rsvp = @event.invitations.find_by(event_id: @event.id, invitee_id: current_user.id)
+    @rsvp.update_attribute(:attending, params[:attending])
+    respond_to do |format|
+      format.html { redirect_to @event }
+      format.js
     end
   end
 
@@ -39,8 +38,10 @@ class InvitationsController < ApplicationController
     @invitation = Invitation.find_by(invitee: params[:invitee_id], event_id: params[:id])
     @event = @invitation.event
     @invitation.destroy
-    flash[:success] = 'invitation cancelled'
-    redirect_to @event
+    respond_to do |format|
+      format.html { redirect_to @event }
+      format.js
+      end
   end
 
   private
