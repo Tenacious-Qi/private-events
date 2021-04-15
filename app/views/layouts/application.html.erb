@@ -5,30 +5,47 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
+    
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
-    <div class="nav-container">
-      <nav>
-      <% if current_user %>
-        <span>Logged in as <%=current_user.name %></span>
-          <%= link_to "Logout", logout_path, method: "delete" %>
-          <%= link_to "My Events", current_user %>
-      <% else %>
-        <%= link_to "Sign Up", signup_path%>
-        <%= link_to "Login", login_path%>
-      <% end %>
-      <%= link_to "New Event", new_event_path %>
-      <%= link_to "All Events", events_path %>
-      </nav>
-    </div>
+    <nav class="navbar is-dark mb-2">
+      <div class="navbar-brand">
+        <a href="/events" class="navbar-item is-size-5 py-2 px-2">
+          Private Events
+        </a>
+        <a class="navbar-burger" id="burger">
+          <span></span>
+          <span></span>
+          <span></span>
+        </a>
+      </div>
+      <div class="navbar-menu" id="nav-links">
+
+        <div class="navbar-end">
+          <% if current_user %>
+              <p class="navbar-item is-size-7">Logged in as <%=current_user.name %></p>
+              <%= link_to "Logout", logout_path, method: "delete", class: "navbar-item" %>
+              <%= link_to "My Events", current_user, class: "navbar-item" %>
+          <% else %>
+            <%= link_to "Sign Up", signup_path, class: "navbar-item"%>
+            <%= link_to "Login", login_path, class: "navbar-item"%>
+          <% end %>
+          <%= link_to "New Event", new_event_path, class: "navbar-item" %>
+          <%= link_to "All Events", events_path, class: "navbar-item" %>
+        </div>
+      
+      </div>
+
+    </nav>
     <% flash.each do |message_type, message| %>
       <p><%=message_type%>: <span><%=message %></span></p>
     <% end %>
-    <%= yield %>
+    <section class="section">
+      <%= yield %>
+    </section>
     <%= debug(params) if Rails.env.development? %>
   </body>
 </html>

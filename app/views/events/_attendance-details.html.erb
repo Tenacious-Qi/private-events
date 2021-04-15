@@ -8,6 +8,7 @@
                                     method: :delete, 
                                     params: {event_id: @event.id, invitee_id: invitation.invitee.id},
                                     remote: true,
+                                    class: 'button is-warning is-small',
                                     data: { confirm: "Uninvite #{invitation.invitee.name}?" } %>
         </li>
       <% else %>

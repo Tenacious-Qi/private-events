@@ -1,10 +1,12 @@
 <%= form_with(model: @event.host.sent_invitations.new, local: false ) do |f| %>
     <%= f.hidden_field :event_id, value: @event.id %>
-    <%= f.collection_select(:invitee_id, 
-                            User.all.where("id != ?", @event.host.id), 
-                            :id, 
-                            :name, 
-                            prompt: 'Select an invitee') %>
+    <div class="select is-link">
+      <%= f.collection_select(:invitee_id, 
+                              User.all.where("id != ?", @event.host.id), 
+                              :id, 
+                              :name, 
+                              {prompt: 'Select an invitee'}) %>
+    </div>                              
 
-    <%= f.submit "Invite" %>
+    <%= f.submit "Invite", class: 'button is-link' %>
 <% end %>
