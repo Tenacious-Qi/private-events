@@ -1,18 +1,27 @@
 <h1>Create a new event</h1>
 <%= form_with(model: @event, local: true) do |f| %>
   <%= render 'shared/error_messages', object: f.object %>
+  <div class="field">
+    <%= f.label :title, class: "label" %>
+    <%= f.text_field :title, class: "input" %>
+  </div>
 
-  <%= f.label :title %>
-  <%= f.text_field :title %>
+  <div class="field">
+    <%= f.label :location, class: "label" %>
+    <%= f.text_field :location, class: "input" %>
+  </div>
 
-  <%= f.label :location %>
-  <%= f.text_field :location %>
+  <div class="field">
+    <%= f.label :description, class: "label" %>
+    <%= f.text_area :description, class: "input" %>
+  </div>
+  
+  <div class="field">
+    <%= f.label :start_time, class: "label" %>
+    <%= f.date_field :start_time, class: "select" %>
+  </div>
 
-  <%= f.label :description %>
-  <%= f.text_area :description %>
-
-  <%= f.label :start_time %>
-  <%= f.date_field :start_time %>
-
-  <%= f.submit "Create Event" %>
+  <div class="field">
+    <%= f.submit "Create Event", class: "input" %>
+  </div>
 <% end %>

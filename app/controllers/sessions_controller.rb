@@ -21,6 +21,7 @@ class SessionsController < ApplicationController
 
   def destroy
     cookies.delete(:auth_token)
+    flash[:info] = 'You have logged out.'
     # using render 'new' causes routing error after refreshing page
     # ( No Route matches GET "logout")
     redirect_to login_path
