@@ -2,20 +2,22 @@
   <!-- only logged in users can see attendance details -->
 <% if future_non_hosted_event?(@event) %>
   <div id="rsvp">
-  <% if @event.invitees.include?(current_user) && @rsvp.attending == 'yes' %>
-    <p>You're attending this event</p>
-    <%= button_to "Leave Event", { controller: :invitations, action: :update, id: @rsvp.id },
-                                 method: :patch, 
-                                 params: {attending: 'no' },
-                                 remote: true,
-                                 class: 'button is-warning' %>
-  <% else %>
-    <p><%= @event.host.name %> invited you.</p>
-    <%= button_to "Attend Event", { controller: :invitations, action: :update, id: @rsvp.id },
+  <% if @event.invitees.include?(current_user) %>
+    <% if @rsvp.attending == 'yes'%>
+      <p>You're attending this event</p>
+      <%= button_to "Leave Event", { controller: :invitations, action: :update, id: @rsvp.id },
                                   method: :patch, 
-                                  params: {attending: 'yes' },
+                                  params: {attending: 'no' },
                                   remote: true,
-                                  class: 'button is-success' %>
+                                  class: 'button is-warning' %>
+    <% else %>
+      <p><%= @event.host.name %> invited you.</p>
+      <%= button_to "Attend Event", { controller: :invitations, action: :update, id: @rsvp.id },
+                                    method: :patch, 
+                                    params: {attending: 'yes' },
+                                    remote: true,
+                                    class: 'button is-success' %>
+    <% end %>                                    
   <% end %>                              
   </div>
 <% end %>

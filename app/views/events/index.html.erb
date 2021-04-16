@@ -1,16 +1,61 @@
-<h1>All Events</h1>
-<div>
-  <h3>Upcoming Events</h3>
-    <ul>
-      <% Event.upcoming.each do |event| %>
-        <li><%= link_to event.title, event %></li>
-      <% end %>
-    </ul>
+<section class="section">
+  <div class="columns is-mobile">
+    <div class="column">
+      <div class="level is-mobile">
+        <h3 class="level-item title is-4">All Events</h3>
+      </div>
+    </div>
+  </div>
 
-  <h3>Past Events</h3>
-    <ul>
-      <% Event.past.each do |event| %>
-        <li><%= link_to event.title, event %></li>
-      <% end %>
-    </ul>
-</div>
+  <h3 class="subtitle has-text-primary-dark">Upcoming Events</h3>
+  <div class="columns is-mobile">
+    <div class="column">
+      <ul>
+        <div class="columns is-desktop is-multiline">
+          <% @events.upcoming.order(:start_time).each do |event| %>
+            <div class="column">
+            <%= link_to(event) do %>
+              <li class="box mx-3 my-3 has-background-white">
+                <ul>
+                  <div class="columns">
+                    <li class="column">
+                      <span class="has-text-link-dark is-size-4-desktop is-size-5-tablet is-size-6-mobile">
+                        <%= event.title %>
+                      </span>
+                    </li>
+                    <li class="column">
+                    <span class="has-text-dark">
+                      <%= event.location %>
+                    </span>
+                    </li>
+                    <li class="column">
+                    <span class="has-text-dark">
+                      starts in <%= future_time_in_days(event)%>
+                    </span>
+                    </li>
+                  </div> 
+                </ul>
+              </li>
+            <% end %>
+
+            </div>
+          <% end %>
+        </div>
+      </ul>
+    </div>
+  </div>
+
+  <div class="columns is-mobile">
+    <div class="column">
+      <h3 class="subtitle has-text-primary-dark">Past Events</h3>
+        <ul>
+          <% @events.past.order(:start_time).each do |event| %>
+            <li><%= link_to event.title, event, class: "is-size-5-desktop is-size-4-tablet has-text-link-dark" %></li>
+          <% end %>
+        </ul>
+    </div>
+  </div>
+</section>
+  
+
+

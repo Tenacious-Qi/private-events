@@ -10,7 +10,7 @@ class Event < ApplicationRecord
   scope :upcoming, -> { where("start_time > ?", Time.zone.now)}
 
   validates :title,  presence: true, length: { in: 3..255 }, uniqueness: true;
-  validates :location, presence: true, length: { in: 3..255 }
+  validates :location, presence: true, length: { in: 3..30 }
   validates :start_time, presence: true
   validate  :start_time_in_future
 
