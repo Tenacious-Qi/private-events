@@ -26,6 +26,8 @@ class EventsController < ApplicationController
 
   def index
     @events = Event.all
+    @upcoming_events = @events.upcoming.order(:start_date).paginate(page: params[:page], per_page: 8)
+    @past_events = @events.past.order(:start_date).paginate(page: params[:page], per_page: 2)
   end
 
   private

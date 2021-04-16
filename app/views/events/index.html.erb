@@ -12,7 +12,7 @@
     <div class="column">
       <ul>
         <div class="columns is-desktop is-multiline">
-          <% @events.upcoming.order(:start_time).each do |event| %>
+          <% @upcoming_events.order(:start_time).each do |event| %>
             <div class="column is-half-desktop">
               <li class="box mx-3 my-3 py-3 has-background-white">
                 <ul>
@@ -51,23 +51,31 @@
     </div>
   </div>
 
+<div class="columns is-mobile">
+  <div class="column">
+    <%= will_paginate @upcoming_events, class: "apple_pagination" %>
+  </div>
+</div>
+
   <div class="columns is-mobile">
     <div class="column">
-      <%= link_to "back to beginning", "/events/#top", class: "has-text-warning-dark" %>
+      <%= link_to "back to top", "/events/#top", class: "has-text-warning-dark" %>
     </div>
   </div>
         
   <div class="columns is-mobile is-hidden-mobile">
     <div class="column">
       <h3 class="subtitle has-text-primary-dark">Past Events</h3>
+        <% if @past_events.count > 50 %>
+          <p class="is-size-7">only past 50 events listed</p>
+        <% end %>
         <ul>
-          <% @events.past.order(:start_time).limit(100).each do |event| %>
+          <% @past_events.order(:start_time).limit(50).each do |event| %>
             <li><%= link_to event.title, event, class: "is-size-6-desktop has-text-link-dark" %></li>
           <% end %>
         </ul>
     </div>
   </div>
 </section>
-  
 
 
