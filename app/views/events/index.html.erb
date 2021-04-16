@@ -1,4 +1,4 @@
-<section class="section">
+<section class="section" id="top">
   <div class="columns is-mobile">
     <div class="column">
       <div class="level is-mobile">
@@ -13,31 +13,37 @@
       <ul>
         <div class="columns is-desktop is-multiline">
           <% @events.upcoming.order(:start_time).each do |event| %>
-            <div class="column">
-            <%= link_to(event) do %>
-              <li class="box mx-3 my-3 has-background-white">
+            <div class="column is-half-desktop">
+              <li class="box mx-3 my-3 py-3 has-background-white">
                 <ul>
-                  <div class="columns">
-                    <li class="column">
-                      <span class="has-text-link-dark is-size-4-desktop is-size-5-tablet is-size-6-mobile">
-                        <%= event.title %>
+                  <div class="columns is-multiline">
+                    <li class="column is-one-fourth">
+                      <span class=" is-capitalized has-text-link-dark is-size-4-desktop">
+                        <%= link_to event.title, event %>
                       </span>
                     </li>
-                    <li class="column">
-                    <span class="has-text-dark">
-                      <%= event.location %>
-                    </span>
+                    <li class="column is-one-fourth">
+                      <span class="has-text-dark is-size-5 is-capitalized">
+                        <%=event.location %>
+                      </span>
                     </li>
-                    <li class="column">
-                    <span class="has-text-dark">
-                      starts in <%= future_time_in_days(event)%>
-                    </span>
+                    <li class="column is-one-fourth">
+                      <span class="has-text-dark is-size-6">
+                        Starts in <%= future_time_in_days(event)%>
+                      </span>
                     </li>
+                    <% if event.invitees.include?(current_user) %>
+                      <li class="column is-one-fourth">
+                        <%= link_to "RSVP", event, class: "button is-medium has-text-weight-bold has-text-light has-background-primary-dark" %>
+                      </li>
+                    <% else %>
+                      <li class="column is-one-fourth">
+                        <%= link_to "Details", event, class: "button is-medium has-text-weight-bold has-text-light has-background-info-dark" %>
+                      </li>
+                    <% end %>
                   </div> 
                 </ul>
               </li>
-            <% end %>
-
             </div>
           <% end %>
         </div>
@@ -47,10 +53,16 @@
 
   <div class="columns is-mobile">
     <div class="column">
+      <%= link_to "back to beginning", "/events/#top", class: "has-text-warning-dark" %>
+    </div>
+  </div>
+        
+  <div class="columns is-mobile is-hidden-mobile">
+    <div class="column">
       <h3 class="subtitle has-text-primary-dark">Past Events</h3>
         <ul>
-          <% @events.past.order(:start_time).each do |event| %>
-            <li><%= link_to event.title, event, class: "is-size-5-desktop is-size-4-tablet has-text-link-dark" %></li>
+          <% @events.past.order(:start_time).limit(100).each do |event| %>
+            <li><%= link_to event.title, event, class: "is-size-6-desktop has-text-link-dark" %></li>
           <% end %>
         </ul>
     </div>

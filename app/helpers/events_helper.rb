@@ -9,6 +9,10 @@ module EventsHelper
     end
 
     def future_time_in_days(event)
-      pluralize(((event.start_time - Time.now)/86400).round, 'day')
+      pluralize(((event.start_time - Time.zone.now)/86400).round, 'day')
+    end
+
+    def days_since_invitation_sent(rsvp)
+      pluralize(((Time.zone.now - @rsvp.created_at)/86400).round, 'day')
     end
 end

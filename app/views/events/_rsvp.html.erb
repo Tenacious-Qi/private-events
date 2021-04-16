@@ -11,7 +11,7 @@
                                   remote: true,
                                   class: 'button is-warning' %>
     <% else %>
-      <p><%= @event.host.name %> invited you.</p>
+      <p><%= @event.host.name %> invited you <%= days_since_invitation_sent(@rsvp) %> ago</p>
       <%= button_to "Attend Event", { controller: :invitations, action: :update, id: @rsvp.id },
                                     method: :patch, 
                                     params: {attending: 'yes' },
