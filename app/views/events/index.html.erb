@@ -7,14 +7,14 @@
     </div>
   </div>
 
-  <h3 class="subtitle has-text-primary-dark">Upcoming Events</h3>
-  <div class="columns is-mobile">
-    <div class="column">
+    <h3 class="subtitle has-text-primary-dark">Upcoming Events</h3>
+    <div class="columns is-mobile">
+      <div class="column">
       <ul>
         <div class="columns is-desktop is-multiline">
           <% @upcoming_events.order(:start_time).each do |event| %>
             <div class="column is-half-desktop">
-              <li class="box mx-3 my-3 py-3 has-background-white">
+              <li class="box mx-3 my-3 px-3 py-3 has-background-white">
                 <ul>
                   <div class="columns is-multiline">
                     <li class="column is-one-fourth">
@@ -23,12 +23,12 @@
                       </span>
                     </li>
                     <li class="column is-one-fourth">
-                      <span class="has-text-dark is-size-5 is-capitalized">
+                      <span class="has-text-dark is-size-5-desktop is-size-6-mobile is-capitalized">
                         <%=event.location %>
                       </span>
                     </li>
                     <li class="column is-one-fourth">
-                      <span class="has-text-dark is-size-6">
+                      <span class="has-text-dark is-size-6-desktop is-size-7-mobile">
                         Starts in <%= future_time_in_days(event)%>
                       </span>
                     </li>

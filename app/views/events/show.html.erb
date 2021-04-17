@@ -1,33 +1,68 @@
-<h1><%= @event.title %></h1>
-<h3>Host: <%= link_to @event.host.name, @event.host %></h3>
-
-<p>
-Location:
-<%= @event.location %>
-</p>
-<p>
-Start Time:
-<%= @event.start_time%>
-</p>
-<p>
-Description:
-<%= @event.description%>
-</p>
-
-
-<% if current_user_is_host? %>
-  <div id="invitation-form">
-    <%= render 'select-invitee-form' %>
+<section class="section">
+  <div class="columns is-mobile">
+    <div class="column">
+      <div class="level is-mobile">
+        <h1 class="level-item title is-size-5-mobile is-capitalized"><%= @event.title %></h1>
+      </div>
+      <div class="columns is-mobile">
+        <p class= "column has-text-centered subtitle">hosted by
+          <% if @event.host == current_user %>
+            <%= link_to "You", @event.host, class: "mx-1" %>
+          <% else %>
+            <%= link_to @event.host.name, @event.host, class: "mx-1" %>
+          <% end %>
+        </p>
+      </div>
+    </div>
   </div>
-<% end %>
 
-<% if current_user %>
-  <%= render 'rsvp' %>
-<% end %>
+  <div class="columns is-desktop">
+    <div class="column is-half is-offset-one-quarter">
+      <div class="columns is-desktop is-multiline">    
+        <div class=" box column is-half is-offset-one-quarter has-background-info-dark">
+          <div class="columns is-desktop is-multiline">
+            <div class="column">
+              <div class="columns is-multiline">
+                <div class="column is-one-half">
+                  <p class="has-text-centered has-text-light has-text-weight-bold is-size-3-widescreen is-size-4-desktop is-size-5-tablet">Where</p>
+                  <p class="has-text-centered has-text-light is-size-5-widescreen is-size-6-desktop"><%= @event.location %>.</p>
+                </div>
+                <div class="column is-one-half">
+                  <p class="has-text-centered has-text-light has-text-weight-bold is-size-3-widescreen is-size-4-desktop is-size-5-tablet">When</p>
+                  <p class="has-text-centered has-text-light is-size-5-widescreen is-size-6-desktop"><%= @event.start_time.strftime("%A, %Y-%m-%d") %></p>
+                </div>
+              </div>
+              <div class="columns is-mobile">
+                <div class="column is-half is-offset-one-quarter">
+                  <p class="has-text-centered has-text-light has-text-weight-bold is-size-3-widescreen is-size-4-desktop is-size-5-tablet">About</p>
+                  <p class="has-text-centered has-text-light is-size-6-desktop is-size-7-mobile"><%= @event.description%></p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="columns is-mobile">
+        <div class="column is-half is-offset-one-quarter has-text-centered">
+          <% if current_user_is_host? %>
+              <div id="invitation-form">
+                <%= render 'select-invitee-form' %>
+              </div>
+          <% end %>
+          <% if current_user %>
+            <%= render 'rsvp' %>
+          <% end %>  
+        </div>
+      </div>
+    </div>
+  </div>
 
-<!-- only logged in users can see attendance details -->
-<% if current_user %>
   <div id="attendance-details">
-    <%= render 'attendance-details'%>
+    <div>
+      <% if current_user %>
+        <%= render 'attendance-details'%>
+      <% end %>
+    </div>
   </div>
-<% end %>
+</section>
+
