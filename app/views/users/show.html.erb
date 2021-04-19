@@ -1,34 +1,108 @@
-<h1>event info for <%= @user.name %>:</h1>
-<div>
-  <% if @user.hosted_events.any? %>
-    <h3> Hosted Events </h3>
-  <% end %>
-  <ul>
-    <% @user.hosted_events.each do |event| %>
-        <li><%= link_to event.title, event %></li>
-    <% end %>
-  </ul>
-
-  <% if @user == current_user %>
-    <% if current_user.invited_events.upcoming.any? %>
-        <h3>You're invited to</h3>
-    <% end %>
-  <% else %>
-    <h3> <%= @user.name %> is invited to </h3>
-  <% end %>
-  <ul>
-    <% @user.invited_events.upcoming.each do |event| %>
-      <li>
-        <%= link_to event.title, event %>
-      </li>
-    <% end %>
-  </ul>
-  <h3>Previously Attended</h3>
-    <ul>
-      <% previously_attended_events.each do |event| %>
-        <li>
-          <%= link_to event.title, event %>
-        </li>
+<section class="section">
+<h1 class="title is-4-desktop is-5-mobile has-text-centered">PrivateEvents for <%= @user.name %></h1>
+  <div class="columns is-desktop">
+    <div class="column is-half is-offset-one-quarter">
+    <% if @user == current_user %>
+      <% if events_with_pending_rsvp.any? %>
+        <div class="box has-background-warning-light">
+          <div class="columns is-desktop">
+            <div class="column is-half">
+              <h3 class="has-text-primary-dark subtitle is-5">Pending Invitations</h3>
+            </div>
+            <div class="column is-half">
+              <ul>
+                <% events_with_pending_rsvp.each do |event| %>
+                <li class="is-capitalized">
+                  <div class="columns is-mobile">
+                    <div class="column is-half">
+                      <%= link_to event.title, event, class: "is-size-5-desktop" %>
+                    </div>
+                    <div class="column is-half">
+                      <%= link_to "RSVP", event, class: "ml-3 button is-small has-text-weight-bold has-text-light has-background-primary-dark" %>
+                    </div>
+                  </div>
+                </li>
+              <% end %>
+              </ul>
+            </div>
+          </div>
+        </div>
       <% end %>
-    </ul>
-</div>
+    <% end %>
+    </div>
+  </div>
+
+  <div class="columns is-desktop">
+    <div class="column is-half is-offset-one-quarter">
+      <div class="box">
+        <div class="columns is-desktop">
+          <div class="column is-half">
+            <h3 class="is-size-4-desktop has-text-primary-dark subtitle is-5"> Hosted Events </h3>
+          </div>
+          <div class="column is-half">
+          <% if @user.hosted_events.any? %>
+            <ul>
+              <% @user.hosted_events.each do |event| %>
+                  <li class="is-capitalized">
+                    <%= link_to event.title, event, class: "is-size-5-desktop" %>
+                  </li>
+              <% end %>
+            </ul>
+          <% else %>
+            <p>No events hosted yet</p>
+          <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+<% if events_planning_to_attend.any?%>
+  <div class="columns is-desktop">
+    <div class="column is-half is-offset-one-quarter">
+      <div class="box">
+        <div class="columns is-desktop">
+          <div class="column is-half">
+            <h3 class="is-size-4-desktop has-text-primary-dark subtitle is-5"> Planning to Attend </h3>
+          </div>
+          <div class="column is-half">
+
+            <ul>
+              <% events_planning_to_attend.each do |event| %>
+                <li class="is-capitalized">
+                  <%= link_to event.title, event, class: "is-size-5-desktop" %>
+                </li>
+              <% end %>
+            </ul>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>
+
+  <div class="columns is-desktop">
+    <div class="column is-half is-offset-one-quarter">
+      <div class="box">
+        <div class="columns is-desktop">
+          <div class="column is-half">
+            <h3 class="is-size-4-desktop has-text-primary-dark subtitle is-5"> Previously Attended </h3>
+          </div>
+          <div class="column is-half">
+          <% if previously_attended_events.any?%>
+            <ul>
+              <% previously_attended_events.each do |event| %>
+                <li class="is-capitalized">
+                  <%= link_to event.title, event, class: "is-size-5-desktop" %>
+                </li>
+              <% end %>
+            </ul>
+          <% else %>
+            <p class="is-size-5-desktop">No events attended yet.</p>
+          <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

@@ -18,28 +18,24 @@
 
   <div class="columns is-desktop">
     <div class="column is-half is-offset-one-quarter">
-      <div class="columns is-desktop is-multiline">    
-        <div class=" box column is-half is-offset-one-quarter has-background-info-dark">
-          <div class="columns is-desktop is-multiline">
-            <div class="column">
-              <div class="columns is-multiline">
-                <div class="column is-one-half">
-                  <p class="has-text-centered has-text-light has-text-weight-bold is-size-3-widescreen is-size-4-desktop is-size-5-tablet">Where</p>
-                  <p class="has-text-centered has-text-light is-size-5-widescreen is-size-6-desktop"><%= @event.location %>.</p>
-                </div>
-                <div class="column is-one-half">
-                  <p class="has-text-centered has-text-light has-text-weight-bold is-size-3-widescreen is-size-4-desktop is-size-5-tablet">When</p>
-                  <p class="has-text-centered has-text-light is-size-5-widescreen is-size-6-desktop"><%= @event.start_time.strftime("%A, %Y-%m-%d") %></p>
-                </div>
+      <div class="columns is-desktop">    
+        <div class="box column is-full has-background-info-dark">
+            <div class="columns">
+              <div class="column is-half">
+                <p class="has-text-centered has-text-light has-text-weight-bold is-size-3-widescreen is-size-4-desktop is-size-5-tablet">Where</p>
+                <p class="has-text-centered has-text-light is-size-5-widescreen is-size-6-desktop"><%= @event.location %>.</p>
               </div>
-              <div class="columns is-mobile">
-                <div class="column is-half is-offset-one-quarter">
-                  <p class="has-text-centered has-text-light has-text-weight-bold is-size-3-widescreen is-size-4-desktop is-size-5-tablet">About</p>
-                  <p class="has-text-centered has-text-light is-size-6-desktop is-size-7-mobile"><%= @event.description%></p>
-                </div>
+              <div class="column is-half">
+                <p class="has-text-centered has-text-light has-text-weight-bold is-size-3-widescreen is-size-4-desktop is-size-5-tablet">When</p>
+                <p class="has-text-centered has-text-light is-size-5-widescreen is-size-6-desktop"><%= @event.start_time.strftime("%A, %Y-%m-%d") %></p>
               </div>
             </div>
-          </div>
+            <div class="columns is-mobile">
+              <div class="column is-full">
+                <p class="has-text-centered has-text-light has-text-weight-bold is-size-3-widescreen is-size-4-desktop is-size-5-tablet">About</p>
+                <p class="has-text-centered has-text-light is-size-6-desktop is-size-7-mobile"><%= @event.description%></p>
+              </div>
+            </div>
         </div>
       </div>
       <div class="columns is-mobile">
@@ -54,6 +50,7 @@
           <% end %>  
         </div>
       </div>
+      <%= link_to "<< back to My Events", current_user %>
     </div>
   </div>
 

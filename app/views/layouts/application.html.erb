@@ -14,7 +14,7 @@
     <nav class="navbar is-white has-shadow">
       <div class="navbar-brand">
         <a href="/events" class="navbar-item is-size-5 py-2 px-2">
-          Private Events
+          PrivateEvents
         </a>
         <a class="navbar-burger" id="burger">
           <span></span>
@@ -28,8 +28,8 @@
           <%= link_to "New Event", new_event_path, class: "navbar-item is-primary" %>
           <%= link_to "All Events", events_path, class: "navbar-item" %>
           <% if current_user %>
-            <%= link_to "My Events", current_user, class: "navbar-item" %>
-            <p class="navbar-item is-size-7 has-text-info-dark">Logged in as <%=current_user.name %></p>
+     
+            <p class="navbar-item has-text-info-dark"><%=link_to current_user.name, current_user %></p>
             <%= link_to "Logout", logout_path, method: "delete", class: "navbar-item has-text-warning-dark" %>
           <% else %>
             <%= link_to "Sign Up", signup_path, class: "navbar-item"%>
