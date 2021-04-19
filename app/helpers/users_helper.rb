@@ -4,15 +4,15 @@ module UsersHelper
       event.invitations.find_by(invitee_id: @user.id)
     end
 
-    def previously_attended_events
-      @user.invited_events.past.includes(:invitations).where("attending = 'yes'")      
+    def yes_rsvps_past
+      @user.received_invitations.rsvp_yes_past.includes(:event)
     end
 
-    def events_planning_to_attend
-      @user.invited_events.upcoming.includes(:invitations).where("attending = 'yes'")
+    def yes_rsvps_future
+      @user.received_invitations.rsvp_yes_future.includes(:event)  
     end
 
-    def events_with_pending_rsvp
-      @user.invited_events.upcoming.includes(:invitations).where("attending = 'no response'")
+    def yes_rsvps_pending
+      @user.received_invitations.rsvp_pending.includes(:event)
     end
 end

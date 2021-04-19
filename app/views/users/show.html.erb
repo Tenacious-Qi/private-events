@@ -3,7 +3,7 @@
   <div class="columns is-desktop">
     <div class="column is-half is-offset-one-quarter">
     <% if @user == current_user %>
-      <% if events_with_pending_rsvp.any? %>
+      <% if yes_rsvps_pending.any? %>
         <div class="box has-background-warning-light">
           <div class="columns is-desktop">
             <div class="column is-half">
@@ -11,14 +11,14 @@
             </div>
             <div class="column is-half">
               <ul>
-                <% events_with_pending_rsvp.each do |event| %>
+                <% yes_rsvps_pending.each do |rsvp| %>
                 <li class="is-capitalized">
                   <div class="columns is-mobile">
                     <div class="column is-half">
-                      <%= link_to event.title, event, class: "is-size-5-desktop" %>
+                      <%= link_to rsvp.event.title, rsvp.event, class: "is-size-5-desktop" %>
                     </div>
                     <div class="column is-half">
-                      <%= link_to "RSVP", event, class: "ml-3 button is-small has-text-weight-bold has-text-light has-background-primary-dark" %>
+                      <%= link_to "RSVP", rsvp.event, class: "ml-3 button is-small has-text-weight-bold has-text-light has-background-primary-dark" %>
                     </div>
                   </div>
                 </li>
@@ -56,7 +56,7 @@
       </div>
     </div>
   </div>
-<% if events_planning_to_attend.any?%>
+<% if yes_rsvps_future.any?%>
   <div class="columns is-desktop">
     <div class="column is-half is-offset-one-quarter">
       <div class="box">
@@ -67,9 +67,9 @@
           <div class="column is-half">
 
             <ul>
-              <% events_planning_to_attend.each do |event| %>
-                <li class="is-capitalized">
-                  <%= link_to event.title, event, class: "is-size-5-desktop" %>
+              <% yes_rsvps_future.each do |rsvp| %>
+                <li class="is-capitalized">   
+                  <%= link_to rsvp.event.title, rsvp.event, class: "is-size-5-desktop" %>
                 </li>
               <% end %>
             </ul>
@@ -89,11 +89,11 @@
             <h3 class="is-size-4-desktop has-text-primary-dark subtitle is-5"> Previously Attended </h3>
           </div>
           <div class="column is-half">
-          <% if previously_attended_events.any?%>
+          <% if yes_rsvps_past.any?%>
             <ul>
-              <% previously_attended_events.each do |event| %>
+              <% yes_rsvps_past.each do |rsvp| %>
                 <li class="is-capitalized">
-                  <%= link_to event.title, event, class: "is-size-5-desktop" %>
+                  <%= link_to rsvp.event.title, rsvp.event, class: "is-size-5-desktop" %>
                 </li>
               <% end %>
             </ul>
