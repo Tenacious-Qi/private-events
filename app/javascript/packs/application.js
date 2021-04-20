@@ -20,3 +20,9 @@ window.addEventListener("turbolinks:load", () => {
     navbarMenu.classList.toggle('is-active')
   })
 });
+
+$(document).on('turbolinks:load', function() {
+  setTimeout(function() {
+    $('.notification').fadeOut();
+  }, 3000);
+})
