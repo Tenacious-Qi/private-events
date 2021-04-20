@@ -50,7 +50,9 @@
           <% end %>  
         </div>
       </div>
-      <%= link_to "<< back to My Events", current_user %>
+      <% if current_user %>
+        <%= link_to "<< back to My Events", current_user %>
+      <% end %>
     </div>
   </div>
 

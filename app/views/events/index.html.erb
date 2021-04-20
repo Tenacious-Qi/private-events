@@ -32,14 +32,16 @@
                         Starts in <%= future_time_in_days(event)%>
                       </span>
                     </li>
-                    <% if event.invitees.include?(current_user) %>
-                      <li class="column is-one-fourth">
-                        <%= link_to "RSVP", event, class: "button is-medium has-text-weight-bold has-text-light has-background-primary-dark" %>
-                      </li>
-                    <% else %>
-                      <li class="column is-one-fourth">
-                        <%= link_to "Details", event, class: "button is-medium has-text-weight-bold has-text-light has-background-info-dark" %>
-                      </li>
+                    <% if current_user %>
+                      <% if current_user.invited_events.include?(event) %>
+                        <li class="column is-one-fourth">
+                          <%= link_to "RSVP", event, class: "button is-medium has-text-weight-bold has-text-light has-background-primary-dark" %>
+                        </li>
+                      <% else %>
+                        <li class="column is-one-fourth">
+                          <%= link_to "Details", event, class: "button is-medium has-text-weight-bold has-text-light has-background-info-dark" %>
+                        </li>
+                      <% end %>
                     <% end %>
                   </div> 
                 </ul>
