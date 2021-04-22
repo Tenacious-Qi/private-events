@@ -45,18 +45,23 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   gem 'bullet'
-  gem 'rspec-rails'
   gem 'guard'
   gem 'guard-rspec', require: false
 end
 
 group :test do
   # Adds support for Capybara system testing and selenium driver
-  gem 'capybara', '>= 3.26'
   gem 'selenium-webdriver'
   # Easy installation and use of web drivers to run system tests with browsers
   gem 'webdrivers'
+  gem 'shoulda-matchers', '~> 4.0'
+end
+
+group :test, :development do
   gem 'rspec-rails'
+  gem 'capybara', '>= 3.26'
+  gem 'factory_bot_rails', '~>6.0'
+  gem 'faker'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
