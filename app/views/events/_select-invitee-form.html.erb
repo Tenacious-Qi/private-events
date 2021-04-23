@@ -6,12 +6,12 @@
         <%= f.collection_select(:invitee_id, 
                                 User.all.where("id != ?", @event.host.id), 
                                 :id, 
-                                :name, 
+                                :name,
                                 {prompt: 'Select an invitee'}) %>
         </div>   
       </div>
       <div class="column is-two-fifths">
-        <%= f.submit "Invite", class: "has-text-weight-bold button is-primary" %>
+        <%= f.submit "Invite", class: "has-text-weight-bold button is-primary", id: "send-invitation" %>
       </div>
     </div>
                            

@@ -1,6 +1,6 @@
 class InvitationsController < ApplicationController
 
-  before_action :authorize, only: [:create, :update]
+  before_action :authorize, only: [:create, :update, :destroy]
   before_action :correct_user, only: [:create, :update, :new]
 
   def new
