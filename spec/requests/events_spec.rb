@@ -7,7 +7,7 @@ RSpec.describe Event, type: :request do
 
   # login before event actions
   before :each do
-    post login_path, params: { session: { email: user.email, password: user.password } }
+    login(user)
   end
 
   describe 'GET events#new' do

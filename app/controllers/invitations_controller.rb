@@ -20,7 +20,7 @@ class InvitationsController < ApplicationController
   end
 
   def show
-    @invitation = Invitation.find(params[:id])
+    @invitation = Event.find(params[:id])
   end
 
   def update
@@ -31,6 +31,7 @@ class InvitationsController < ApplicationController
     respond_to do |format|
       format.html { redirect_to @event }
       format.js
+      format.json { render :partial => "invitations/show" }
     end
   end
 
