@@ -21,6 +21,11 @@ class InvitationsController < ApplicationController
 
   def show
     @invitation = Event.find(params[:id])
+    # for manual entry of a url, e.g. "/invitations/10", redirect to root
+    respond_to do |format|
+      flash[:info] = "You have been redirected. Invitations managed on event pages."
+      format.html { redirect_to root_url }
+    end
   end
 
   def update

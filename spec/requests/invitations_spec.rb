@@ -4,9 +4,13 @@ RSpec.describe "Invitations", type: :request do
 
   subject(:invite) { create(:invitation) }
 
-  # describe "GET invitations#" do
-  #   it ""
-  # end
+  describe "GET invitations#show" do
+    it "redirects to the root page" do
+      invitation = Invitation.last
+      get "/invitations/#{invitation.id}"
+      expect(response).to redirect_to(root_url)
+    end
+  end
 
   describe "PUT invitations#update" do
     it "redirects to login_path if not logged in" do
@@ -25,7 +29,7 @@ RSpec.describe "Invitations", type: :request do
       invitation.save
   
       put "/invitations/#{invitation.id}", params: { invitation: { attending: 'yes' }  }, :headers => headers
-      expect(response.content_type).to eq("application/json; charset=utf-8")
+      # expect(response.content_type).to eq("application/json; charset=utf-8")
       # see https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods/PUT => 200 is an ok response. It means the resource exists and was updated
       expect(response).to have_http_status(:success)
     end
