@@ -24,8 +24,6 @@ RSpec.describe Event, type: :request do
   end
 
   describe 'POST events#create' do
-
-
     it 'should redirect if not logged in' do
       delete logout_path
       get new_event_path
@@ -37,6 +35,15 @@ RSpec.describe Event, type: :request do
       get new_event_path
       post "/events", params: { event: attributes_for(:event) }
       expect(response).to have_http_status(:redirect)
+    end
+
+    it 'should load the new event form if event creation fails (missing required params)' do
+      event = create(:event)
+      get new_event_path
+      post "/events", params: { event: attributes_for(:event, title: nil)}
+      warning_message = flash[:warning] = "Event creation failed. Please try again."
+      expect(warning_message).to be_present
+      expect(response).to have_http_status(200)
     end
   end
 
