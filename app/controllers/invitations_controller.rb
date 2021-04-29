@@ -41,7 +41,7 @@ class InvitationsController < ApplicationController
   end
 
   def destroy
-    @invitation = Invitation.find_by(invitee: params[:invitee_id], event_id: params[:id])
+    @invitation = Invitation.find(params[:id])
     @event = @invitation.event
     @invitation.destroy
     respond_to do |format|
