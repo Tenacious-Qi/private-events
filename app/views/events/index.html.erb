@@ -12,7 +12,7 @@
       <div class="column">
       <ul>
         <div class="columns is-tablet is-multiline">
-          <% @upcoming_events.order(:start_time).each do |event| %>
+          <% @upcoming_events.order("start_time").each do |event| %>
             <div class="column is-half">
               <li class="box mx-3 my-3 px-3 py-3">
                 <ul>
@@ -73,7 +73,7 @@
           </div>
           <div class="column is-half">
           <ul>
-            <% @past_events.order(:start_time).limit(50).each do |event| %>
+            <% @past_events.order("start_time").limit(50).each do |event| %>
               <li class="is-capitalized">
                 <%= link_to event.title, event, class: "is-size-6-desktop has-text-link-dark" %>
               </li>
