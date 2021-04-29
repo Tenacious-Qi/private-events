@@ -7,12 +7,12 @@
       <div class="column is-half is-offset-one-quarter">
         <div class="field is-grouped-centered">
           <%= f.label :email, class: "label" %>
-          <%= f.email_field :email, class: "input"%>
+          <%= f.email_field :email, class: "input", placeholder: "foo@bar.com"%>
         </div>
 
         <div class="field is-grouped-centered">
           <%= f.label :password, class: "label" %>
-          <%= f.password_field :password, class: "input" %>
+          <%= f.password_field :password, class: "input", placeholder: "foobar" %>
         </div>
 
         <div class="field is-grouped-centered">
@@ -25,6 +25,9 @@
         </div>
       </div>
     <% end %>
+    <div class="columns is-mobile">
+      <p class="column is-half is-offset-one-quarter is-size-7 has-text-warning-dark">Use placeholder info to try site without signing up.</p>
+    </div>
     <div class="columns is-mobile">
       <p class="column is-half is-offset-one-quarter has-text-dark">Need an account? Click <%= link_to "here", new_user_path %> to register.</p>
     </div>
