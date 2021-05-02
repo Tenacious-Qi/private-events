@@ -1,4 +1,4 @@
-<%= form_with(model: @event.host.sent_invitations.new, local: false ) do |f| %>
+<%= form_with(model: @invitation_to_send, local: false ) do |f| %>
     <%= f.hidden_field :event_id, value: @event.id %>
     <div class="columns is-mobile">
       <div class="column is-three-fifths">
