@@ -26,13 +26,11 @@
             <%= render 'select-invitee-form' %>
           </div>
         <% end %>
+        <% if current_user %>
+          <%= render 'rsvp' %>
+        <% end %>
       </div>
     </div>
-    
-    <% if current_user %>
-      <%= render 'rsvp' %>
-      <%= link_to "<< back to My Events", current_user %>
-    <% end %>
 
   </div>
 </div>

@@ -8,7 +8,7 @@ module UsersHelper
       @user.received_invitations.rsvp_yes_future.includes(:event)  
     end
 
-    def yes_rsvps_pending
+    def rsvps_pending
       @user.received_invitations.rsvp_pending.includes(:event)
     end    
 end

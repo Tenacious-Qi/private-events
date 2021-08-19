@@ -1,108 +1,18 @@
 <section class="section">
-<h1 class="title is-4-desktop is-5-mobile has-text-centered">PrivateEvents for <%= @user.name %></h1>
+  <h1 class="title is-4-desktop is-5-mobile has-text-centered">PrivateEvents for <%= @user.name %></h1>
   <div class="columns is-desktop">
     <div class="column is-half is-offset-one-quarter">
-    <% if @user == current_user %>
-      <% if yes_rsvps_pending.any? %>
-        <div class="box has-background-warning-light">
-          <div class="columns is-desktop">
-            <div class="column is-half">
-              <h3 class="has-text-primary-dark subtitle is-5">Pending Invitations</h3>
-            </div>
-            <div class="column is-half">
-              <ul>
-                <% yes_rsvps_pending.each do |rsvp| %>
-                <li class="is-capitalized">
-                  <div class="columns is-mobile">
-                    <div class="column is-half">
-                      <%= link_to rsvp.event.title, rsvp.event, class: "is-size-5-desktop" %>
-                    </div>
-                    <div class="column is-half">
-                      <%= link_to "RSVP", rsvp.event, class: "ml-3 button is-small has-text-weight-bold has-text-light has-background-primary-dark" %>
-                    </div>
-                  </div>
-                </li>
-              <% end %>
-              </ul>
-            </div>
-          </div>
-        </div>
-      <% end %>
+    <% if @user == current_user && rsvps_pending.any? %>
+      <%= render 'invitations/pending_invitations' %>
     <% end %>
     </div>
   </div>
 
-  <div class="columns is-desktop">
-    <div class="column is-half is-offset-one-quarter">
-      <div class="box">
-        <div class="columns is-desktop">
-          <div class="column is-half">
-            <h3 class="is-size-4-desktop has-text-primary-dark subtitle is-5"> Hosted Events </h3>
-          </div>
-          <div class="column is-half">
-          <% if @user.hosted_events.any? %>
-            <ul>
-              <% @user.hosted_events.each do |event| %>
-                  <li class="is-capitalized">
-                    <%= link_to event.title, event, class: "is-size-5-desktop" %>
-                  </li>
-              <% end %>
-            </ul>
-          <% else %>
-            <p>No events hosted yet</p>
-          <% end %>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-<% if yes_rsvps_future.any?%>
-  <div class="columns is-desktop">
-    <div class="column is-half is-offset-one-quarter">
-      <div class="box">
-        <div class="columns is-desktop">
-          <div class="column is-half">
-            <h3 class="is-size-4-desktop has-text-primary-dark subtitle is-5"> Planning to Attend </h3>
-          </div>
-          <div class="column is-half">
+  <%= render 'hosted_events' %>
 
-            <ul>
-              <% yes_rsvps_future.each do |rsvp| %>
-                <li class="is-capitalized">   
-                  <%= link_to rsvp.event.title, rsvp.event, class: "is-size-5-desktop" %>
-                </li>
-              <% end %>
-            </ul>
+  <% if yes_rsvps_future.any?%>
+    <%= render 'invitations/planning_to_attend' %>
+  <% end %>
 
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-<% end %>
-
-  <div class="columns is-desktop">
-    <div class="column is-half is-offset-one-quarter">
-      <div class="box">
-        <div class="columns is-desktop">
-          <div class="column is-half">
-            <h3 class="is-size-4-desktop has-text-primary-dark subtitle is-5"> Previously Attended </h3>
-          </div>
-          <div class="column is-half">
-          <% if yes_rsvps_past.any?%>
-            <ul>
-              <% yes_rsvps_past.each do |rsvp| %>
-                <li class="is-capitalized">
-                  <%= link_to rsvp.event.title, rsvp.event, class: "is-size-5-desktop" %>
-                </li>
-              <% end %>
-            </ul>
-          <% else %>
-            <p class="is-size-5-desktop">No events attended yet.</p>
-          <% end %>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+  <%= render 'invitations/previously_attended_events' %>
 </section>

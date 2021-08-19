@@ -1,0 +1,23 @@
+<div class="box has-background-warning-light">
+  <div class="columns is-desktop">
+    <div class="column is-half">
+      <h3 class="is-size-4-desktop has-text-primary-dark subtitle is-5">Pending Invitations</h3>
+    </div>
+    <div class="column is-half">
+      <ul>
+        <% rsvps_pending.each do |rsvp| %>
+          <li class="is-capitalized">
+            <div class="columns is-mobile">
+              <div class="column is-half">
+                <%= link_to rsvp.event.title, rsvp.event, class: "is-size-5-desktop" %>
+              </div>
+              <div class="column is-half">
+                <%= link_to "RSVP", rsvp.event, class: "ml-3 button is-small has-text-weight-bold has-text-light has-background-primary-dark" %>
+              </div>
+            </div>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+</div>

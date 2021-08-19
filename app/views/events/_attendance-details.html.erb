@@ -1,29 +1,30 @@
-  <div class="column is-half is-offset-one-quarter has-text-centered has-background-white">
-    <div class="columns is-mobile">
-      <div class="column is-half">
-        <h4 class="subtitle is-size-4-desktop">Invitees</h4>
-        <ul>
-          <% if current_user == @event.host && Event.upcoming.include?(@event)%>
-            <% @event.invitations.includes(:invitee).each do |invitation| %>
-              <li>
-                <div class="columns is-mobile">
-                  <div class="column is-half">
-                    <%= link_to invitation.invitee.name, invitation.invitee, class: "is-size-5-desktop has-text-grey-dark" %>
-                  </div>
-                  <div class="column is-half">
-                    <%= button_to "uninvite", 
+  
+<div class="column is-half is-offset-one-quarter has-text-centered has-background-white">
+  <div class="columns is-mobile">
+    <div class="column is-half">
+      <h4 class="subtitle is-size-4-desktop">Invitees</h4>
+      <ul>
+        <% if current_user == @event.host && Event.upcoming.include?(@event)%>
+          <% @event.invitations.includes(:invitee).each do |invitation| %>
+            <li>
+              <div class="columns is-mobile">
+                <div class="column is-half">
+                  <%= link_to invitation.invitee.name, invitation.invitee, class: "is-size-5-desktop has-text-grey-dark" %>
+                </div>
+                <div class="column is-half">
+                  <%= button_to "uninvite", 
                                   invitation_path(invitation), 
                                   method: :delete,
                                   remote: true,
                                   class: 'button is-warning has-text-weight-bold is-small',
                                   data: { confirm: "Uninvite #{invitation.invitee.name}?" } %>
-                  </div>
                 </div>
-              </li>
-            <% end %>
-          <% else %>
-            <% @event.invitations.includes(:invitee).each do |invitation| %>
-              <li><%= link_to invitation.invitee.name, invitation.invitee, class: "is-size-5-desktop" %>
+              </div>
+            </li>
+          <% end %>
+        <% else %>
+          <% @event.invitations.includes(:invitee).each do |invitation| %>
+            <li><%= link_to invitation.invitee.name, invitation.invitee, class: "is-size-5-desktop" %>
             <% end %>
           <% end %>
         </ul>
@@ -33,9 +34,11 @@
         <h4 class="subtitle is-size-4-desktop">Attendees</h4>
         <ul>
           <% @event.invitations.where(attending: 'yes').each do |invitation| %>
-          <li><%= link_to invitation.invitee.name, invitation.invitee, class: "is-size-5-desktop" %></li>
-        <% end %>
+            <li><%= link_to invitation.invitee.name, invitation.invitee, class: "is-size-5-desktop" %></li>
+          <% end %>
         </ul>
       </div>
     </div>
   </div>
+
+  <%= link_to "<< back to My Events", current_user %>
