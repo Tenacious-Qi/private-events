@@ -1,35 +1,37 @@
-  <section class="section">
-    <div class="columns is-mobile">
-      <h1 class="is-size-5 column is-half is-offset-one-quarter has-text-info-dark">Login</h1>
-    </div>
-    
-    <%= form_with(url: login_path, scope: :session, local: true, class: "columns is-mobile") do |f| %>
-      <div class="column is-half is-offset-one-quarter">
-        <div class="field is-grouped-centered">
-          <%= f.label :email, class: "label" %>
-          <%= f.email_field :email, class: "input", placeholder: "foo@bar.com"%>
-        </div>
+  
+<section class="section">
+  <div class="columns is-mobile">
+    <h1 class="is-size-5 column is-half-desktop is-offset-one-quarter-desktop has-text-info-dark">Login</h1>
+  </div>
 
-        <div class="field is-grouped-centered">
-          <%= f.label :password, class: "label" %>
-          <%= f.password_field :password, class: "input", placeholder: "foobar" %>
-        </div>
-
-        <div class="field is-grouped-centered">
-          <%= f.label :remember_me, class: "label" %>
-          <%= f.check_box :remember_me, class: "checkbox" %>
-        </div>
-
-        <div class="field is-grouped-centered">
-          <%= f.submit "Log In", class: "input button is-primary has-text-light has-text-weight-bold" %>
-        </div>
+  <%= form_with(url: login_path, scope: :session, local: true, class: "columns is-mobile") do |f| %>
+    <div class="column is-half-desktop is-offset-one-quarter-desktop">
+      <div class="field is-grouped-centered">
+        <%= f.label :email, class: "label" %>
+        <%= f.email_field :email, class: "input", placeholder: "foo@bar.com"%>
       </div>
-    <% end %>
-    <div class="columns is-mobile">
-      <p class="column is-half is-offset-one-quarter is-size-7 has-text-warning-dark">Use placeholder info to try site without signing up.</p>
-    </div>
-    <div class="columns is-mobile">
-      <p class="column is-half is-offset-one-quarter has-text-dark">Need an account? Click <%= link_to "here", new_user_path %> to register.</p>
-    </div>
-  </section>
 
+      <div class="field is-grouped-centered">
+        <%= f.label :password, class: "label" %>
+        <%= f.password_field :password, class: "input", placeholder: "foobar" %>
+      </div>
+
+      <div class="field is-grouped-centered">
+        <%= f.label :remember_me, class: "label" %>
+        <%= f.check_box :remember_me, class: "checkbox" %>
+      </div>
+
+      <div class="field is-grouped-centered">
+        <%= f.submit "Log In", class: "input button is-primary has-text-light has-text-weight-bold" %>
+      </div>
+    </div>
+  <% end %>
+  <div class="columns is-mobile">
+    <div class="column is-half-desktop is-offset-one-quarter-desktop">
+      <p class="is-size-7 has-text-warning-dark">Use placeholder info to try site without signing up.</p>
+    </div>
+  </div>
+  <div class="columns is-mobile">
+    <p class="column is-half is-offset-one-quarter has-text-dark">Need an account? Click <%= link_to "here", new_user_path %> to register.</p>
+  </div>
+</section>

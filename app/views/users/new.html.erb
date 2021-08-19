@@ -1,10 +1,10 @@
 <section class="section">
   <div class="columns is-mobile">
-    <h1 class="is-size-5 column is-half is-offset-one-quarter has-text-info-dark">Signup</h1>
+    <h1 class="is-size-5 column is-half-desktop is-offset-one-quarter-desktop has-text-info-dark">Signup</h1>
   </div>
 
 <%= form_with(model: @user, local: true, class: "columns is-mobile") do |f| %>
-  <div class="column is-half is-offset-one-quarter">
+  <div class="column is-half-desktop is-offset-one-quarter-desktop">
   <%= render 'shared/error_messages', object: f.object %>
     <div class="field is-grouped-centered">
       <%= f.label :name, class: "label" %>
