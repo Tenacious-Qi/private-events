@@ -17,10 +17,10 @@ class Event < ApplicationRecord
 
   private
     def start_time_in_future
-      if start_time
-        if start_time < Time.zone.today
-          errors.add(:start_time, "must be in future")
-        end
+      return unless start_time
+
+      if start_time < Time.zone.today
+        errors.add(:start_time, "must be in future")
       end
     end
 end

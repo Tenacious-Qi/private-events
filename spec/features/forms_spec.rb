@@ -1,8 +1,6 @@
 require 'rails_helper'
 
 RSpec.feature "Forms", type: :feature do
-
-  # subject(:new_event) { build(:event) }
   
   describe 'Signup process' do
 

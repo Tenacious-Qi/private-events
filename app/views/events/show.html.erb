@@ -17,51 +17,32 @@
   </div>
 
   <div class="columns is-desktop">
-    <div class="column is-half is-offset-one-quarter">
-      <div class="columns is-desktop">    
-        <div class="box column is-full has-background-info-dark">
-            <div class="columns">
-              <div class="column is-half">
-                <p class="has-text-centered has-text-light has-text-weight-bold is-size-3-widescreen is-size-4-desktop is-size-5-tablet">Where</p>
-                <p class="has-text-centered has-text-light is-size-5-widescreen is-size-6-desktop"><%= @event.location %>.</p>
-              </div>
-              <div class="column is-half">
-                <p class="has-text-centered has-text-light has-text-weight-bold is-size-3-widescreen is-size-4-desktop is-size-5-tablet">When</p>
-                <p class="has-text-centered has-text-light is-size-5-widescreen is-size-6-desktop"><%= @event.start_time.strftime("%A, %Y-%m-%d") %></p>
-              </div>
-            </div>
-            <div class="columns is-mobile">
-              <div class="column is-full">
-                <p class="has-text-centered has-text-light has-text-weight-bold is-size-3-widescreen is-size-4-desktop is-size-5-tablet">About</p>
-                <p class="has-text-centered has-text-light is-size-6-desktop is-size-7-mobile"><%= @event.description%></p>
-              </div>
-            </div>
-        </div>
+    <%= render 'event_info' %>
+    <div class="columns is-mobile">
+      <div class="column is-half is-offset-one-quarter has-text-centered">
+        <!-- only host can invite guests. Event must be in future to invite a guest. -->
+        <% if current_user_is_host? && Event.upcoming.include?(@event) %>
+          <div id="invitation-form">
+            <%= render 'select-invitee-form' %>
+          </div>
+        <% end %>
       </div>
-      <div class="columns is-mobile">
-        <div class="column is-half is-offset-one-quarter has-text-centered">
-          <% if current_user_is_host? %>
-              <div id="invitation-form">
-                <%= render 'select-invitee-form' %>
-              </div>
-          <% end %>
-          <% if current_user %>
-            <%= render 'rsvp' %>
-          <% end %>  
-        </div>
-      </div>
-      <% if current_user %>
-        <%= link_to "<< back to My Events", current_user %>
-      <% end %>
     </div>
-  </div>
+    
+    <% if current_user %>
+      <%= render 'rsvp' %>
+      <%= link_to "<< back to My Events", current_user %>
+    <% end %>
 
-  <div id="attendance-details">
-    <div>
-      <% if current_user %>
-        <%= render 'attendance-details'%>
-      <% end %>
-    </div>
   </div>
+</div>
+
+<!-- id necessary for jquery ajax request -->
+<div id="attendance-details">
+  <div>
+    <% if current_user %>
+      <%= render 'attendance-details'%>
+    <% end %>
+  </div>
+</div>
 </section>
-

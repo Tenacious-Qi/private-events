@@ -1,6 +1,0 @@
-                    <%= button_to "uninvite", { controller: :invitations, action: :destroy, id: invitation.event.id },
-                                              method: :delete, 
-                                              params: {event_id: @event.id, invitee_id: invitation.invitee.id},
-                                              remote: true,
-                                              class: 'button is-warning has-text-weight-bold is-small',
-                                              data: { confirm: "Uninvite #{invitation.invitee.name}?" } %>
