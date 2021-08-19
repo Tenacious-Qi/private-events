@@ -1,7 +1,7 @@
 {
   "RSpec": {
     "coverage": {
-      "/home/joe/Nextcloud/Documents/webdev/theodinproject/odin_on_rails/private-events/spec/features/forms_spec.rb": {
+      "/home/joe/MEGA/web-dev/theodinproject/odin_on_rails/private-events/spec/features/forms_spec.rb": {
         "lines": [
           1,
           null,
@@ -109,7 +109,7 @@
           null
         ]
       },
-      "/home/joe/Nextcloud/Documents/webdev/theodinproject/odin_on_rails/private-events/spec/rails_helper.rb": {
+      "/home/joe/MEGA/web-dev/theodinproject/odin_on_rails/private-events/spec/rails_helper.rb": {
         "lines": [
           null,
           1,
@@ -187,7 +187,7 @@
           null
         ]
       },
-      "/home/joe/Nextcloud/Documents/webdev/theodinproject/odin_on_rails/private-events/config/environment.rb": {
+      "/home/joe/MEGA/web-dev/theodinproject/odin_on_rails/private-events/config/environment.rb": {
         "lines": [
           null,
           1,
@@ -196,7 +196,7 @@
           1
         ]
       },
-      "/home/joe/Nextcloud/Documents/webdev/theodinproject/odin_on_rails/private-events/config/application.rb": {
+      "/home/joe/MEGA/web-dev/theodinproject/odin_on_rails/private-events/config/application.rb": {
         "lines": [
           1,
           null,
@@ -224,7 +224,7 @@
           null
         ]
       },
-      "/home/joe/Nextcloud/Documents/webdev/theodinproject/odin_on_rails/private-events/config/boot.rb": {
+      "/home/joe/MEGA/web-dev/theodinproject/odin_on_rails/private-events/config/boot.rb": {
         "lines": [
           1,
           null,
@@ -232,7 +232,7 @@
           1
         ]
       },
-      "/home/joe/Nextcloud/Documents/webdev/theodinproject/odin_on_rails/private-events/config/environments/test.rb": {
+      "/home/joe/MEGA/web-dev/theodinproject/odin_on_rails/private-events/config/environments/test.rb": {
         "lines": [
           1,
           null,
@@ -297,7 +297,7 @@
           null
         ]
       },
-      "/home/joe/Nextcloud/Documents/webdev/theodinproject/odin_on_rails/private-events/config/initializers/application_controller_renderer.rb": {
+      "/home/joe/MEGA/web-dev/theodinproject/odin_on_rails/private-events/config/initializers/application_controller_renderer.rb": {
         "lines": [
           null,
           null,
@@ -309,7 +309,7 @@
           null
         ]
       },
-      "/home/joe/Nextcloud/Documents/webdev/theodinproject/odin_on_rails/private-events/config/initializers/assets.rb": {
+      "/home/joe/MEGA/web-dev/theodinproject/odin_on_rails/private-events/config/initializers/assets.rb": {
         "lines": [
           null,
           null,
@@ -327,7 +327,7 @@
           null
         ]
       },
-      "/home/joe/Nextcloud/Documents/webdev/theodinproject/odin_on_rails/private-events/config/initializers/backtrace_silencers.rb": {
+      "/home/joe/MEGA/web-dev/theodinproject/odin_on_rails/private-events/config/initializers/backtrace_silencers.rb": {
         "lines": [
           null,
           null,
@@ -339,7 +339,7 @@
           1
         ]
       },
-      "/home/joe/Nextcloud/Documents/webdev/theodinproject/odin_on_rails/private-events/config/initializers/content_security_policy.rb": {
+      "/home/joe/MEGA/web-dev/theodinproject/odin_on_rails/private-events/config/initializers/content_security_policy.rb": {
         "lines": [
           null,
           null,
@@ -373,7 +373,7 @@
           null
         ]
       },
-      "/home/joe/Nextcloud/Documents/webdev/theodinproject/odin_on_rails/private-events/config/initializers/cookies_serializer.rb": {
+      "/home/joe/MEGA/web-dev/theodinproject/odin_on_rails/private-events/config/initializers/cookies_serializer.rb": {
         "lines": [
           null,
           null,
@@ -382,7 +382,7 @@
           1
         ]
       },
-      "/home/joe/Nextcloud/Documents/webdev/theodinproject/odin_on_rails/private-events/config/initializers/filter_parameter_logging.rb": {
+      "/home/joe/MEGA/web-dev/theodinproject/odin_on_rails/private-events/config/initializers/filter_parameter_logging.rb": {
         "lines": [
           null,
           null,
@@ -392,7 +392,7 @@
           null
         ]
       },
-      "/home/joe/Nextcloud/Documents/webdev/theodinproject/odin_on_rails/private-events/config/initializers/inflections.rb": {
+      "/home/joe/MEGA/web-dev/theodinproject/odin_on_rails/private-events/config/initializers/inflections.rb": {
         "lines": [
           null,
           null,
@@ -412,7 +412,7 @@
           null
         ]
       },
-      "/home/joe/Nextcloud/Documents/webdev/theodinproject/odin_on_rails/private-events/config/initializers/mime_types.rb": {
+      "/home/joe/MEGA/web-dev/theodinproject/odin_on_rails/private-events/config/initializers/mime_types.rb": {
         "lines": [
           null,
           null,
@@ -420,7 +420,7 @@
           null
         ]
       },
-      "/home/joe/Nextcloud/Documents/webdev/theodinproject/odin_on_rails/private-events/config/initializers/permissions_policy.rb": {
+      "/home/joe/MEGA/web-dev/theodinproject/odin_on_rails/private-events/config/initializers/permissions_policy.rb": {
         "lines": [
           null,
           null,
@@ -435,7 +435,7 @@
           null
         ]
       },
-      "/home/joe/Nextcloud/Documents/webdev/theodinproject/odin_on_rails/private-events/config/initializers/wrap_parameters.rb": {
+      "/home/joe/MEGA/web-dev/theodinproject/odin_on_rails/private-events/config/initializers/wrap_parameters.rb": {
         "lines": [
           null,
           null,
@@ -453,7 +453,7 @@
           null
         ]
       },
-      "/home/joe/Nextcloud/Documents/webdev/theodinproject/odin_on_rails/private-events/spec/factories/events.rb": {
+      "/home/joe/MEGA/web-dev/theodinproject/odin_on_rails/private-events/spec/factories/events.rb": {
         "lines": [
           1,
           1,
@@ -467,12 +467,12 @@
           null
         ]
       },
-      "/home/joe/Nextcloud/Documents/webdev/theodinproject/odin_on_rails/private-events/spec/factories/factories.rb": {
+      "/home/joe/MEGA/web-dev/theodinproject/odin_on_rails/private-events/spec/factories/factories.rb": {
         "lines": [
 
         ]
       },
-      "/home/joe/Nextcloud/Documents/webdev/theodinproject/odin_on_rails/private-events/spec/factories/invitations.rb": {
+      "/home/joe/MEGA/web-dev/theodinproject/odin_on_rails/private-events/spec/factories/invitations.rb": {
         "lines": [
           1,
           1,
@@ -483,7 +483,7 @@
           null
         ]
       },
-      "/home/joe/Nextcloud/Documents/webdev/theodinproject/odin_on_rails/private-events/spec/factories/users.rb": {
+      "/home/joe/MEGA/web-dev/theodinproject/odin_on_rails/private-events/spec/factories/users.rb": {
         "lines": [
           1,
           1,
@@ -494,7 +494,7 @@
           null
         ]
       },
-      "/home/joe/Nextcloud/Documents/webdev/theodinproject/odin_on_rails/private-events/config/routes.rb": {
+      "/home/joe/MEGA/web-dev/theodinproject/odin_on_rails/private-events/config/routes.rb": {
         "lines": [
           1,
           1,
@@ -510,13 +510,13 @@
           null
         ]
       },
-      "/home/joe/Nextcloud/Documents/webdev/theodinproject/odin_on_rails/private-events/app/helpers/application_helper.rb": {
+      "/home/joe/MEGA/web-dev/theodinproject/odin_on_rails/private-events/app/helpers/application_helper.rb": {
         "lines": [
           1,
           null
         ]
       },
-      "/home/joe/Nextcloud/Documents/webdev/theodinproject/odin_on_rails/private-events/app/helpers/events_helper.rb": {
+      "/home/joe/MEGA/web-dev/theodinproject/odin_on_rails/private-events/app/helpers/events_helper.rb": {
         "lines": [
           1,
           1,
@@ -538,19 +538,19 @@
           null
         ]
       },
-      "/home/joe/Nextcloud/Documents/webdev/theodinproject/odin_on_rails/private-events/app/helpers/invitations_helper.rb": {
+      "/home/joe/MEGA/web-dev/theodinproject/odin_on_rails/private-events/app/helpers/invitations_helper.rb": {
         "lines": [
           1,
           null
         ]
       },
-      "/home/joe/Nextcloud/Documents/webdev/theodinproject/odin_on_rails/private-events/app/helpers/sessions_helper.rb": {
+      "/home/joe/MEGA/web-dev/theodinproject/odin_on_rails/private-events/app/helpers/sessions_helper.rb": {
         "lines": [
           1,
           null
         ]
       },
-      "/home/joe/Nextcloud/Documents/webdev/theodinproject/odin_on_rails/private-events/app/helpers/users_helper.rb": {
+      "/home/joe/MEGA/web-dev/theodinproject/odin_on_rails/private-events/app/helpers/users_helper.rb": {
         "lines": [
           1,
           1,
@@ -572,7 +572,7 @@
           null
         ]
       },
-      "/home/joe/Nextcloud/Documents/webdev/theodinproject/odin_on_rails/private-events/spec/helpers/users_helper_spec.rb": {
+      "/home/joe/MEGA/web-dev/theodinproject/odin_on_rails/private-events/spec/helpers/users_helper_spec.rb": {
         "lines": [
           1,
           null,
@@ -595,7 +595,7 @@
           null
         ]
       },
-      "/home/joe/Nextcloud/Documents/webdev/theodinproject/odin_on_rails/private-events/spec/models/event_spec.rb": {
+      "/home/joe/MEGA/web-dev/theodinproject/odin_on_rails/private-events/spec/models/event_spec.rb": {
         "lines": [
           1,
           null,
@@ -687,7 +687,7 @@
           null
         ]
       },
-      "/home/joe/Nextcloud/Documents/webdev/theodinproject/odin_on_rails/private-events/app/models/event.rb": {
+      "/home/joe/MEGA/web-dev/theodinproject/odin_on_rails/private-events/app/models/event.rb": {
         "lines": [
           1,
           1,
@@ -717,14 +717,14 @@
           null
         ]
       },
-      "/home/joe/Nextcloud/Documents/webdev/theodinproject/odin_on_rails/private-events/app/models/application_record.rb": {
+      "/home/joe/MEGA/web-dev/theodinproject/odin_on_rails/private-events/app/models/application_record.rb": {
         "lines": [
           1,
           1,
           null
         ]
       },
-      "/home/joe/Nextcloud/Documents/webdev/theodinproject/odin_on_rails/private-events/spec/models/invitation_spec.rb": {
+      "/home/joe/MEGA/web-dev/theodinproject/odin_on_rails/private-events/spec/models/invitation_spec.rb": {
         "lines": [
           1,
           null,
@@ -769,7 +769,7 @@
           null
         ]
       },
-      "/home/joe/Nextcloud/Documents/webdev/theodinproject/odin_on_rails/private-events/app/models/invitation.rb": {
+      "/home/joe/MEGA/web-dev/theodinproject/odin_on_rails/private-events/app/models/invitation.rb": {
         "lines": [
           1,
           1,
@@ -785,7 +785,7 @@
           null
         ]
       },
-      "/home/joe/Nextcloud/Documents/webdev/theodinproject/odin_on_rails/private-events/spec/models/user_spec.rb": {
+      "/home/joe/MEGA/web-dev/theodinproject/odin_on_rails/private-events/spec/models/user_spec.rb": {
         "lines": [
           1,
           null,
@@ -863,7 +863,7 @@
           null
         ]
       },
-      "/home/joe/Nextcloud/Documents/webdev/theodinproject/odin_on_rails/private-events/app/models/user.rb": {
+      "/home/joe/MEGA/web-dev/theodinproject/odin_on_rails/private-events/app/models/user.rb": {
         "lines": [
           1,
           1,
@@ -898,7 +898,7 @@
           null
         ]
       },
-      "/home/joe/Nextcloud/Documents/webdev/theodinproject/odin_on_rails/private-events/spec/requests/events_spec.rb": {
+      "/home/joe/MEGA/web-dev/theodinproject/odin_on_rails/private-events/spec/requests/events_spec.rb": {
         "lines": [
           1,
           null,
@@ -965,7 +965,7 @@
           null
         ]
       },
-      "/home/joe/Nextcloud/Documents/webdev/theodinproject/odin_on_rails/private-events/spec/requests/invitations_spec.rb": {
+      "/home/joe/MEGA/web-dev/theodinproject/odin_on_rails/private-events/spec/requests/invitations_spec.rb": {
         "lines": [
           1,
           null,
@@ -1034,7 +1034,7 @@
           null
         ]
       },
-      "/home/joe/Nextcloud/Documents/webdev/theodinproject/odin_on_rails/private-events/spec/requests/sessions_spec.rb": {
+      "/home/joe/MEGA/web-dev/theodinproject/odin_on_rails/private-events/spec/requests/sessions_spec.rb": {
         "lines": [
           1,
           null,
@@ -1126,7 +1126,7 @@
           null
         ]
       },
-      "/home/joe/Nextcloud/Documents/webdev/theodinproject/odin_on_rails/private-events/spec/requests/users_spec.rb": {
+      "/home/joe/MEGA/web-dev/theodinproject/odin_on_rails/private-events/spec/requests/users_spec.rb": {
         "lines": [
           1,
           null,
@@ -1160,7 +1160,7 @@
           null
         ]
       },
-      "/home/joe/Nextcloud/Documents/webdev/theodinproject/odin_on_rails/private-events/app/controllers/users_controller.rb": {
+      "/home/joe/MEGA/web-dev/theodinproject/odin_on_rails/private-events/app/controllers/users_controller.rb": {
         "lines": [
           1,
           1,
@@ -1195,7 +1195,7 @@
           null
         ]
       },
-      "/home/joe/Nextcloud/Documents/webdev/theodinproject/odin_on_rails/private-events/app/controllers/application_controller.rb": {
+      "/home/joe/MEGA/web-dev/theodinproject/odin_on_rails/private-events/app/controllers/application_controller.rb": {
         "lines": [
           1,
           null,
@@ -1230,7 +1230,7 @@
           null
         ]
       },
-      "/home/joe/Nextcloud/Documents/webdev/theodinproject/odin_on_rails/private-events/app/controllers/events_controller.rb": {
+      "/home/joe/MEGA/web-dev/theodinproject/odin_on_rails/private-events/app/controllers/events_controller.rb": {
         "lines": [
           1,
           1,
@@ -1274,7 +1274,7 @@
           null
         ]
       },
-      "/home/joe/Nextcloud/Documents/webdev/theodinproject/odin_on_rails/private-events/app/controllers/sessions_controller.rb": {
+      "/home/joe/MEGA/web-dev/theodinproject/odin_on_rails/private-events/app/controllers/sessions_controller.rb": {
         "lines": [
           1,
           null,
@@ -1308,7 +1308,7 @@
           null
         ]
       },
-      "/home/joe/Nextcloud/Documents/webdev/theodinproject/odin_on_rails/private-events/app/controllers/invitations_controller.rb": {
+      "/home/joe/MEGA/web-dev/theodinproject/odin_on_rails/private-events/app/controllers/invitations_controller.rb": {
         "lines": [
           1,
           null,
@@ -1370,6 +1370,6 @@
         ]
       }
     },
-    "timestamp": 1619933917
+    "timestamp": 1629395194
   }
 }
