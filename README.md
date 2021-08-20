@@ -19,7 +19,7 @@ This is the repository for a Rails app similar to Eventbrite. It is a project in
     - Navigate to `localhost:3000` in your browser.
 4. Play around with the app.
     - To get started, click "login" in upper right navbar.
-    - Login with placeholder credentials.
+    - Login with placeholder credentials (works on Heroku site too!).
     - See which events you've been invited to!
 
 ### Running the Tests
