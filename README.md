@@ -4,18 +4,23 @@ This is the repository for a Rails app similar to Eventbrite. It is a project in
 
 ### Installation
 
-1. Install Locally
-    - clone this repo
+1. Install Locally.
+    - Clone this repo.
     - cd into cloned directory `cd private-events`
-    - run `bundle install`
+    - `bundle install && rails webpacker:install`
+    - Enter `Y` when prompted to overwrite `/private-events/config/webpack/environment.js`.
 
-2. Seed the database
+2. Seed the database.
     - `rails db:migrate`
     - `rails db:seed`
 
-3. Start a Rails Server
+3. Start a Rails Server.
     - `rails server`
-    - Navigate to [localhost:3000](localhost:3000) in your browser
+    - Navigate to `localhost:3000` in your browser.
+4. Play around with the app.
+    - To get started, click "login" in upper right navbar.
+    - Login with placeholder credentials.
+    - See which events you've been invited to!
 
 ### Running the Tests
 
