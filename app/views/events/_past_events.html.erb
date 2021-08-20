@@ -1,0 +1,24 @@
+<div class="columns is-desktop">
+  <div class="column is-half is-offset-one-quarter">
+    <div class="columns is-mobile">
+      <div class="column">
+        <%= link_to "back to top", "/events/#top", class: "has-text-warning-dark" %>
+      </div>
+    </div>
+    <div class="box has-background-info-light">
+      <div class="columns is-desktop">
+        <div class="column is-half">
+          <h3 class="subtitle is-5 has-text-primary-dark"> Past Events </h3>
+        </div>
+        <div class="column is-half">
+          <ul>
+            <% @past_events.order(:start_time).limit(50).each do |event| %>
+              <li class="is-capitalized">
+                <%= link_to event.title, event, class: "is-size-6-desktop has-text-link-dark" %>
+              </li>
+            <% end %>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>

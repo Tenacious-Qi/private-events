@@ -8,17 +8,17 @@ users << User.create(name: 'Foo Bar',
 )
 
 12.times do |n|
-  users << User.create(name: Faker::Name.name, 
+  users << User.create(name: Faker::TvShows::Simpsons.character, 
                        email: Faker::Internet.unique.email, 
                        password: Faker::Internet.password
                       )
 end
 
-20.times do |n|
+24.times do |n|
   events << Event.create(host: users.sample, 
-                         title: Faker::Lorem.sentence(word_count: 4, random_words_to_add: 2),
-                         location: Faker::Address.city,
-                         description: Faker::Lorem.paragraph(sentence_count: 12),
+                         title: Faker::Hipster.sentence(word_count: 1),
+                         location: Faker::TvShows::Simpsons.location,
+                         description: Faker::TvShows::Simpsons.quote,
                          start_time: Faker::Time.between(from: Time.zone.now + 2.days, to: Time.zone.now + 10.days)
                         )
 end
