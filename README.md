@@ -8,7 +8,7 @@ This is the repository for a Rails app similar to Eventbrite. It is a project in
     - Clone this repo.
     - cd into cloned directory `cd private-events`
     - `bundle install && rails webpacker:install`
-    - Enter `Y` when prompted to overwrite `/private-events/config/webpack/environment.js`.
+    - Enter `N` when prompted to overwrite `/private-events/config/webpack/environment.js`.
 
 2. Seed the database.
     - `rails db:migrate`
