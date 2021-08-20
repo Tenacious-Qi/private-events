@@ -40,4 +40,4 @@ yarn-debug.log*
 .yarn-integrity
 # simplecov files generated after running rspec spec
 coverage/.resultset.json
-coverage/.index.html
+coverage/index.html
