@@ -1,5 +1,5 @@
 <section class="section">
-  <h1 class="title is-4-desktop is-5-mobile has-text-centered">PrivateEvents for <%= @user.name %></h1>
+  <h1 class="title is-size-4-desktop is-size-5-mobile has-text-centered">PrivateEvents for <%= @user.name %></h1>
   <div class="columns is-desktop">
     <div class="column is-half is-offset-one-quarter">
     <% if @user == current_user && rsvps_pending.any? %>
