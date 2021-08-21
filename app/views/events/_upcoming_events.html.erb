@@ -5,7 +5,7 @@
       <div class="columns is-tablet is-multiline">
         <% @upcoming_events.order(:start_time).each do |event| %>
           <div class="column is-flex is-half">
-            <li class="tile is-child box mx-3 my-3 px-3 py-3">
+            <li class="tile is-child box has-background-light mx-3 my-3 px-3 py-3">
               <ul>
                 <div class="columns">
                   <li class="column is-one-fourth">
@@ -26,11 +26,11 @@
                   <% if current_user %>
                     <% if current_user.invited_events.include?(event) %>
                       <li class="column is-one-fourth">
-                        <%= link_to "RSVP", event, class: "button is-medium has-text-weight-bold has-text-light has-background-primary-dark" %>
+                        <%= link_to "RSVP", event, class: "button is-flex has-text-weight-bold has-text-light has-background-primary-dark" %>
                       </li>
                     <% else %>
                       <li class="column is-one-fourth">
-                        <%= link_to "Details", event, class: "button is-medium has-text-weight-bold has-text-light has-background-info-dark" %>
+                        <%= link_to "Details", event, class: "button is-flex has-text-weight-bold has-text-light has-background-info-dark" %>
                       </li>
                     <% end %>
                   <% end %>
