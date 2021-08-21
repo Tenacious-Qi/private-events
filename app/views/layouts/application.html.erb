@@ -11,9 +11,9 @@
   </head>
 
   <body>
-    <nav class="navbar is-white has-shadow">
+    <nav class="navbar is-dark has-shadow">
       <div class="navbar-brand">
-        <%= link_to "PrivateEvents", events_path, class: "is-italic navbar-item is-size-4 py-2 px-2" %>
+        <%= link_to "Private Events", events_path, class: "has-text-weight-bold navbar-item is-size-4 py-2 px-2" %>
         <a class="navbar-burger" id="burger">
           <span></span>
           <span></span>
@@ -26,8 +26,7 @@
           <%= link_to "New Event", new_event_path, class: "navbar-item is-primary" %>
           <%= link_to "All Events", events_path, class: "navbar-item" %>
           <% if current_user %>
-     
-            <p class="navbar-item has-text-info-dark"><%=link_to current_user.name, current_user %></p>
+            <p class="navbar-item"><%=link_to current_user.name, current_user, class: "has-text-info has-text-weight-bold" %></p>
             <%= link_to "Logout", logout_path, method: "delete", class: "navbar-item has-text-warning-dark" %>
           <% else %>
             <%= link_to "Sign Up", signup_path, class: "navbar-item"%>
