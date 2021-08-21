@@ -1,9 +1,7 @@
 <section class="section">
   <div class="columns is-mobile">
     <div class="column">
-      <div class="level is-mobile">
-        <h1 class="level-item title is-size-5-mobile is-capitalized"><%= @event.title %></h1>
-      </div>
+      <h1 class="has-text-centered title is-size-5-mobile is-capitalized"><%= @event.title %></h1>
       <div class="columns is-mobile">
         <p class= "column has-text-centered subtitle">hosted by
           <% if @event.host == current_user %>
