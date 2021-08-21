@@ -29,6 +29,12 @@ RSpec.describe Invitation, type: :model do
       expect(invitation2).to_not be_valid
     end
 
+    it 'fails validation if user invites themselves' do
+      host = create(:user)
+      event = create(:event, host: host)
+      invitation = build(:invitation, host: host, invitee: host, event: event)
+      expect(invitation).to_not be_valid
+    end
   end
 
   describe 'Associations' do
