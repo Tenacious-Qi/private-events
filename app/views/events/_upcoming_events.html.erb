@@ -4,12 +4,12 @@
     <ul>
       <div class="columns is-tablet is-multiline">
         <% @upcoming_events.order(:start_time).each do |event| %>
-          <div class="column is-half">
-            <li class="box mx-3 my-3 px-3 py-3">
+          <div class="column is-flex is-half">
+            <li class="tile is-child box mx-3 my-3 px-3 py-3">
               <ul>
-                <div class="columns is-multiline">
+                <div class="columns">
                   <li class="column is-one-fourth">
-                    <span class=" is-capitalized has-text-link-dark is-size-4-desktop">
+                    <span class="is-capitalized has-text-link-dark is-size-5-desktop">
                       <%= link_to event.title, event %>
                     </span>
                   </li>
