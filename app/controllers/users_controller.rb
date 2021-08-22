@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :authorize, only: [:show]
+  before_action :authorize, only: [:show, :index]
 
   def new
     if current_user
@@ -22,6 +22,10 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+  end
+
+  def index
+    @users = User.all
   end
 
   private

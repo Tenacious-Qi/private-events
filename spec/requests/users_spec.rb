@@ -7,7 +7,7 @@ RSpec.describe "Users", type: :request do
   describe 'GET users#new' do
     it 'should get signup page' do
       get '/users/new'
-      expect(response).to have_http_status(200)
+      expect(response).to have_http_status(:success)
     end
   end
 
@@ -17,7 +17,26 @@ RSpec.describe "Users", type: :request do
       post login_path, params: { session: { email: subject.email,
                                             password: subject.password } }
       get user_path(subject)
-      expect(response).to have_http_status(200)
+      expect(response).to have_http_status(:success)
+    end
+
+    it 'should redirect if not logged in' do
+      get user_path(subject)
+      expect(response).to redirect_to(login_path)
+    end
+  end
+
+  describe 'GET users#index' do
+    it 'should get the users#index page' do
+      post login_path, params: { session: { email: subject.email,
+                                            password: subject.password } }
+      get users_path
+      expect(response).to have_http_status(:success)
+    end
+
+    it 'should redirect if not logged in' do
+      get users_path
+      expect(response).to redirect_to(login_path)
     end
   end
 

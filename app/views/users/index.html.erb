@@ -1,0 +1,21 @@
+<section class="section">
+  <h1 class="title is-size-4-desktop is-size-5-mobile has-text-centered">Private Events Members</h1>
+  <div class="columns is-desktop">
+    <div class="column is-half is-offset-one-quarter">
+      <ul class="box">
+        <div class="columns is-centered">
+          <div class="column is-half is-offset-one-quarter">
+            <% @users.each do |user| %>
+              <% if user == current_user %>
+                <li class="is-size-5-desktop"><%= link_to "#{user.name} (You)", user %></li>
+              <% else %>
+                <li class="is-size-5-desktop"><%= link_to user.name, user %></li>
+              <% end %>
+            <% end %> 
+          </div>
+        </div>
+
+      </ul>
+    </div>
+  </div>
+</section>
