@@ -1,34 +1,36 @@
 <section class="section">
-  <div class="columns is-mobile">
-    <h1 class="is-size-5 column is-half-desktop is-offset-one-quarter-desktop has-text-info-dark">Create a New Event</h1>
+  <div class="columns is-centered">
+    <div class="column is-half">
+      <h1 class="has-text-centered has-text-info-dark is-size-5">Create a New Event</h1>
+      <%= form_with(model: @event, local: true, class: "columns is-mobile") do |f| %>
+        <div class="column is-half-desktop is-offset-one-quarter-desktop">
+          <%= render 'shared/error_messages', object: f.object %>
+          <div class="field is-grouped-centered">
+            <%= f.label :title, class: "label" %>
+            <%= f.text_field :title, class: "input", placeholder: "A descriptive title" %>
+          </div>
+
+          <div class="field is-grouped-centered">
+            <%= f.label :location, class: "label" %>
+            <%= f.text_field :location, class: "input", placeholder: "Anywhere, USA" %>
+          </div>
+
+          <div class="field is-grouped-centered">
+            <%= f.label :description, class: "label" %>
+            <%= f.text_area :description, class: "input", placeholder: "a short summary of important event information" %>
+          </div>
+
+          <div class="field is-grouped-centered">
+            <%= f.label :start_time, class: "label" %>
+            <%= f.date_field :start_time, class: "select" %>
+          </div>
+
+          <div class="field is-grouped-centered">
+            <%= f.submit "Create Event", class: "input has-background-success has-text-light has-text-weight-bold" %>
+          </div>
+        </div>
+      <% end %>
+    </div>
   </div>
 
-  <%= form_with(model: @event, local: true, class: "columns is-mobile") do |f| %>
-    <div class="column is-half-desktop is-offset-one-quarter-desktop">
-    <%= render 'shared/error_messages', object: f.object %>
-      <div class="field is-grouped-centered">
-        <%= f.label :title, class: "label" %>
-        <%= f.text_field :title, class: "input", placeholder: "A descriptive title" %>
-      </div>
-
-      <div class="field is-grouped-centered">
-        <%= f.label :location, class: "label" %>
-        <%= f.text_field :location, class: "input", placeholder: "Anywhere, USA" %>
-      </div>
-
-      <div class="field is-grouped-centered">
-        <%= f.label :description, class: "label" %>
-        <%= f.text_area :description, class: "input", placeholder: "a short summary of important event information" %>
-      </div>
-      
-      <div class="field is-grouped-centered">
-        <%= f.label :start_time, class: "label" %>
-        <%= f.date_field :start_time, class: "select" %>
-      </div>
-
-      <div class="field is-grouped-centered">
-        <%= f.submit "Create Event", class: "input has-background-success has-text-light has-text-weight-bold" %>
-      </div>
-    </div>
-  <% end %>
 </section>
