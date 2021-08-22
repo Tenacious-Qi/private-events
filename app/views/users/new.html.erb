@@ -1,39 +1,38 @@
 <section class="section">
-  <div class="columns is-mobile">
-    <h1 class="is-size-5 column is-half-desktop is-offset-one-quarter-desktop has-text-info-dark">Signup</h1>
+  <div class="columns is-centered">
+    <div class="column is-half">
+      <h1 class="has-text-centered has-text-info-dark is-size-5">Signup</h1>
+      <%= form_with(model: @user, local: true, class: "columns is-mobile") do |f| %>
+        <div class="column is-half-desktop is-offset-one-quarter-desktop">
+          <%= render 'shared/error_messages', object: f.object %>
+          <div class="field is-grouped-centered">
+            <%= f.label :name, class: "label" %>
+            <%= f.text_field :name, class: "input" %>
+          </div>
+
+          <div class="field is-grouped-centered">
+            <%= f.label :email, class: "label" %>
+            <%= f.email_field :email, class: "input"%>
+          </div>
+
+          <div class="field is-grouped-centered">
+            <%= f.label :password, class: "label" %>
+            <%= f.password_field :password, class: "input" %>
+          </div>
+
+          <div class="field is-grouped-centered">
+            <%= f.label :password_confirmation, class: "label" %>
+            <%= f.password_field :password_confirmation, class: "input" %>
+          </div>
+
+          <div class="field is-grouped-centered">
+            <%= f.submit "Create Account", class: "input has-background-primary-dark has-text-light has-text-weight-bold" %>
+          </div>
+        </div>
+      <% end %>
+      <p class="has-text-dark has-text-centered">Already registered? Click <%= link_to "here", login_path %> to login.</p>
+    </div>
   </div>
 
-<%= form_with(model: @user, local: true, class: "columns is-mobile") do |f| %>
-  <div class="column is-half-desktop is-offset-one-quarter-desktop">
-  <%= render 'shared/error_messages', object: f.object %>
-    <div class="field is-grouped-centered">
-      <%= f.label :name, class: "label" %>
-      <%= f.text_field :name, class: "input" %>
-    </div>
-
-    <div class="field is-grouped-centered">
-      <%= f.label :email, class: "label" %>
-      <%= f.email_field :email, class: "input"%>
-    </div>
-
-    <div class="field is-grouped-centered">
-      <%= f.label :password, class: "label" %>
-      <%= f.password_field :password, class: "input" %>
-    </div>
-
-    <div class="field is-grouped-centered">
-      <%= f.label :password_confirmation, class: "label" %>
-      <%= f.password_field :password_confirmation, class: "input" %>
-    </div>
-
-    <div class="field is-grouped-centered">
-      <%= f.submit "Create Account", class: "input has-background-primary-dark has-text-light has-text-weight-bold" %>
-    </div>
-  </div>
-<% end %>
-
-  <div class="columns is-mobile">
-    <p class="column is-half is-offset-one-quarter has-text-dark">Already registered? Click <%= link_to "here", login_path %> to login.</p>
-  </div>
 
 </section>
