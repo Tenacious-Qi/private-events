@@ -13,8 +13,9 @@ class ApplicationController < ActionController::Base
     end
 
     def correct_user
-      if !current_user == @user
-        redirect_to root_url
+      unless current_user == @user
+        flash[:warning] = "You can only edit your own account!"
+        redirect_to root_path
       end
     end
     
