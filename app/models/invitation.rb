@@ -10,5 +10,5 @@ class Invitation < ApplicationRecord
   scope :rsvp_yes_past, -> { joins(:event).where("attending = ? AND start_time < ?", 'yes', Time.zone.now) }
   scope :rsvp_yes_future, -> { joins(:event).where("attending = ? AND start_time > ?", 'yes', Time.zone.now) }
   scope :rsvp_pending, -> { joins(:event).where("attending = ? AND start_time > ?", 'no response', Time.zone.now) }
-
+  scope :rsvp_attendance_canceled, -> { joins(:event).where("attending = ? AND start_time > ?", 'no', Time.zone.now) }
 end

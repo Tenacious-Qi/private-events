@@ -14,5 +14,9 @@
     <%= render 'invitations/planning_to_attend' %>
   <% end %>
 
+  <% if no_rsvps_future.any? %>
+    <%= render 'invitations/attendance_canceled' %>
+  <% end %>
+
   <%= render 'invitations/previously_attended_events' %>
 </section>
