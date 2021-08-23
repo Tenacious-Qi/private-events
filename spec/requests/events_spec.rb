@@ -66,5 +66,11 @@ RSpec.describe Event, type: :request do
       get edit_event_path(event)
       expect(response).to have_http_status(:success)
     end
+
+    it 'should redirect to login path if not logged in' do
+      delete logout_path
+      get edit_event_path(event)
+      expect(response).to redirect_to(login_path)
+    end
   end
 end

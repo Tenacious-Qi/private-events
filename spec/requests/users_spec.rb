@@ -67,5 +67,12 @@ RSpec.describe "Users", type: :request do
       get edit_user_path(subject)
       expect(response).to redirect_to(root_path)
     end
+
+    it 'should redirect to login path after deleting a user account' do
+      post login_path, params: { session: { email: subject.email,
+                                            password: subject.password } }
+      delete user_path(subject)
+      expect(response).to redirect_to(login_path)
+    end
   end
 end
