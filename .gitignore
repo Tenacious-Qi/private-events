@@ -41,3 +41,4 @@ yarn-debug.log*
 # simplecov files generated after running rspec spec
 coverage/.resultset.json
 coverage/index.html
+coverage/.last_run.json

@@ -33,6 +33,9 @@ class EventsController < ApplicationController
     @past_events = @events.past.order(:start_time)
   end
 
+  def edit
+  end
+
   private
     def event_params
       params.require(:event).permit(:location, :description, :start_time, :title)
