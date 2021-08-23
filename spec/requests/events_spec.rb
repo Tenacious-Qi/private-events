@@ -84,5 +84,10 @@ RSpec.describe Event, type: :request do
       delete event_path(event)
       expect(response).to redirect_to(user_path(event.host))
     end
+
+    it 'should redirect to event path if a non-host tries to delete an event' do
+      delete event_path(non_hosted_event)
+      expect(response).to redirect_to(non_hosted_event)
+    end
   end
 end
