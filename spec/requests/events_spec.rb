@@ -2,8 +2,10 @@ require 'rails_helper'
 
 RSpec.describe Event, type: :request do
 
-  subject(:event) { create(:event) }
+  
   subject(:user)  { create(:user) }
+  subject(:event) { create(:event, host: user) }
+  subject(:non_hosted_event) { create(:event) }
 
   # login before event actions
   before :each do
@@ -71,6 +73,11 @@ RSpec.describe Event, type: :request do
       delete logout_path
       get edit_event_path(event)
       expect(response).to redirect_to(login_path)
+    end
+
+    it 'should redirect to event path if event does not belong to current user' do
+      get edit_event_path(non_hosted_event)
+      expect(response).to redirect_to(event_path(non_hosted_event))
     end
   end
 end

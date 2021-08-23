@@ -1,6 +1,8 @@
 class EventsController < ApplicationController
   before_action :set_event, only: [:show, :edit, :update, :destroy]
+  
   before_action :authorize, except: [:index]
+  before_action :authorize_edit, only: :edit
 
   def new
     @event = Event.new
@@ -52,5 +54,16 @@ class EventsController < ApplicationController
 
     def set_event
       @event = Event.find(params[:id])
+    end
+
+    def authorize_edit
+      unless current_user_hosts_upcoming_event?(@event)
+        flash[:warning] = "Redirected to event page. You can only edit upcoming events you are hosting."
+        redirect_to @event
+      end
+    end
+
+    def current_user_hosts_upcoming_event?(event)
+      event.host == current_user && Event.upcoming.include?(event)
     end
 end
