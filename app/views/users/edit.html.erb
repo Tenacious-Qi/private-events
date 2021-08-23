@@ -3,6 +3,11 @@
     <div class="column is-half">
       <h1 class="has-text-centered has-text-info-dark is-size-5">Edit Account Info</h1>
       <%= render 'user_form' %>
+      <%= link_to "Cancel my Private Events Membership", 
+                   user_path(current_user),
+                   method: :delete,
+                   data: { confirm: "This will remove access to all your events and invitations. Are you sure?" },
+                   class: "column has-text-centered has-text-danger-dark"%>
     </div>
   </div>
 </section>

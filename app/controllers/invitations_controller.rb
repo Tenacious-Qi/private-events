@@ -1,7 +1,5 @@
 class InvitationsController < ApplicationController
-
   before_action :authorize, only: [:create, :update, :destroy]
-  before_action :correct_user, only: [:create, :update, :new]
 
   def new
     @invitation = Invitation.new
@@ -28,6 +26,7 @@ class InvitationsController < ApplicationController
     end
   end
 
+  # for "Attend" or "Leave Event"
   def update
     @invitation = Invitation.find(params[:id])
     @event = @invitation.event
@@ -40,6 +39,7 @@ class InvitationsController < ApplicationController
     end
   end
 
+  # for "uninviting"
   def destroy
     @invitation = Invitation.find(params[:id])
     @event = @invitation.event

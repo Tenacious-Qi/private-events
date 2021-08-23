@@ -1,17 +1,21 @@
 class User < ApplicationRecord
   has_many :hosted_events, class_name: "Event",
-                           foreign_key: "host_id"
+                           foreign_key: "host_id",
+                           dependent: :destroy
   
   has_many :sent_invitations, class_name: "Invitation",
-                              foreign_key: "host_id"
+                              foreign_key: "host_id",
+                              dependent: :destroy
                         
   has_many :received_invitations, class_name: "Invitation",
-                                  foreign_key: "invitee_id"                     
+                                  foreign_key: "invitee_id",
+                                  dependent: :destroy                   
 
   has_many :invited_events,  through: :received_invitations, 
                              class_name: "Event",
                              foreign_key: "invitee_id",
-                             source: :event
+                             source: :event,
+                             dependent: :destroy
 
   has_secure_password
   validates :name, presence: true, length: { in: 2..50 }

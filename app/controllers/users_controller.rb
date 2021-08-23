@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:show, :edit, :update]
-  before_action :authorize, only: [:show, :index, :edit, :update]
+  before_action :set_user, only: [:show, :edit, :update, :destroy]
+  before_action :authorize, only: [:show, :index, :edit, :update, :destroy]
   before_action :correct_user, only: [:edit, :update]
 
   def new
@@ -15,7 +15,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       log_in(@user)
-      flash[:info] = "Account successfully created"
+      flash[:info] = "Account successfully created."
       redirect_to root_url
     else
       render 'new'
@@ -39,6 +39,13 @@ class UsersController < ApplicationController
     else
       render 'edit'
     end
+  end
+
+  def destroy
+    cookies.delete(:auth_token)
+    @user.destroy
+    flash[:success] = "User account successfully deleted."
+    redirect_to root_path
   end
 
   private
