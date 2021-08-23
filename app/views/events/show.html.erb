@@ -3,13 +3,14 @@
     <div class="column">
       <h1 class="has-text-centered title is-size-5-mobile is-capitalized"><%= @event.title %></h1>
       <div class="columns is-mobile">
-        <p class= "column has-text-centered subtitle">hosted by
+        <div class= "column has-text-centered subtitle">
+          hosted by
           <% if @event.host == current_user %>
-            <%= link_to "You", @event.host, class: "mx-1" %>
+            <%= link_to "You", @event.host %>
           <% else %>
             <%= link_to @event.host.name, @event.host, class: "mx-1" %>
           <% end %>
-        </p>
+        </div>
       </div>
     </div>
   </div>
@@ -20,6 +21,9 @@
       <div class="column is-half is-offset-one-quarter has-text-centered">
         <!-- only host can invite guests. Event must be in future to invite a guest. -->
         <% if current_user_is_host? && Event.upcoming.include?(@event) %>
+          <div>
+            <%= link_to "Edit Event Details", edit_event_path(@event), class: "button mb-4 is-info has-text-weight-bold is-outlined"%>
+          </div>
           <div id="invitation-form">
             <%= render 'select-invitee-form' %>
           </div>

@@ -1,8 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe Event, type: :request do
-
-  
   subject(:user)  { create(:user) }
   subject(:event) { create(:event, host: user) }
   subject(:non_hosted_event) { create(:event) }
