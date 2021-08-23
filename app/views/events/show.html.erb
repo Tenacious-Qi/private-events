@@ -4,6 +4,12 @@
       <h1 class="has-text-centered title is-size-5-mobile is-capitalized"><%= @event.title %></h1>
       <div class="columns is-mobile">
         <div class= "column has-text-centered subtitle">
+         <% if current_user_hosts_upcoming_event?(@event) %>
+          <div class="mb-4">
+            <%= link_to "Edit Event Details", edit_event_path(@event), class: "mx-1 button is-info has-text-weight-bold is-outlined"%>
+            <%= link_to "Delete Event", event_path(@event), method: :delete, class: "mx-1 button is-danger has-text-weight-bold is-outlined" %>
+          </div>
+         <% end %>
           hosted by
           <% if @event.host == current_user %>
             <%= link_to "You", @event.host %>
@@ -20,10 +26,7 @@
     <div class="columns is-mobile">
       <div class="column is-half is-offset-one-quarter has-text-centered">
         <!-- only host can invite guests. Event must be in future to invite a guest. -->
-        <% if current_user_is_host? && Event.upcoming.include?(@event) %>
-          <div>
-            <%= link_to "Edit Event Details", edit_event_path(@event), class: "button mb-4 is-info has-text-weight-bold is-outlined"%>
-          </div>
+        <% if current_user_hosts_upcoming_event?(@event) %>
           <div id="invitation-form">
             <%= render 'select-invitee-form' %>
           </div>
