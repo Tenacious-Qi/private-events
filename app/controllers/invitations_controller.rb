@@ -16,10 +16,7 @@ class InvitationsController < ApplicationController
       end
     end
   end
-
-  def show
-  end
-
+  
   # for "Attend" or "Leave Event"
   def update
     @invitation = Invitation.find(params[:id])
