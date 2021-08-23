@@ -78,4 +78,11 @@ RSpec.describe Event, type: :request do
       expect(response).to redirect_to(event_path(non_hosted_event))
     end
   end
+
+  describe 'DELETE events#destroy' do
+    it 'should delete the event and then redirect to users show page' do
+      delete event_path(event)
+      expect(response).to redirect_to(user_path(event.host))
+    end
+  end
 end
