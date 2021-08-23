@@ -21,6 +21,10 @@ body {
   font-weight: 500;
 }
 
+.event-description {
+  height: 100%;
+}
+
 
 .apple_pagination {
   font-size: 18px;

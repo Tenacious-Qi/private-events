@@ -1,4 +1,5 @@
 class EventsController < ApplicationController
+  before_action :set_event, only: [:show, :edit, :update, :destroy]
   before_action :authorize, except: [:index]
 
   def new
@@ -20,7 +21,6 @@ class EventsController < ApplicationController
   end
 
   def show
-    @event = Event.find(params[:id])
     if current_user
       @rsvp = @event.invitations.find_by(event_id: @event.id, invitee_id: current_user.id)
       @invitation_to_send = @event.host.sent_invitations.new
@@ -36,8 +36,21 @@ class EventsController < ApplicationController
   def edit
   end
 
+  def update
+    if @event.update(event_params)
+      flash[:success] = "Event info updated."
+      redirect_to @event
+    else
+      render 'edit'
+    end
+  end
+
   private
     def event_params
       params.require(:event).permit(:location, :description, :start_time, :title)
+    end
+
+    def set_event
+      @event = Event.find(params[:id])
     end
 end
