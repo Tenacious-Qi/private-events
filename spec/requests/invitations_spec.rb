@@ -4,14 +4,6 @@ RSpec.describe "Invitations", type: :request do
 
   subject(:invite) { create(:invitation) }
 
-  describe "GET invitations#show" do
-    it "redirects to the root page" do
-      invitation = Invitation.last
-      get "/invitations/#{invitation.id}"
-      expect(response).to redirect_to(root_url)
-    end
-  end
-
   describe "PUT invitations#update" do
     it "redirects to login_path if not logged in" do
       put "/invitations/#{invite.id}", params: { invitation: attributes_for(:invitation) }
