@@ -27,6 +27,10 @@ class ApplicationController < ActionController::Base
       end
     end
 
+    def log_out
+      cookies.delete(:auth_token)
+      redirect_to login_path
+    end
 
     helper_method :current_user
 end

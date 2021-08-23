@@ -1,5 +1,5 @@
 class InvitationsController < ApplicationController
-  before_action :authorize, only: [:create, :update, :destroy]
+  before_action :authorize, only: [:create, :update, :destroy, :show]
 
   def new
     @invitation = Invitation.new
@@ -18,12 +18,6 @@ class InvitationsController < ApplicationController
   end
 
   def show
-    @invitation = Event.find(params[:id])
-    # for manual entry of a url, e.g. "/invitations/10", redirect to root
-    respond_to do |format|
-      flash[:info] = "You have been redirected. Invitations managed on event pages."
-      format.html { redirect_to root_url }
-    end
   end
 
   # for "Attend" or "Leave Event"
@@ -54,4 +48,6 @@ class InvitationsController < ApplicationController
     def invitation_params
       params.require(:invitation).permit(:invitee_id, :event_id, :host_id, :attending)
     end
+
+    def 
 end

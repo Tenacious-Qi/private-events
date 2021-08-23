@@ -42,10 +42,9 @@ class UsersController < ApplicationController
   end
 
   def destroy
-    cookies.delete(:auth_token)
     @user.destroy
     flash[:success] = "User account successfully deleted."
-    redirect_to root_path
+    log_out
   end
 
   private
