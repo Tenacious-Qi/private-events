@@ -10,8 +10,9 @@ RSpec.feature "Users", type: :feature do
         fill_in :session_email, with: subject.email
         fill_in :session_password, with: subject.password
         click_on "Log In"
+        click_on subject.name
 
-        expect(page).to have_content
+        expect(page).to have_content("Edit Account Info")
       end
     end
 

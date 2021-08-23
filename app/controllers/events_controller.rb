@@ -1,5 +1,5 @@
 class EventsController < ApplicationController
-  before_action :authorize, only: [:new, :create]
+  before_action :authorize, except: [:index]
 
   def new
     @event = Event.new
