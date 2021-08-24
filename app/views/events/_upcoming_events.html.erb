@@ -1,11 +1,11 @@
-<h3 class="ml-4 subtitle has-text-primary-dark">Upcoming Events</h3>
-<div class="columns is-mobile">
+<h3 class="ml-4 subtitle has-text-primary-dark has-text-centered">Upcoming Events</h3>
+<div class="columns is-mobile p-2 m-2">
   <div class="column">
     <ul>
       <div class="columns is-tablet is-multiline">
         <% @upcoming_events.order(:start_time).each do |event| %>
-          <div class="column is-flex is-half">
-            <li class="tile is-child box has-background-light mx-3 my-3 px-3 py-3">
+          <div class="column is-flex is-one-third my-2">
+            <li class="tile is-child box mx-1 my-3 px-5 py-3">
               <ul>
                 <div class="columns">
                   <li class="column is-one-fourth">
