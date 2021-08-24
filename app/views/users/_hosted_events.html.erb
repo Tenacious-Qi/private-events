@@ -4,6 +4,9 @@
       <div class="columns is-desktop">
         <div class="column is-half">
           <h3 class="is-size-4-desktop has-text-primary-dark subtitle is-5"> Hosted Events </h3>
+          <% if current_user?(@user) %>
+            <%= link_to "Create a New Event", new_event_path, class: "button is-small is-success is-outlined" %>
+          <% end %>
         </div>
         <div class="column is-half">
           <% if @user.hosted_events.any? %>
