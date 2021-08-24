@@ -15,4 +15,8 @@ module UsersHelper
     def no_rsvps_future
       @user.received_invitations.rsvp_attendance_canceled.includes(:event)
     end
+
+    def viewing_sign_up_page?
+      current_page?(controller: :users, action: :new) || request.path == new_user_path
+    end
 end
