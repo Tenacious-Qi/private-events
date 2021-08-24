@@ -2,7 +2,7 @@
   <h1 class="title is-size-4-desktop is-size-5-mobile has-text-centered">Private Events for <%= @user.name %></h1>
   <div class="columns is-desktop">
     <div class="column is-half is-offset-one-quarter">
-    <% if @user == current_user && rsvps_pending.any? %>
+    <% if current_user?(@user) && rsvps_pending.any? %>
       <%= render 'invitations/pending_invitations' %>
     <% end %>
     </div>

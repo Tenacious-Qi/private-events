@@ -19,4 +19,8 @@ module UsersHelper
     def viewing_sign_up_page?
       current_page?(controller: :users, action: :new) || request.path == new_user_path
     end
+
+    def current_user?(user)
+      user == current_user
+    end
 end
