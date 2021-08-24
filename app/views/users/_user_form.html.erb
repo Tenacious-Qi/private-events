@@ -21,11 +21,11 @@
       <%= f.password_field :password_confirmation, class: "input" %>
     </div>
 
-    <div class="field is-grouped-centered has-text-centered">
+    <div class="field is-grouped-centered">
       <% if viewing_sign_up_page? %>
-        <%= f.submit "Create Account", class: "input has-background-primary-dark has-text-centered has-text-light has-text-weight-bold" %>
+        <%= f.submit "Create Account", class: "input button is-primary has-text-light has-text-weight-bold" %>
       <% else %>
-        <%= f.submit "Update Account", class: "input has-background-info hashas-text-light has-text-weight-bold" %>
+        <%= f.submit "Update Account", class: "input button is-info has-text-light has-text-weight-bold" %>
       <% end %>
     </div>
   </div>
