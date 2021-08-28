@@ -40,6 +40,8 @@ group :development do
   gem 'bullet'
   gem 'guard'
   gem 'guard-rspec', require: false
+  # open emails generated in development in browser tabs
+  gem "letter_opener", group: :development
 end
 
 group :test do
