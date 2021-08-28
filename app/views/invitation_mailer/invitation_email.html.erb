@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1>You've been invited to an event, <%= @invitation.invitee.name %>!</h1>
+    <p>
+      <%= @invitation.host.name %> invited you to <%= @invitation.event.title %>.
+    </p>
+    <p>
+      RSVP to this event on the <%= link_to "event details", @url %> page.
+    </p>
+  </body>
+</html>

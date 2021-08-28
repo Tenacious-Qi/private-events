@@ -64,6 +64,27 @@ RSpec.feature "Forms", type: :feature do
   end
 
   describe 'Inviting a guest' do
+
+    context 'a host invites a guest' do
+      it 'sends the guest an email notification' do
+        inviter = create(:host)
+
+        visit login_path
+        fill_in :session_email, with: inviter.email
+        fill_in :session_password, with: inviter.password
+        click_on 'Log In'
+        
+        invited_event = create(:event, host: inviter)
+        invitee = create(:invitee)
+        visit user_path(inviter)
+
+        click_on invited_event.title
+        
+        select(invitee.name, from: "invitation_invitee_id")
+        expect { click_on 'send-invitation' }.to change { ActionMailer::Base.deliveries.count}.by(1)
+        
+      end
+    end
     
     context 'the host of an event wants to invite a guest' do
 

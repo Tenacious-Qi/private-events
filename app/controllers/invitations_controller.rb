@@ -10,6 +10,7 @@ class InvitationsController < ApplicationController
     @invitation = host.sent_invitations.build(invitation_params)
     @event = @invitation.event
     if @invitation.save
+      InvitationMailer.with(invitation: @invitation).invitation_email.deliver_later
       respond_to do |format|
         format.html { redirect_to @event }
         format.js
