@@ -4,6 +4,10 @@ RSpec.feature "Forms", type: :feature do
   
   describe 'Signup process' do
 
+    before do
+      ActionMailer::Base.deliveries.clear
+    end
+
     subject(:person) { build(:user) }
 
     context 'a new user wants to signup for private events' do
@@ -73,6 +77,10 @@ RSpec.feature "Forms", type: :feature do
   end
 
   describe 'Inviting a guest' do
+
+    before do
+      ActionMailer::Base.deliveries.clear
+    end
 
     context 'a host invites a guest' do
       it 'sends the guest an email notification' do
