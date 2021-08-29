@@ -7,8 +7,8 @@ class Event < ApplicationRecord
   has_many :invitees, through: :invitations,
                       class_name: "User"
 
-  scope :past,     -> { where("start_time < ?", Time.zone.now)}
-  scope :upcoming, -> { where("start_time > ?", Time.zone.now)}
+  scope :past,     -> { where("start_time < ?", Date.today)}
+  scope :upcoming, -> { where("start_time > ?", Date.today)}
 
   validates :title,  presence: true, length: { in: 3..100 }, uniqueness: true;
   validates :location, presence: true, length: { in: 3..30 }
