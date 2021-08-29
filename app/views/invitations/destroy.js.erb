@@ -1,1 +1,2 @@
+$("#flash-message").html("<%= escape_javascript(content_tag(:p, "Successfully uninvited #{@invitation.invitee.name} from this event.", class: "notification is-info" )) %>")
 $("#attendance-details").html("<%= escape_javascript(render('events/attendance-details')) %>");
