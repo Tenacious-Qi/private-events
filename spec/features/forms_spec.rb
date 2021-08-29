@@ -16,6 +16,15 @@ RSpec.feature "Forms", type: :feature do
         click_on 'Create Account'
         expect(page).to have_content('Account successfully created')
       end
+
+      it 'sends them a welcome email' do
+        visit '/signup'
+        fill_in :user_name, with: person.name
+        fill_in :user_email, with: person.email
+        fill_in :user_password, with: person.password
+        fill_in :user_password_confirmation, with: person.password
+        expect { click_on 'Create Account' }.to change { ActionMailer::Base.deliveries.count}.by(1)
+      end
     end
   end
 
