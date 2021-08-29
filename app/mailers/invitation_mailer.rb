@@ -10,4 +10,12 @@ class InvitationMailer < ApplicationMailer
       subject: "New Private Events Invitation"
     )
   end
+
+  def uninvite_email
+    @invitation = params[:invitation]
+    mail(
+      to: email_address_with_name(@invitation.invitee.email, @invitation.invitee.name),
+      subject: "You have been uninvited from an event"
+    )
+  end
 end

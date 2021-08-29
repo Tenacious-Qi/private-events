@@ -35,11 +35,12 @@ class InvitationsController < ApplicationController
   def destroy
     @invitation = Invitation.find(params[:id])
     @event = @invitation.event
+    InvitationMailer.with(invitation: @invitation).uninvite_email.deliver_later
     @invitation.destroy
     respond_to do |format|
       format.html { redirect_to @event }
       format.js
-      end
+    end
   end
 
   private

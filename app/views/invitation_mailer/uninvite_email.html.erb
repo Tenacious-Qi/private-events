@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1><%= @invitation.host.name %> uninvited you from their event.</h1>
+    <p>
+      <%= @invitation.host.name %> has uninvited you from their event, <%= @invitation.event.title %> :-(
+    </p>
+    <p>
+      <%= link_to "Private Events", root_url %>
+    </p>
+  </body>
+</html>
