@@ -16,6 +16,8 @@ class User < ApplicationRecord
                              foreign_key: "invitee_id",
                              source: :event,
                              dependent: :destroy
+                                                       
+  scope :inviteable, ->(event) { where.not(id: [event.host.id, event.invitees.map(&:id)].flatten ) }
 
   has_secure_password
   validates :name, presence: true, length: { in: 2..50 }

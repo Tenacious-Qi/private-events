@@ -4,7 +4,7 @@
       <div class="column is-three-fifths">
         <div class="select is-link">
         <%= f.collection_select(:invitee_id, 
-                                User.all.where("id != ?", @event.host.id), 
+                                User.all.inviteable(@event),
                                 :id, 
                                 :name,
                                 {prompt: 'Select an invitee'}) %>
