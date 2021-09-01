@@ -1,14 +1,23 @@
 # Private Events 
 
-This is the repository for a Rails app similar to Eventbrite. It is a project in Active Record Associations as part of The Odin Project [curriculum](https://www.theodinproject.com/paths/full-stack-ruby-on-rails/courses/ruby-on-rails/lessons/associations). Users can register, login, create events, invite other users to events, and rsvp to invitations. 
+This is the repository for a Rails app similar to Eventbrite. It is a project in Active Record Associations as part of The Odin Project [curriculum](https://www.theodinproject.com/paths/full-stack-ruby-on-rails/courses/ruby-on-rails/lessons/associations). Users can register, login, create events, invite other users to events, and rsvp to invitations. Events and invitations can be created, read, updated, or destroyed.
+
+
+## Demo
+
+![event and creation and invitation flow](demo/privateevents.gif)
+
+
+*Event and Invitation flow*
+
+***
 
 ### Installation
 
 1. Install Locally.
     - Clone this repo.
     - cd into cloned directory `cd private-events`
-    - `bundle install && rails webpacker:install`
-    - Enter `N` when prompted to overwrite `/private-events/config/webpack/environment.js`.
+    - `bundle install && yarn install`
 
 2. Seed the database.
     - `rails db:migrate`
