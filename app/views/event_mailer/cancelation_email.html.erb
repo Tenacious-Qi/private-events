@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1>Event Canceled</h1>
+    <p>
+      An event you were invited to through the Private Events interface has been canceled.
+      <%= @event.host.name %> has canceled <%= @event.title %>.
+    </p>
+    <p>
+      Please visit the host's <%= link_to "events page", user_url(@event.host) %> to see their other events.
+    </p>
+  </body>
+</html>

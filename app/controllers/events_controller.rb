@@ -47,6 +47,7 @@ class EventsController < ApplicationController
   end
 
   def destroy
+    EventMailer.with(event: @event).cancelation_email.deliver_later
     @event.destroy
     flash[:success] = "Event successfully deleted."
     redirect_to @event.host

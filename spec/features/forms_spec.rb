@@ -4,10 +4,6 @@ RSpec.feature "Forms", type: :feature do
   
   describe 'Signup process' do
 
-    before do
-      ActionMailer::Base.deliveries.clear
-    end
-
     subject(:person) { build(:user) }
 
     context 'a new user wants to signup for private events' do

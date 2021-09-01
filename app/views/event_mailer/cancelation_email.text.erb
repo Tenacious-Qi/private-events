@@ -1,0 +1,4 @@
+Event Canceled
+An event you were invited to through the Private Events interface has been canceled.
+ <%= @event.host.name %> has canceled <%= @event.title %>.
+Please visit the host's <%= link_to "events page", user_url(@event.host) %> to see their other events.
