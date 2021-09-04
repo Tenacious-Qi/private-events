@@ -22,12 +22,15 @@ class InvitationsController < ApplicationController
   def update
     @invitation = Invitation.find(params[:id])
     @event = @invitation.event
-    @rsvp = @event.invitations.find_by(event_id: @event.id, invitee_id: current_user.id)
-    @rsvp.update_attribute(:attending, params[:attending])
     respond_to do |format|
-      format.html { redirect_to @event }
-      format.js
-      format.json { render :partial => "invitations/show" }
+      if @invitation.update(invitation_params)
+        format.html { redirect_to @event }
+        format.js
+        format.json { render :partial => "invitations/show" }
+      else
+        flash[:warning] = "Failed to update invitation."
+        redirect_to @event
+      end
     end
   end
 
@@ -45,6 +48,6 @@ class InvitationsController < ApplicationController
 
   private
     def invitation_params
-      params.require(:invitation).permit(:invitee_id, :event_id, :host_id, :attending)
+      params.require(:invitation).permit(:id, :invitee_id, :event_id, :host_id, :attending)
     end
 end

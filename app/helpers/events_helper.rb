@@ -12,8 +12,8 @@ module EventsHelper
       pluralize(((event.start_time - Time.zone.now)/86400).round, 'day')
     end
 
-    def days_since_invitation_sent(rsvp)
-      pluralize(((Time.zone.now - @rsvp.created_at)/86400).round, 'day')
+    def days_since_invitation_sent(invitation)
+      pluralize(((Time.zone.now - invitation.created_at)/86400).round, 'day')
     end
 
     def current_user_hosts_upcoming_event?(event)

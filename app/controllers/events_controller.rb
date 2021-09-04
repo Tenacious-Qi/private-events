@@ -23,7 +23,7 @@ class EventsController < ApplicationController
 
   def show
     if current_user
-      @rsvp = @event.invitations.find_by(event_id: @event.id, invitee_id: current_user.id)
+      @invitation = @event.invitations.find_by(event_id: @event.id, invitee_id: current_user.id)
       @invitation_to_send = @event.host.sent_invitations.new
     end
   end

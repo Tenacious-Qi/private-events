@@ -3,19 +3,21 @@
 <% if future_non_hosted_event?(@event) %>
   <% if @event.invitees.include?(current_user) %>
   <div id="rsvp">
-    <% if @rsvp.attending == 'yes'%>
+    <% if @invitation.attending == 'yes'%>
       <p class="is-italic mb-2 is-size-5-widescreen is-size-6-desktop">You're attending this event</p>
       <%= button_to "Leave Event",
-                    invitation_path(id: @rsvp.id, attending: 'no'),
+                    invitation_path(@invitation),
                     method: :patch,
                     remote: true,
+                    params: { invitation: { attending: 'no' } },
                     class: 'button is-warning has-text-weight-bold'%>
     <% else %>
-      <p class="is-italic mb-2 is-size-5-widescreen is-size-6-desktop"><%= @event.host.name %> invited you <%= days_since_invitation_sent(@rsvp) %> ago</p>
+      <p class="is-italic mb-2 is-size-5-widescreen is-size-6-desktop"><%= @event.host.name %> invited you <%= days_since_invitation_sent(@invitation) %> ago</p>
       <%= button_to "Attend Event",
-                    invitation_path(id: @rsvp.id, attending: 'yes'),
+                    invitation_path(@invitation),
                     method: :patch,
                     remote: true,
+                    params: { invitation: { attending: 'yes' } },
                     class: 'button is-primary has-text-weight-bold'%>
     <% end %>
   </div>                                 
