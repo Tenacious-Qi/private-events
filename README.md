@@ -46,6 +46,7 @@ This is the repository for a Rails app similar to Eventbrite. It is a project in
 ### Authentication and Login
 
 - uses `bcrypt` and `has_secure_password` for authentication
+- Note: I decided not to use Devise for authentication for at least one project. I wanted some experience building my own basic authentication system.
 
 ### Active Record Associations
 
