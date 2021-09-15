@@ -1,6 +1,6 @@
 # Private Events 
 
-This is the repository for a Rails app similar to Eventbrite. It is a project in Active Record Associations as part of The Odin Project [curriculum](https://www.theodinproject.com/paths/full-stack-ruby-on-rails/courses/ruby-on-rails/lessons/associations). Users can register, login, create events, invite other users to events, and rsvp to invitations. Events and invitations can be created, read, updated, or destroyed.
+This is the repository for a Rails app similar to Eventbrite. It is a project in Active Record Associations as part of The Odin Project [curriculum](https://www.theodinproject.com/paths/full-stack-ruby-on-rails/courses/ruby-on-rails/lessons/associations). Users can register, login, create events, invite other users to events, and rsvp to invitations. Events and invitations can be created, read, updated, or destroyed. Mailers are also setup to send emails in production.
 
 
 ## Demo
@@ -26,10 +26,16 @@ This is the repository for a Rails app similar to Eventbrite. It is a project in
 3. Start a Rails Server.
     - `rails server`
     - Navigate to `localhost:3000` in your browser.
+    
 4. Play around with the app.
     - To get started, click "login" in upper right navbar.
     - Login with placeholder credentials (works on Heroku site too!).
-    - See which events you've been invited to!
+    - See which events Foo Bar has been invited to.
+    - OR Signup and receive a welcome email.
+    - Log back in as Foo Bar.
+    - Invite the account you just used to sign up
+    - Receive an invitation email.
+
 
 ### Running the Tests
 
