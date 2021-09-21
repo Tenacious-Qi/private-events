@@ -17,6 +17,24 @@ class InvitationsController < ApplicationController
       end
     end
   end
+
+  def create
+    
+    params[:invitation][:invitee_ids].map(&:to_i).each do |id|
+      host = User.find(current_user.id)
+      byebug
+      @invitation = Invitation.new(invitee_id: id, event_id: invitation_params[:event_id].to_i, host_id: host.id)
+      p @invitation
+      @event = @invitation.event
+      if @invitation.save
+        InvitationMailer.with(invitation: @invitation).invitation_email.deliver_later
+        respond_to do |format|
+          format.html { redirect_to @event }
+          format.js
+        end
+      end
+    end
+  end
   
   # for "Attend" or "Leave Event"
   def update
@@ -48,6 +66,6 @@ class InvitationsController < ApplicationController
 
   private
     def invitation_params
-      params.require(:invitation).permit(:invitee_id, :event_id, :host_id, :attending)
+      params.require(:invitation).permit(:invitee_id, :event_id, :host_id, :attending, invitee_ids: [])
     end
 end

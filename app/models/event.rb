@@ -5,7 +5,8 @@ class Event < ApplicationRecord
                          dependent: :destroy
 
   has_many :invitees, through: :invitations,
-                      class_name: "User"
+                      class_name: "User",
+                      source: :invitee
 
   scope :past,     -> { where("start_time < ?", Date.today)}
   scope :upcoming, -> { where("start_time > ?", Date.today)}

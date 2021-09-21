@@ -9,7 +9,7 @@ class EventsController < ApplicationController
 
   def create
     # create a new instance of Invitation in case host wants to invite someone from events#show
-    @invitation = Invitation.new
+    # @invitation = Invitation.new
     user = User.find(current_user.id)
     @event = user.hosted_events.build(event_params)
     if @event.save
