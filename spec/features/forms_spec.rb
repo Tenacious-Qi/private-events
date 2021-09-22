@@ -6,7 +6,9 @@ RSpec.feature "Forms", type: :feature do
 
     subject(:person) { build(:user) }
 
+
     context 'a new user wants to signup for private events' do
+  
       it 'allows them to create an account' do
         visit '/signup'
         fill_in :user_name, with: person.name
@@ -74,11 +76,12 @@ RSpec.feature "Forms", type: :feature do
 
   describe 'Inviting a guest' do
 
-    before do
+    before(:each) do
       ActionMailer::Base.deliveries.clear
     end
 
     context 'a host invites a guest' do
+
       it 'sends the guest an email notification' do
         inviter = create(:host)
 
@@ -93,9 +96,37 @@ RSpec.feature "Forms", type: :feature do
 
         click_on invited_event.title
         
-        select(invitee.name, from: "invitation_invitee_id")
+        select(invitee.name, from: "invitation_recipient_ids")
         expect { click_on 'send-invitation' }.to change { ActionMailer::Base.deliveries.count}.by(1)
         
+      end
+    end
+
+    context 'a host invites several guests' do
+
+      it 'sends each guest an email notification' do
+        inviter = create(:host)
+  
+        visit login_path
+        fill_in :session_email, with: inviter.email
+        fill_in :session_password, with: inviter.password
+        click_on 'Log In'
+          
+        invited_event = create(:event, host: inviter)
+        visit user_path(inviter)
+
+        invitee_1 = create(:invitee)
+        invitee_2 = create(:invitee)
+        invitee_3 = create(:invitee)
+  
+        click_on invited_event.title
+
+        selector = page.find('select#invitation_recipient_ids')
+          
+        selector.select(invitee_1.name)
+        selector.select(invitee_2.name)
+        selector.select(invitee_3.name)
+        expect { click_on 'send-invitation' }.to change { ActionMailer::Base.deliveries.count}.by(3)
       end
     end
     
@@ -117,9 +148,9 @@ RSpec.feature "Forms", type: :feature do
 
         click_on invited_event.title
         expect(page).to have_current_path(event_path(invited_event))
-        expect(page).to have_content('Select an invitee')
+        expect(page).to have_content(invitee.name)
         
-        select(invitee.name, from: "invitation_invitee_id")
+        select(invitee.name, from: "invitation_recipient_ids")
         click_on('send-invitation')
         # name appears in invitees list after clicking 'send invitation'
         expect(page).to have_link(invitee.name)

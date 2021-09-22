@@ -21,10 +21,11 @@ class InvitationsController < ApplicationController
   def create
     # for flash message: to state how many invitations were sent
     @invitations = []
+    @event = Event.find(invitation_params[:event_id].to_i)
     invitation_params[:recipient_ids].each do |id|
       host = User.find(current_user.id)
       invitation = Invitation.new(invitee_id: id,
-                                   event_id: invitation_params[:event_id].to_i,
+                                   event_id: @event.id,
                                    host_id: host.id)
       @event = invitation.event
       next unless invitation.save

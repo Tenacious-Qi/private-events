@@ -41,9 +41,10 @@ RSpec.describe "Invitations", type: :request do
       invitee = create(:user)
       event = create(:event, host: host)
       invitation = host.sent_invitations.build(host: host, event: event, invitee: invitee)
-      post "/invitations/", params: { invitation: { host: invitation.host, event: invitation.event, invitee: invitation.invitee} }
+      post "/invitations/", params: { invitation: { recipient_ids: [invitee.id], host: invitation.host, event_id: invitation.event.id, invitee: invitation.invitee} }
       # status is not :created or 201 because it is an XHR request (asynchronous) ?
-      expect(response).to have_http_status(:success)
+      # redirects to event if format is html
+      expect(response).to redirect_to(event)
     end
   end
 
