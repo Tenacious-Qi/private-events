@@ -6,22 +6,10 @@ class InvitationsController < ApplicationController
   end
 
   def create
-    host = User.find(current_user.id)
-    @invitation = host.sent_invitations.build(invitation_params)
-    @event = @invitation.event
-    if @invitation.save
-      InvitationMailer.with(invitation: @invitation).invitation_email.deliver_later
-      respond_to do |format|
-        format.html { redirect_to @event }
-        format.js
-      end
-    end
-  end
-
-  def create
     # for flash message: to state how many invitations were sent
     @invitations = []
     @event = Event.find(invitation_params[:event_id].to_i)
+    # recipient_ids set in collection_select
     invitation_params[:recipient_ids].each do |id|
       host = User.find(current_user.id)
       invitation = Invitation.new(invitee_id: id,

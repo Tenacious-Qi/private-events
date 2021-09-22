@@ -1,21 +1,30 @@
-<%= form_with(model: @invitation_to_send, local: false ) do |f| %>
-    <%= f.hidden_field :event_id, value: @event.id %>
-    <div class="columns is-mobile">
-      <div class="column is-three-fifths">
-        <div class="select is-multiple is-primary is-normal">
-        <%= f.collection_select(:recipient_ids, 
-                                User.all.inviteable(@event),
-                                :id, 
-                                :name,
-                                {include_hidden: false}, {multiple: true}) %>
-        </div>   
-      </div>
-      <div class="column is-two-fifths">
-        <%= f.submit "Invite", class: "has-text-weight-bold button is-primary ", id: "send-invitation" %>
-        <p class="tag is-warning is-light is-medium mt-2">ctrl + click to select multiple guests</p>
-      </div>
-    </div>
-                           
+<div id="select-invitee-form">
+  <% unless User.all.inviteable(@event).count.zero? %>
+    <%= form_with(model: @invitation_to_send, local: false ) do |f| %>
+        <%= f.hidden_field :event_id, value: @event.id %>
+        <div class="columns is-mobile">
+          <div class="column is-three-fifths">
+            <div class="select is-multiple is-primary is-normal">
+            <%= f.collection_select(:recipient_ids, 
+                                    User.all.inviteable(@event),
+                                    :id, 
+                                    :name,
+                                    {include_hidden: false}, {multiple: true}) %>
+            </div>   
+          </div>
+          <div class="column is-two-fifths">
+            <%= f.submit "Invite", class: "has-text-weight-bold button is-primary ", id: "send-invitation" %>
+            <div class="mt-2">
+              try 
+              <div>
+                <p class="tag is-warning is-light is-large">ctrl + click</p>
+              </div>
+            </div>
+          </div>
+        </div>
+                              
 
-    
-<% end %>
+        
+    <% end %>
+  <% end %>
+</div>
