@@ -1,6 +1,7 @@
 <% unless User.inviteable(@event).count.zero? %>
   <%= form_with(model: @event.host.sent_invitations.new ) do |f| %>
     <%= f.hidden_field :event_id, value: @event.id %>
+    <%= f.hidden_field :host_id, value: current_user.id %>
     <div class="columns is-mobile">
       <div class="column is-three-fifths">
         <div class="select is-multiple is-primary is-normal">
