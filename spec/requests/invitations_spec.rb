@@ -11,7 +11,6 @@ RSpec.describe "Invitations", type: :request do
     end
 
     it "updates the invitation if logged in" do
-      headers = { "ACCEPT" => "application/json" }
       host = create(:user)
       invitee = create(:user)
       login(invitee)
@@ -20,10 +19,8 @@ RSpec.describe "Invitations", type: :request do
       invitation = host.sent_invitations.build(host: host, event: event, invitee: invitee)
       invitation.save
   
-      put "/invitations/#{invitation.id}", params: { invitation: { attending: 'yes' }  }, :headers => headers
-      # expect(response.content_type).to eq("application/json; charset=utf-8")
-      # see https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods/PUT => 200 is an ok response. It means the resource exists and was updated
-      expect(response).to have_http_status(:success)
+      put "/invitations/#{invitation.id}", params: { invitation: { attending: 'yes' }  }
+      expect(response).to redirect_to(event_path(event))
     end
   end
 

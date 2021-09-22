@@ -5,7 +5,7 @@
       <h4 class="subtitle is-size-4-desktop">Invitees</h4>
       <ul>
         <% if current_user_hosts_upcoming_event?(@event)%>
-          <% @event.invitations.includes(:invitee).each do |invitation| %>
+          <% @event.invitations.includes(:invitee).order(updated_at: :desc).each do |invitation| %>
             <li>
               <div class="columns is-mobile">
                 <div class="column is-half">

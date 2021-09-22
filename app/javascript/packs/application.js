@@ -7,7 +7,6 @@ import Rails from "@rails/ujs"
 import Turbolinks from "turbolinks"
 import * as ActiveStorage from "@rails/activestorage"
 import "channels"
-require("jquery")
 
 Rails.start()
 Turbolinks.start()
@@ -20,9 +19,3 @@ window.addEventListener("turbolinks:load", () => {
     navbarMenu.classList.toggle('is-active')
   })
 });
-
-$(document).on('turbolinks:load', function() {
-  setTimeout(function() {
-    $('.notification').fadeOut();
-  }, 3000);
-})

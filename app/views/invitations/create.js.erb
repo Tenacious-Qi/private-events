@@ -1,4 +1,0 @@
-<% if @invitations.any?(&:valid?) %>
-  $("#flash-message").html("<%= escape_javascript(content_tag(:p, "Successfully invited #{pluralize(@invitations.count, 'guest')}.", class: "notification is-info" )) %>")
-<% end %>
-$("#attendance-details").html("<%= escape_javascript(render('events/attendance-details')) %>"); 

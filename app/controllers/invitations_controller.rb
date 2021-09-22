@@ -1,58 +1,41 @@
 class InvitationsController < ApplicationController
   before_action :authorize, only: %i[create update destroy show]
 
-  def new
-    @invitation = Invitation.new
-  end
-
   def create
-    # for flash message: to state how many invitations were sent
-    @invitations = []
-    @event = Event.find(invitation_params[:event_id].to_i)
-    # recipient_ids set in collection_select
+    event = Event.find(invitation_params[:event_id].to_i)
+    # Send one or several invitations.
     invitation_params[:recipient_ids].each do |id|
-      host = User.find(current_user.id)
       invitation = Invitation.new(invitee_id: id,
-                                   event_id: @event.id,
-                                   host_id: host.id)
-      @event = invitation.event
-      next unless invitation.save
-
-      @invitations << invitation
-      InvitationMailer.with(invitation: invitation).invitation_email.deliver_later
+                                  event_id: event.id,
+                                  host_id: current_user.id)
+      if invitation.save
+        flash[:info] = "Invitation successful!"
+        InvitationMailer.with(invitation: invitation).invitation_email.deliver_later
+      else
+        flash[:warning] = "Failed to send invitation, please try again."
+      end
     end
-    respond_to do |format|
-      format.html { redirect_to @event }
-      format.js
-    end
+    redirect_to event
   end
 
   # for "Attend" or "Leave Event"
   def update
     @invitation = Invitation.find(params[:id])
-    @event = @invitation.event
-    respond_to do |format|
-      if @invitation.update(invitation_params)
-        format.html { redirect_to @event }
-        format.js
-        format.json { render partial: 'invitations/show' }
-      else
-        flash[:warning] = 'Failed to update invitation.'
-        redirect_to @event
-      end
+    if @invitation.update(invitation_params)
+      flash[:info] = 'RSVP updated!'
+    else
+      flash[:warning] = 'Failed to update invitation.'
     end
+    redirect_to @invitation.event
   end
 
   # for "uninviting"
   def destroy
     @invitation = Invitation.find(params[:id])
-    @event = @invitation.event
     InvitationMailer.with(invitation: @invitation).uninvite_email.deliver_later
     @invitation.destroy
-    respond_to do |format|
-      format.html { redirect_to @event }
-      format.js
-    end
+    flash[:info] = "Successfully uninvited #{@invitation.invitee.name}."
+    redirect_to @invitation.event
   end
 
   private

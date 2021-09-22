@@ -22,10 +22,9 @@ class EventsController < ApplicationController
   end
 
   def show
-    if current_user
-      @invitation = @event.invitations.find_by(event_id: @event.id, invitee_id: current_user.id)
-      @invitation_to_send = @event.host.sent_invitations.new
-    end
+    return unless current_user
+    
+    @invitation = @event.invitations.find_by(event_id: @event.id, invitee_id: current_user.id)
   end
 
   def index
