@@ -12,6 +12,16 @@ This is the repository for a Rails app similar to Eventbrite. It is a project in
 
 ***
 
+### Features
+
+  - Sign-up/Login/Logout/Delete Account.
+  - Receive email upon signing up, when invited/uninvited to an event, and when an event is canceled.
+  - Create/Read/Update/Delete Events.
+  - Create/Read/Update/Delete Invitations.
+  - Invite one or multiple guests at one time.
+  - "Attend" or "Leave" Events.
+  - Limit certain features to logged-in users (RSVPing to events, creating an event, seeing who's been invited to an event, etc.)
+
 ### Installation
 
 1. Install Locally.
