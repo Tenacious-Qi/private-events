@@ -2,7 +2,7 @@ class InvitationsController < ApplicationController
   before_action :authorize, only: %i[create update destroy show]
 
   def create
-    event = Event.find(invitation_params[:event_id].to_i)
+    event = Event.find(invitation_params[:event_id])
     # Send one or several invitations.
     invitation_params[:recipient_ids].each do |id|
       invitation = Invitation.new(invitee_id: id,
