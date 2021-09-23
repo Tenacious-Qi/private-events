@@ -3,15 +3,12 @@ class InvitationsController < ApplicationController
 
   def create
     event = Event.find(invitation_params[:event_id])
-    # Send one or several invitations.
-    invitation_params[:recipient_ids].each do |id|
-      invitation = Invitation.new(invitation_params.except(:recipient_ids).merge(invitee_id: id))
-      if invitation.save
-        flash[:info] = "Invitation successful!"
-        InvitationMailer.with(invitation: invitation).invitation_email.deliver_later
-      else
-        flash[:warning] = "Failed to send invitation, please try again."
-      end
+    # use service object to send invites
+    result = InvitationsCreator.call(invitation_params)
+    if result.success?
+      flash[:info] = "Invitation successful"
+    else
+      flash[:warning] = "Failed to send invitation, please try again."
     end
     redirect_to event
   end
