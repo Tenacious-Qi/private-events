@@ -1,6 +1,6 @@
 import consumer from "./consumer"
 
-consumer.subscriptions.create("MessageChannel", {
+const messageChannel = consumer.subscriptions.create("MessageChannel", {
   connected() {
     // Called when the subscription is ready for use on the server
   },
@@ -11,5 +11,33 @@ consumer.subscriptions.create("MessageChannel", {
 
   received(data) {
     // Called when there's incoming data on the websocket for this channel
+    const messageDisplay = document.querySelector('#message-display')
+    messageDisplay.insertAdjacentHTML('beforeend', this.template(data))
+  },
+
+  template(data) {
+    return `<article class="message">
+              <div class="message-header">
+                <p>${data.user.name}</p>
+              </div>
+              <div class="message-body">
+                <p>${data.message.body}</p>
+              </div>
+            </article>`
   }
 });
+
+document.addEventListener("turbolinks:load", () => {
+  let form = document.querySelector('#message-form')
+  if(form) {
+    form.addEventListener('submit', (e) => {
+      e.preventDefault()
+      let messageInput = document.querySelector('#message-input').value
+      if(messageInput == '') return;
+      const message = {
+        body: messageInput
+      }
+      messageChannel.send({message: message})
+    })
+  }
+})
