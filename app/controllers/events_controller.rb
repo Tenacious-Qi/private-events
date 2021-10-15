@@ -25,7 +25,7 @@ class EventsController < ApplicationController
     return unless current_user
 
     @message = Message.new
-    @messages = Message.includes(:user)
+    @messages = @event.messages.includes(:user)
     @invitation = @event.invitations.find_by(event_id: @event.id, invitee_id: current_user.id)
   end
 

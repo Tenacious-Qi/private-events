@@ -1,5 +1,5 @@
 class MessagesController < ApplicationController
-  def create
+  def create  
     @message = current_user.messages.build(message_params)
     @message.save
     ActionCable.server.broadcast('message', @message.as_json(include: :user))
@@ -8,6 +8,6 @@ class MessagesController < ApplicationController
   private
 
   def message_params
-    params.require(:message).permit(:body)
+    params.require(:message).permit(:body, :event_id)
   end
 end
