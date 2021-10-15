@@ -26,11 +26,16 @@ body {
 }
 
 .text-area {
-  min-width: 150px;
+  min-width: 175px;
+  min-height: 70px;
 }
 
 #message-display {
-  overflow: auto;
+  padding: 30px;
+  border: solid 2px #363636;
+  overflow-y: auto;
+  overflow-wrap: break-word;
+  height:400px;
 }
 
 .apple_pagination {
