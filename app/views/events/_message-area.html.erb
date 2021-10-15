@@ -1,22 +1,27 @@
 <% if @messages %>
   <div>
-    <div class="columns">
-      <div class="column is-half is-offset-one-quarter">
-        <div id="message-form">
-          <%= form_with model: @message, local: false do |f| %>
-            <%= f.hidden_field :event_id, value: @event.id %>
-            <div class="field has-addons">
-              <div class="control">
-                <%= f.text_area :body, cols: 100, id: 'message-input', class: 'input text-area' %>
+    <% if Event.upcoming.include?(@event)%>
+      <div class="columns">
+        <div class="column is-half is-offset-one-quarter">
+          <div id="message-form">
+            <%= form_with model: @message, local: false do |f| %>
+              <%= f.hidden_field :event_id, value: @event.id %>
+              <div class="field has-addons">
+                <div class="control">
+                  <%= f.text_area :body, id: 'message-input', class: 'input text-area' %>
+                </div>
+                <div class="control">
+                  <%= f.submit 'Send Message', class: 'button is-success is-outlined mx-3' %>
+                </div>
               </div>
-              <div class="control">
-                <%= f.submit 'Send Message', class: 'button is-success is-outlined mx-3' %>
-              </div>
-            </div>
-          <% end %>
+            <% end %>
+          </div>
         </div>
       </div>
-    </div>
+      <p class="has-text-info has-background-dark is-size-5">Member discussion for <span class="is-italic"><%= @event.title.titleize %></span></h1>
+    <% else %>
+      <p class="has-text-warning has-background-dark">Discussion for this event is now closed
+    <% end %>
     <div id="message-display">
       <% @messages.each do |message| %>
         <article class="message is-dark">
