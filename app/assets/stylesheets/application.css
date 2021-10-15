@@ -25,6 +25,13 @@ body {
   height: 100%;
 }
 
+.text-area {
+  min-width: 150px;
+}
+
+#message-display {
+  overflow: auto;
+}
 
 .apple_pagination {
   font-size: 18px;
@@ -48,13 +55,4 @@ body {
     color: #363642; }
     .apple_pagination a:hover, .apple_pagination a:focus {
       text-decoration: underline; }
-
-#message-display {
-  /* height: 80vh; */
-  overflow: auto
-}
-
-#message-input {
-  width: 60vw;
-}
 

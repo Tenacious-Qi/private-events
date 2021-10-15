@@ -1,0 +1,34 @@
+<% if @messages %>
+  <div>
+    <div class="columns">
+      <div class="column is-half is-offset-one-quarter">
+        <div id="message-form">
+          <%= form_with model: @message, local: false do |f| %>
+            <%= f.hidden_field :event_id, value: @event.id %>
+            <div class="field has-addons">
+              <div class="control">
+                <%= f.text_area :body, cols: 100, id: 'message-input', class: 'input text-area' %>
+              </div>
+              <div class="control">
+                <%= f.submit 'Send Message', class: 'button is-success is-outlined mx-3' %>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+    <div id="message-display" style="padding: 10px 20px; border: solid 1px black; overflow-y: auto; height:400px;">
+      <% @messages.each do |message| %>
+        <article class="message is-dark">
+          <div class="message-header">
+            <p><%= message.user.name %></p>
+            <p><%= message.created_at%></p>
+          </div>
+          <div class="message-body has-background-grey-light has-text-dark">
+            <%= message.body %>
+          </div>
+        </article>
+      <% end %>
+    </div>
+  </div>
+<% end %>
