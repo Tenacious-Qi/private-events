@@ -22,7 +22,7 @@
     <% else %>
       <p class="has-text-warning has-background-dark">Discussion for this event is now closed
     <% end %>
-    <div id="message-display">
+    <div id="message-display-<%=@event.id%>">
       <% if @messages.none? %>
         <p>No discussion yet.</p>
       <% else %>

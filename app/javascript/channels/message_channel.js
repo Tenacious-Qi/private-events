@@ -12,8 +12,9 @@ const messageChannel = consumer.subscriptions.create("MessageChannel", {
   received(data) {
     // Called when there's incoming data on the websocket for this channel
     let messageDisplay;
-    if (document.querySelector('#message-display')) {
-      messageDisplay = document.querySelector('#message-display')
+    // only update view of relevant event. Otherwise someone on different event may see the message
+    if (document.querySelector(`#message-display-${data.event_id}`)) {
+      messageDisplay = document.querySelector(`#message-display-${data.event_id}`)
     } else {
       messageDisplay = document.querySelector('#message-chat-display')
     }

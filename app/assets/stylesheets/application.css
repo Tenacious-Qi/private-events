@@ -26,11 +26,12 @@ body {
 }
 
 .text-area {
-  min-width: 150px;
+  min-width: 175px;
   min-height: 70px;
 }
 
-#message-display, #message-chat-display {
+/* match all ids beginning with 'message-display-' */
+div[id^='message-display-'], #message-chat-display {
   padding: 30px;
   border: solid 2px #363636;
   overflow-y: auto;
