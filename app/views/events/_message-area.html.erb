@@ -23,16 +23,20 @@
       <p class="has-text-warning has-background-dark">Discussion for this event is now closed
     <% end %>
     <div id="message-display">
-      <% @messages.each do |message| %>
-        <article class="message is-dark">
-          <div class="message-header">
-            <p><%= message.user.name %></p>
-            <p><%= message.created_at%></p>
-          </div>
-          <div class="message-body has-background-grey-light has-text-dark">
-            <%= message.body %>
-          </div>
-        </article>
+      <% if @messages.none? %>
+        <p>No discussion yet.</p>
+      <% else %>
+        <% @messages.each do |message| %>
+          <article class="message is-dark">
+            <div class="message-header">
+              <p><%= message.user.name %></p>
+              <p><%= message.created_at%></p>
+            </div>
+            <div class="message-body has-background-grey-light has-text-dark">
+              <%= message.body %>
+            </div>
+          </article>
+        <% end %>
       <% end %>
     </div>
   </div>
