@@ -76,10 +76,6 @@ RSpec.feature "Forms", type: :feature do
 
   describe 'Inviting a guest' do
 
-    before(:each) do
-      ActionMailer::Base.deliveries.clear
-    end
-
     context 'a host invites a guest' do
 
       it 'sends the guest an email notification' do

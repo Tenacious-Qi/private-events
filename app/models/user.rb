@@ -22,6 +22,8 @@ class User < ApplicationRecord
   scope :inviteable, ->(event) { where.not(id: [event.host.id, event.invitees.map(&:id)].flatten ) }
 
   has_secure_password
+  has_secure_token :auth_token
+
   validates :name, presence: true, length: { in: 2..50 }
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i
   validates :email, presence: true, length: { maximum: 255 },
@@ -29,11 +31,4 @@ class User < ApplicationRecord
                                     uniqueness: true
   validates :password, length: { minimum: 6 }
 
-  before_create { generate_token(:auth_token) }
-
-  def generate_token(column)
-    begin
-      self[column] = SecureRandom.urlsafe_base64
-    end while User.exists?(column => self[column])
-  end
 end
