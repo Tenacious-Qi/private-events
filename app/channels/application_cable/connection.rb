@@ -9,7 +9,7 @@ module ApplicationCable
     private
 
     def find_verified_user
-      if verified_user = User.find_by_auth_token!(cookies[:auth_token])
+      if verified_user = User.find_by_auth_token(cookies[:auth_token])
         verified_user
       else
         reject_unauthorized_connection
