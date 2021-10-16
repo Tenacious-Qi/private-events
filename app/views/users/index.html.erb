@@ -2,7 +2,7 @@
   <h1 class="title is-size-4-desktop is-size-5-mobile has-text-centered">Private Events Members</h1>
   <div class="columns is-desktop">
     <div class="column is-half is-offset-one-quarter">
-      <ul class="box">
+      <ul class="box has-background-grey-lighter">
         <div class="columns is-centered">
           <div class="column is-half is-offset-one-quarter">
             <% @users.each do |user| %>
@@ -14,8 +14,44 @@
             <% end %> 
           </div>
         </div>
-
       </ul>
+  <div class="has-text-centered">
+    <div class="columns">
+      <div class="column is-half is-offset-one-quarter">
+        
+        <div id="message-form">
+          <%= form_with model: @message, local: false do |f| %>
+            <div class="field has-addons">
+              <div class="control">
+                <%= f.text_area :body, id: 'message-input', class: 'input text-area' %>
+              </div>
+              <div class="control">
+                <%= f.submit 'Send Message', class: 'button is-success is-outlined mx-3' %>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+    <p class="has-text-info has-background-dark is-size-5">Members Only Chat</p>
+    <div id="message-chat-display">
+      <% if @messages.none? %>
+        <p>No one has started chatting yet. Send a message to all members above!</p>
+      <% else %>
+        <% @messages.each do |message| %>
+          <article class="message is-dark">
+            <div class="message-header">
+              <p><%= message.user.name %></p>
+              <p><%= message.created_at%></p>
+            </div>
+            <div class="message-body has-background-grey-light has-text-dark">
+              <%= message.body %>
+            </div>
+          </article>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
     </div>
   </div>
 </section>

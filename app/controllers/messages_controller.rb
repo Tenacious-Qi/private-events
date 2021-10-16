@@ -1,5 +1,5 @@
 class MessagesController < ApplicationController
-  def create  
+  def create
     @message = current_user.messages.build(message_params)
     @message.save
     ActionCable.server.broadcast('message', @message.as_json(include: :user))

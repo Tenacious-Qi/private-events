@@ -11,7 +11,12 @@ const messageChannel = consumer.subscriptions.create("MessageChannel", {
 
   received(data) {
     // Called when there's incoming data on the websocket for this channel
-    const messageDisplay = document.querySelector('#message-display')
+    let messageDisplay;
+    if (document.querySelector('#message-display')) {
+      messageDisplay = document.querySelector('#message-display')
+    } else {
+      messageDisplay = document.querySelector('#message-chat-display')
+    }
     messageDisplay.insertAdjacentHTML('beforeend', this.template(data))
     autoScroll(messageDisplay)
   },
