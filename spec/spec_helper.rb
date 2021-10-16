@@ -99,6 +99,10 @@ RSpec.configure do |config|
 =end
 end
 
+def login(user)
+  post login_path, params: { session: { email: user.email, password: user.password } }
+end
+
 def log_in(user)
   cookies[:auth_token] = user.auth_token
 end
