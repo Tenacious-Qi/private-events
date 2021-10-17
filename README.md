@@ -44,6 +44,7 @@ This is the repository for a Rails app similar to Eventbrite. It is a project in
     - OR Signup and receive a welcome email.
     - Log back in as Foo Bar.
     - Invite the account you just used to sign up
+    - Message other members on the Members page or an event's page. (Event messages are unique to their respective events.)
     - Receive an invitation email.
 
 
@@ -75,6 +76,12 @@ This is the repository for a Rails app similar to Eventbrite. It is a project in
 - use `scope` to limit records returned to a specific constraint
 - use `includes` method to eager load records where appropriate
 - use `joins` to join two tables together when necessary
+
+### Action Cable Features
+
+- facilitate messaging between users in real time with WebSocket connection
+- optionally associate a message with an event
+- ensure live messages are only shown on their respective event page by utilizing dynamic ids selected with JS.
 
 #### Notable Gems used
 
