@@ -100,6 +100,10 @@ RSpec.feature "Forms", type: :feature do
 
     context 'a host invites several guests' do
 
+      before do
+        ActionMailer::Base.deliveries.clear
+      end
+
       it 'sends each guest an email notification' do
         inviter = create(:host)
   

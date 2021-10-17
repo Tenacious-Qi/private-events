@@ -10,7 +10,6 @@ class MessageChannel < ApplicationCable::Channel
 
   def receive(data)
     data['user'] = current_user
-    # ActionCable.server.broadcast('message', data)
     ActionCable.server.broadcast('message', @message.as_json(include: :user))
   end
 end
