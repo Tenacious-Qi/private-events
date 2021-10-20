@@ -39,6 +39,10 @@ div[id^='message-display-'], #message-chat-display {
   height:400px;
 }
 
+.online-icon {
+  color: green;
+}
+
 .apple_pagination {
   font-size: 18px;
   text-align: center;
