@@ -31,4 +31,19 @@ class User < ApplicationRecord
                                     uniqueness: true
   validates :password, length: { minimum: 6 }
 
+  def appear(data = nil)
+    if data
+      self.update_columns(online: true, viewing: data[:on])
+    else
+      self.update_columns(online: true)
+    end
+  end
+
+  def disappear
+    self.update_columns(online: false, viewing: nil)
+  end
+
+  def away
+    self.update_columns(online: true, viewing: nil)
+  end
 end

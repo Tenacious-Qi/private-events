@@ -1,61 +1,64 @@
-<section class="section">
-  <div class="columns is-mobile">
-    <div class="column">
-      <h1 class="has-text-centered title is-size-5-mobile is-capitalized"><%= @event.title %></h1>
-      <div class="columns is-mobile">
-        <div class= "column has-text-centered subtitle">
-         <% if current_user_hosts_upcoming_event?(@event) %>
-          <div class="mb-4">
-            <%= link_to "Edit Event Details", 
-                         edit_event_path(@event),
-                         class: "mx-1 button is-info has-text-weight-bold is-outlined"%>
-            <%= link_to "Cancel Event", 
-                         event_path(@event), 
-                         method: :delete,
-                         data: { confirm: "Are you sure you want to delete this event?" },
-                         class: "mx-1 button is-danger has-text-weight-bold is-outlined" %>
-          </div>
-         <% end %>
-          hosted by
-          <% if @event.host == current_user %>
-            <%= link_to "You", @event.host %>
-          <% else %>
-            <%= link_to @event.host.name, @event.host, class: "mx-1" %>
+<div id="event-<%=@event.id%>" data-appearing-on="event-<%=@event.id%>">
+  <section class="section">
+    <div class="columns is-mobile">
+      <div class="column">
+        <h1 class="has-text-centered title is-size-5-mobile is-capitalized"><%= @event.title %></h1>
+        <div class="columns is-mobile">
+          <div class= "column has-text-centered subtitle">
+          <% if current_user_hosts_upcoming_event?(@event) %>
+            <div class="mb-4">
+              <%= link_to "Edit Event Details", 
+                          edit_event_path(@event),
+                          class: "mx-1 button is-info has-text-weight-bold is-outlined"%>
+              <%= link_to "Cancel Event", 
+                          event_path(@event), 
+                          method: :delete,
+                          data: { confirm: "Are you sure you want to delete this event?" },
+                          class: "mx-1 button is-danger has-text-weight-bold is-outlined" %>
+            </div>
           <% end %>
+            hosted by
+            <% if @event.host == current_user %>
+              <%= link_to "You", @event.host %>
+            <% else %>
+              <%= link_to @event.host.name, @event.host, class: "mx-1" %>
+            <% end %>
+          </div>
         </div>
       </div>
     </div>
-  </div>
 
-  <div class="columns is-desktop">
-    <%= render 'event_info' %>
-    <div class="columns is-mobile">
-      <div class="column is-half is-offset-one-quarter has-text-centered">
-        <!-- only host can invite guests. Event must be in future to invite a guest. -->
-        <% if current_user_hosts_upcoming_event?(@event) %>
-          <div id="invitation-form">
-            <%= render 'select-invitee-form' %>
-          </div>
-        <% end %>
-        <% if current_user %>
-          <%= render 'rsvp' %>
-        <% end %>
+    <div class="columns is-desktop">
+      <%= render 'event_info' %>
+      <div class="columns is-mobile">
+        <div class="column is-half is-offset-one-quarter has-text-centered">
+          <!-- only host can invite guests. Event must be in future to invite a guest. -->
+          <% if current_user_hosts_upcoming_event?(@event) %>
+            <div id="invitation-form">
+              <%= render 'select-invitee-form' %>
+            </div>
+          <% end %>
+          <% if current_user %>
+            <%= render 'rsvp' %>
+          <% end %>
+        </div>
       </div>
+
     </div>
-
   </div>
-</div>
 
-<div id="attendance-details">
-  <div>
-    <% if current_user %>
-      <%= render 'attendance-details'%>
-    <% end %>
+  <div id="attendance-details">
+    <div>
+      <% if current_user %>
+        <%= render 'attendance-details'%>
+      <% end %>
+    </div>
   </div>
+
+  <div class="column is-half is-offset-one-quarter has-text-centered">
+    <%= render 'message-area' %>
+  </div>
+
+  </section>
 </div>
 
-<div class="column is-half is-offset-one-quarter has-text-centered">
-  <%= render 'message-area' %>
-</div>
-
-</section>
