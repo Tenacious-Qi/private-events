@@ -36,9 +36,9 @@ document.addEventListener("turbolinks:load", function() {
         const userId = data.user_id
         const userIdIcon = document.getElementById(`user-${userId}-icon`)
         if (userIdIcon) {
-          userIdIcon.classList.add('online-icon')
+          userIdIcon.classList.add('green-online-icon')
         } else {
-          userIdIcon.classList.remove('online-icon')
+          userIdIcon.classList.remove('green-online-icon')
         }
 
       },

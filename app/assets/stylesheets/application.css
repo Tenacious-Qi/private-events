@@ -39,7 +39,7 @@ div[id^='message-display-'], #message-chat-display {
   height:400px;
 }
 
-.online-icon {
+.green-online-icon {
   color: #257942;
 }
 
