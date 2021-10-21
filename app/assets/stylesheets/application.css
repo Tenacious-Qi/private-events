@@ -40,11 +40,15 @@ div[id^='message-display-'], #message-chat-display {
 }
 
 .online-icon {
-  color: green;
+  color: #257942;
 }
 
-.online {
-  background-color: green;
+i {
+  position: relative;
+  top: 3px;
+  left: 5px;
+  padding-right: 5px;
+  font-size: 85%;
 }
 
 .apple_pagination {

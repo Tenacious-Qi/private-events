@@ -31,16 +31,14 @@ document.addEventListener("turbolinks:load", function() {
       },
 
       received(data) {
-        // console.log('appearance from appearanceChannel', data)
-        const userId = data.user_id
         // const currentPage = data.viewing
-        const eventType = data.event
-        const onlineClassPresent = document.getElementById(`user-${userId}`)
-        if (onlineClassPresent && eventType == 'appear') {
-          console.log(userId)
-          document.getElementById(`user-${userId}`).classList.add('online')
+        // const eventType = data.event
+        const userId = data.user_id
+        const userIdIcon = document.getElementById(`user-${userId}-icon`)
+        if (userIdIcon) {
+          userIdIcon.classList.add('online-icon')
         } else {
-          document.getElementById(`user-${userId}`).classList.remove('online')
+          userIdIcon.classList.remove('online-icon')
         }
 
       },

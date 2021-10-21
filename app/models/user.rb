@@ -38,9 +38,11 @@ class User < ApplicationRecord
 
   def disappear
     self.update_columns(online: false, viewing: nil)
+    ActionCable.server.broadcast 'appearance', { event: 'disappear', user_id: self.id }
   end
 
   def away
     self.update_columns(online: true, viewing: nil)
+    ActionCable.server.broadcast 'appearance', { event: 'away', user_id: self.id }
   end
 end
