@@ -31,12 +31,9 @@ class User < ApplicationRecord
                                     uniqueness: true
   validates :password, length: { minimum: 6 }
 
-  def appear(data = nil)
-    if data
-      self.update_columns(online: true, viewing: data[:on])
-    else
-      self.update_columns(online: true)
-    end
+  def appear(data)
+    self.update_columns(online: true, viewing: data[:on])
+    ActionCable.server.broadcast 'appearance', { event: 'appear', user_id: self.id, viewing: self.viewing}
   end
 
   def disappear

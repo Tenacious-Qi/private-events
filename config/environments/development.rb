@@ -16,6 +16,8 @@ Rails.application.configure do
   config.action_mailer.perform_deliveries = true
   config.action_mailer.default_url_options = { host: 'localhost:3000' }
 
+  config.action_cable.url = "ws://localhost:3000/cable"
+
 
   # Settings specified here will take precedence over those in config/application.rb.
 

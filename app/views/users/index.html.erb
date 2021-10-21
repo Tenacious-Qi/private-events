@@ -8,7 +8,7 @@
             <div class="column is-half is-offset-one-quarter">
               <% @users.each do |user| %>
                 <li class="is-size-5-desktop">
-                  <i class="online-icon"><ion-icon name="radio-button-on"></ion-icon></i><%= link_to user.name, user %>
+                  <i class="online-icon"><ion-icon name="radio-button-on"></ion-icon></i><%= link_to user.name, user, id: "user-#{user.id}" %>
                 </li>
               <% end %> 
             </div>

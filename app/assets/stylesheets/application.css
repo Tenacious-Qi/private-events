@@ -43,6 +43,10 @@ div[id^='message-display-'], #message-chat-display {
   color: green;
 }
 
+.online {
+  background-color: green;
+}
+
 .apple_pagination {
   font-size: 18px;
   text-align: center;

@@ -29,6 +29,21 @@ document.addEventListener("turbolinks:load", function() {
       disconnected() {
         this.uninstall()
       },
+
+      received(data) {
+        // console.log('appearance from appearanceChannel', data)
+        const userId = data.user_id
+        // const currentPage = data.viewing
+        const eventType = data.event
+        const onlineClassPresent = document.getElementById(`user-${userId}`)
+        if (onlineClassPresent && eventType == 'appear') {
+          console.log(userId)
+          document.getElementById(`user-${userId}`).classList.add('online')
+        } else {
+          document.getElementById(`user-${userId}`).classList.remove('online')
+        }
+
+      },
     
       // Called when the subscription is rejected by the server.
       rejected() {
