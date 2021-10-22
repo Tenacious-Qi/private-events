@@ -31,18 +31,18 @@ class User < ApplicationRecord
                                     uniqueness: true
   validates :password, length: { minimum: 6 }
 
-  def appear(data)
-    self.update_columns(online: true, viewing: data[:on])
-    ActionCable.server.broadcast 'appearance', { event: 'appear', user_id: self.id, viewing: self.viewing}
+  def appear
+    self.update_column(:status, :online)
+    ActionCable.server.broadcast('appearance', { event: 'appear', user_id: self.id, status: status })
   end
 
   def disappear
-    self.update_columns(online: false, viewing: nil)
-    ActionCable.server.broadcast 'appearance', { event: 'disappear', user_id: self.id }
+    self.update_column(:status, :offline)
+    ActionCable.server.broadcast('appearance', { event: 'disappear', user_id: self.id, status: status })
   end
 
   def away
-    self.update_columns(online: true, viewing: nil)
-    ActionCable.server.broadcast 'appearance', { event: 'away', user_id: self.id }
+    self.update_column(:status, :away)
+    ActionCable.server.broadcast('appearance', { event: 'away', user_id: self.id, status: status })
   end
 end

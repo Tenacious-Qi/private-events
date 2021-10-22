@@ -43,11 +43,15 @@ div[id^='message-display-'], #message-chat-display {
   color: #257942;
 }
 
+.gray-away-icon {
+  color: gray;
+}
+
 i {
   position: relative;
   top: 3px;
   left: 5px;
-  padding-right: 5px;
+  padding-right: 10px;
   font-size: 85%;
 }
 

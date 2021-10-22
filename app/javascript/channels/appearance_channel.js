@@ -4,14 +4,6 @@ import consumer from "./consumer"
 // need eventListener and conditional because elements in appearingOn were null until page was fully loaded
 document.addEventListener("turbolinks:load", function() {
 
-  let membersPage = document.getElementById('members')
-  let eventPage = document.querySelector('[id^="event-"]')
-
-  console.log(eventPage)
-  console.log(membersPage)
-
-  if (membersPage || eventPage) {
-
     consumer.subscriptions.create("AppearanceChannel", {
 
       // Called once when the subscription is created.
@@ -31,33 +23,41 @@ document.addEventListener("turbolinks:load", function() {
       },
 
       received(data) {
-        // const currentPage = data.viewing
-        // const eventType = data.event
+        const eventType = data.event
         const userId = data.user_id
-        const userIdIcon = document.getElementById(`user-${userId}-icon`)
-        if (userIdIcon) {
-          userIdIcon.classList.add('green-online-icon')
-        } else {
-          userIdIcon.classList.remove('green-online-icon')
+        const radioIcon = document.getElementById(`icon-user-${userId}`)
+        if (radioIcon) {
+          switch (eventType) {
+            case 'appear':
+              radioIcon.classList.add('green-online-icon')
+              break;
+            case 'away':
+              radioIcon.classList.remove('green-online-icon')
+              radioIcon.classList.add('gray-away-icon')
+              break;
+            case 'disappear':
+              radioIcon.classList.remove('green-online-icon')
+              radioIcon.classList.remove('gray-away-icon')
+          }
         }
-
       },
     
       // Called when the subscription is rejected by the server.
       rejected() {
         this.uninstall()
-      },
+      },  
     
       update() {
         this.documentIsActive ? this.appear() : this.away()
       },
     
       appear() {
-        // Calls `AppearanceChannel#appear(data)` on the server.
-        this.perform("appear", { appearing_on: this.appearingOn })
+        // Calls `AppearanceChannel#appear` on the server.
+        this.perform("appear")
       },
     
       away() {
+        console.log('AWAY CALLED!!!')
         // Calls `AppearanceChannel#away` on the server.
         this.perform("away")
       },
@@ -78,14 +78,6 @@ document.addEventListener("turbolinks:load", function() {
     
       get documentIsActive() {
         return document.visibilityState == "visible" && document.hasFocus()
-      },
-    
-      get appearingOn() {
-    
-        const element = document.querySelector("[data-appearing-on]")
-        return element ? element.getAttribute("data-appearing-on") : null
-    
       }
     })
-  }
 });

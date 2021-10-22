@@ -1,6 +1,7 @@
 class AppearanceChannel < ApplicationCable::Channel
   def subscribed
     # stream_from "some_channel"
+    current_user.appear
     stream_from 'appearance'
   end
 
@@ -9,8 +10,8 @@ class AppearanceChannel < ApplicationCable::Channel
     current_user.disappear
   end
 
-  def appear(data)
-    current_user.appear(on: data['appearing_on'])
+  def appear
+    current_user.appear
   end
 
   def away

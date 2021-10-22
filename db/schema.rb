@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_10_20_023414) do
+ActiveRecord::Schema.define(version: 2021_10_22_033443) do
 
   create_table "events", force: :cascade do |t|
     t.string "location"
@@ -48,8 +48,7 @@ ActiveRecord::Schema.define(version: 2021_10_20_023414) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "auth_token"
-    t.boolean "online", default: false
-    t.string "viewing"
+    t.string "status", default: "offline"
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 
