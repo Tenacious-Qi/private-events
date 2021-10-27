@@ -22,8 +22,8 @@ consumer.subscriptions.create("AppearanceChannel", {
   received(data) {
     const userId = data.user_id
     const radioIcon = document.getElementById(`icon-user-${userId}`)
-    const eventType = data.event
     if (radioIcon) {
+      const eventType = data.event
       switch (eventType) {
         case 'appear':
           addOnlineIconClass(radioIcon);
@@ -35,7 +35,6 @@ consumer.subscriptions.create("AppearanceChannel", {
           removeIconClasses(radioIcon);
       }
     }
-
   },
 
   // Called when the subscription is rejected by the server.
