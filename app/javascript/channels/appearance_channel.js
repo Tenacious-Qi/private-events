@@ -21,7 +21,8 @@ consumer.subscriptions.create("AppearanceChannel", {
 
   received(data) {
     const userId = data.user_id
-    // event pages may contain more than one icon (if a user was both invited and attending)
+    // event pages may contain more than one icon associated with a single user 
+    // if a user is both invited and attending
     const radioIcons = document.querySelectorAll(`#icon-user-${userId}`)
     if (radioIcons) {
       const eventType = data.event
