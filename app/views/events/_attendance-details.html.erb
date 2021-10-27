@@ -24,7 +24,14 @@
           <% end %>
         <% else %>
           <% @event.invitations.includes(:invitee).each do |invitation| %>
-            <li><%= link_to invitation.invitee.name, invitation.invitee, class: "is-size-5-desktop" %>
+            <div class="columns">
+              <div class="column is-two-thirds">
+                <li><%= link_to invitation.invitee.name, invitation.invitee, class: "is-size-5-desktop" %></li>
+              </div>
+              <i class="column is-one-third" id="icon-user-<%= invitation.invitee.id %>">
+                <ion-icon name="radio-button-on"></ion-icon>
+              </i>
+            </div>
             <% end %>
           <% end %>
         </ul>
@@ -34,7 +41,14 @@
         <h4 class="subtitle is-size-4-desktop">Attendees</h4>
         <ul>
           <% @event.invitations.where(attending: 'yes').each do |invitation| %>
-            <li><%= link_to invitation.invitee.name, invitation.invitee, class: "is-size-5-desktop" %></li>
+            <div class="columns">
+              <div class="column is-two-thirds">
+                <li><%= link_to invitation.invitee.name, invitation.invitee, class: "is-size-5-desktop" %></li>
+              </div>
+              <i class="column is-one-third" id="icon-user-<%= invitation.invitee.id %>">
+                <ion-icon name="radio-button-on"></ion-icon>
+              </i>
+            </div>
           <% end %>
         </ul>
       </div>
