@@ -2,10 +2,13 @@
   <section class="section">
     <h1 class="title is-size-4-desktop is-size-5-mobile has-text-centered">Private Events Members</h1>
     <div class="columns is-desktop">
-      <div class="column is-half is-offset-one-quarter">
-        
+      <div class="column is-half is-offset-one-quarter">        
         <ul id="members-list" class="box has-background-grey-lighter">
-          <p class="has-text-right"><i class="green-online-icon"><ion-icon name="radio-button-on"></ion-icon></i> = user online now</p>
+          <div class="level">
+            <p class="level-item"><i class="green-online-icon"><ion-icon name="radio-button-on"></ion-icon></i>online</p>
+            <p class="level-item"><i class="gray-away-icon"><ion-icon name="radio-button-on"></ion-icon></i>away</p>
+            <p class="level-item"><i><ion-icon name="radio-button-on"></ion-icon></i>offline</p>
+          </div>
           <div class="columns is-centered">
             <div class="column is-half is-offset-one-quarter">
               <% @users.each do |user| %>
@@ -19,7 +22,6 @@
             </div>
           </div>
         </ul>
-        <p id="log-in-out-event" class="notification is-info"></p>
     <div class="has-text-centered">
       <div class="columns">
         <div class="column is-half is-offset-one-quarter">
