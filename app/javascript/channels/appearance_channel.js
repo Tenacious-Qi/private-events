@@ -1,6 +1,9 @@
 // app/javascript/channels/appearance_channel.js
 import consumer from "./consumer"
 
+const messageInput = document.getElementById('message-input')
+const membersList = document.getElementById('members-list')
+
 consumer.subscriptions.create("AppearanceChannel", {
 
   // Called once when the subscription is created.
@@ -61,6 +64,10 @@ consumer.subscriptions.create("AppearanceChannel", {
   },
 
   install() {
+    if (messageInput && membersList) {
+      messageInput.addEventListener("click", this.update)
+      membersList.addEventListener("click", this.update)
+    }
     window.addEventListener("focus", this.update)
     window.addEventListener("blur", this.update)
     document.addEventListener("turbolinks:load", this.update)
@@ -68,6 +75,10 @@ consumer.subscriptions.create("AppearanceChannel", {
   },
 
   uninstall() {
+    if (messageInput && membersList) {
+      messageInput.removeEventListener("click", this.update)
+      membersList.removeEventListener("click", this.update)
+    }
     window.removeEventListener("focus", this.update)
     window.removeEventListener("blur", this.update)
     document.removeEventListener("turbolinks:load", this.update)
