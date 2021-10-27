@@ -21,19 +21,22 @@ consumer.subscriptions.create("AppearanceChannel", {
 
   received(data) {
     const userId = data.user_id
-    const radioIcon = document.getElementById(`icon-user-${userId}`)
-    if (radioIcon) {
+    // event pages may contain more than one icon (if a user was both invited and attending)
+    const radioIcons = document.querySelectorAll(`#icon-user-${userId}`)
+    if (radioIcons) {
       const eventType = data.event
-      switch (eventType) {
-        case 'appear':
-          addOnlineIconClass(radioIcon);
-          break;
-        case 'away':
-          addAwayIconClass(radioIcon);
-          break;
-        case 'disappear':
-          removeIconClasses(radioIcon);
-      }
+      radioIcons.forEach(icon => {
+        switch (eventType) {
+          case 'appear':
+            addOnlineIconClass(icon);
+            break;
+          case 'away':
+            addAwayIconClass(icon);
+            break;
+          case 'disappear':
+            removeIconClasses(icon);
+        }
+      })
     }
   },
 
