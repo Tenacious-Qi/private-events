@@ -21,6 +21,7 @@ This is the repository for a Rails app similar to Eventbrite. It is a project in
   - Invite one or multiple guests at one time.
   - "Attend" or "Leave" Events.
   - Limit certain features to logged-in users (RSVPing to events, creating an event, seeing who's been invited to an event, etc.)
+  - ActionCable: Message Channel (live message other logged in users) and Appearance Channel (see who's online using the website).
 
 ### Installation
 
@@ -45,6 +46,7 @@ This is the repository for a Rails app similar to Eventbrite. It is a project in
     - Log back in as Foo Bar.
     - Invite the account you just used to sign up
     - Message other members on the Members page or an event's page. (Event messages are unique to their respective events.)
+    - See who's using the site on the Members page.
     - Receive an invitation email.
 
 
