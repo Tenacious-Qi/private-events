@@ -8,10 +8,15 @@
           <% @event.invitations.includes(:invitee).order(updated_at: :desc).each do |invitation| %>
             <li>
               <div class="columns is-mobile">
-                <div class="column is-half">
+                <div class="column is-one-third">
                   <%= link_to invitation.invitee.name, invitation.invitee, class: "is-size-5-desktop has-text-grey-dark" %>
                 </div>
-                <div class="column is-half">
+                <div class="column is-one-third">
+                  <i class="column is-one-third" id="icon-user-<%= invitation.invitee.id %>">
+                    <ion-icon name="radio-button-on"></ion-icon>
+                  </i>
+                </div>
+                <div class="column is-one-third">
                   <%= button_to "uninvite", 
                                   invitation_path(invitation), 
                                   method: :delete,
