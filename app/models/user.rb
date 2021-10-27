@@ -33,16 +33,16 @@ class User < ApplicationRecord
 
   def appear
     self.update_column(:status, :online)
-    ActionCable.server.broadcast('appearance', { event: 'appear', user_id: self.id, status: status })
+    ActionCable.server.broadcast('appearance', { user_id: self.id, event: 'appear' })
   end
 
   def disappear
     self.update_column(:status, :offline)
-    ActionCable.server.broadcast('appearance', { event: 'disappear', user_id: self.id, status: status })
+    ActionCable.server.broadcast('appearance', { user_id: self.id, event: 'disappear' })
   end
 
   def away
     self.update_column(:status, :away)
-    ActionCable.server.broadcast('appearance', { event: 'away', user_id: self.id, status: status })
+    ActionCable.server.broadcast('appearance', { user_id: self.id, event: 'away' })
   end
 end
