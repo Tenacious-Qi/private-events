@@ -3,21 +3,22 @@ require "active_support/core_ext/integer/time"
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
-    
+  # use https for all requests
+  config.force_ssl = true
 
-    # default host for production
-    host = 'fast-citadel-83141.herokuapp.com'
-    config.action_mailer.default_url_options = { host: host }
-    config.action_mailer.delivery_method = :smtp
-    config.action_mailer.smtp_settings = {
-      address: 'smtp.sendgrid.net',
-      port: '587',
-      authentication: :plain,
-      user_name: "apikey",
-      password: ENV['SENDGRID_API_KEY'],
-      domain: 'heroku.com',
-      enable_starttls_auto: true
-    }
+  # default host for production
+  host = 'fast-citadel-83141.herokuapp.com'
+  config.action_mailer.default_url_options = { host: host }
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+    address: 'smtp.sendgrid.net',
+    port: '587',
+    authentication: :plain,
+    user_name: "apikey",
+    password: ENV['SENDGRID_API_KEY'],
+    domain: 'heroku.com',
+    enable_starttls_auto: true
+  }
 
   # Code is not reloaded between requests.
   config.cache_classes = true
@@ -59,7 +60,7 @@ Rails.application.configure do
   # Mount Action Cable outside main process or domain.
   # config.action_cable.mount_path = nil
   config.action_cable.url = 'wss://fast-citadel-83141.herokuapp.com/cable'
-  config.action_cable.allowed_request_origins = [ 'http://fast-citadel-83141.herokuapp.com', /http:\/\/fast-citadel-83141.herokuapp.com.*/ ]
+  config.action_cable.allowed_request_origins = ['http://fast-citadel-83141.herokuapp.com', %r{http://fast-citadel-83141.herokuapp.com.*}]
 
   # Force all access to the app over SSL, use Strict-Transport-Security, and use secure cookies.
   # config.force_ssl = true
@@ -69,7 +70,7 @@ Rails.application.configure do
   config.log_level = :info
 
   # Prepend all log lines with the following tags.
-  config.log_tags = [ :request_id ]
+  config.log_tags = [:request_id]
 
   # Use a different cache store in production.
   # config.cache_store = :mem_cache_store
