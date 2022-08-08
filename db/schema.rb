@@ -10,14 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_10_22_033443) do
-
+ActiveRecord::Schema[7.0].define(version: 2021_10_22_033443) do
   create_table "events", force: :cascade do |t|
     t.string "location"
     t.text "description"
-    t.datetime "start_time"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "start_time", precision: nil
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.integer "host_id"
     t.string "title"
   end
@@ -27,16 +26,16 @@ ActiveRecord::Schema.define(version: 2021_10_22_033443) do
     t.integer "host_id"
     t.integer "invitee_id"
     t.integer "event_id"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["invitee_id", "event_id"], name: "index_invitations_on_invitee_id_and_event_id", unique: true
   end
 
   create_table "messages", force: :cascade do |t|
     t.text "body"
     t.integer "user_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.integer "event_id"
     t.index ["user_id"], name: "index_messages_on_user_id"
   end
@@ -45,8 +44,8 @@ ActiveRecord::Schema.define(version: 2021_10_22_033443) do
     t.string "name"
     t.string "email"
     t.string "password_digest"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.string "auth_token"
     t.string "status", default: "offline"
     t.index ["email"], name: "index_users_on_email", unique: true
