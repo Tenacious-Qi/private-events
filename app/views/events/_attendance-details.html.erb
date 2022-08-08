@@ -27,7 +27,7 @@
         <% else %>
           <% @event.invitations.includes(:invitee).each do |invitation| %>
             <div class="columns">
-              <div class="column is-two-thirds">
+              <div class="column">
                 <li><%= link_to invitation.invitee.name, invitation.invitee, class: "is-size-5-desktop" %></li>
               </div>
             </div>

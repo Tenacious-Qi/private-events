@@ -4,23 +4,13 @@
     <div class="columns is-desktop">
       <div class="column is-half is-offset-one-quarter">        
         <ul id="members-list" class="box has-background-grey-lighter">
-          <div class="notification is-info-light">
-              <div class="level">
-                <p class="level-item"><i class="green-online-icon"><ion-icon name="radio-button-on"></ion-icon></i>online</p>
-                <p class="level-item"><i class="gray-away-icon"><ion-icon name="radio-button-on"></ion-icon></i>away</p>
-                <p class="level-item"><i><ion-icon name="radio-button-on"></ion-icon></i>offline</p>
-              </div>
-          </div>
           <div class="columns is-centered">
-            <div class="column is-half is-offset-one-quarter">
+            <div class="column is-half">
               <% @users.each do |user| %>
                 <div class="columns">
-                  <div class="column is-half">
+                  <div class="column">
                     <li><%= link_to user.name, user, id: "user-#{user.id}" %></li>
                   </div>
-                  <i class="column is-half" id="icon-user-<%= user.id %>">
-                    <ion-icon name="radio-button-on"></ion-icon>
-                  </i>
                 </div>
               <% end %> 
             </div>
