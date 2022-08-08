@@ -12,9 +12,6 @@
                   <%= link_to invitation.invitee.name, invitation.invitee, class: "is-size-5-desktop has-text-grey-dark" %>
                 </div>
                 <div class="column is-one-third">
-                  <i class="column is-one-third" id="icon-user-<%= invitation.invitee.id %>">
-                    <ion-icon name="radio-button-on"></ion-icon>
-                  </i>
                 </div>
                 <div class="column is-one-third">
                   <%= button_to "uninvite", 
@@ -33,9 +30,6 @@
               <div class="column is-two-thirds">
                 <li><%= link_to invitation.invitee.name, invitation.invitee, class: "is-size-5-desktop" %></li>
               </div>
-              <i class="column is-one-third" id="icon-user-<%= invitation.invitee.id %>">
-                <ion-icon name="radio-button-on"></ion-icon>
-              </i>
             </div>
             <% end %>
           <% end %>
@@ -50,9 +44,6 @@
               <div class="column is-two-thirds">
                 <li><%= link_to invitation.invitee.name, invitation.invitee, class: "is-size-5-desktop" %></li>
               </div>
-              <i class="column is-one-third" id="icon-user-<%= invitation.invitee.id %>">
-                <ion-icon name="radio-button-on"></ion-icon>
-              </i>
             </div>
           <% end %>
         </ul>
