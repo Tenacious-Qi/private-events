@@ -27,7 +27,7 @@ This is the repository for a Rails app similar to Eventbrite. It is a project in
 1. Install Locally.
     - Clone this repo.
     - cd into cloned directory `cd private-events`
-    - `bundle install && yarn install`
+    - `bundle install`
 
 2. Seed the database.
     - `rails db:migrate`
