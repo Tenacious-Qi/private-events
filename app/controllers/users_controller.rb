@@ -27,8 +27,6 @@ class UsersController < ApplicationController
   end
 
   def index
-    @message = Message.new
-    @messages = Message.non_event.includes(:user)
     @users = User.all
   end
 

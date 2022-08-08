@@ -10,7 +10,6 @@ Rails.application.routes.draw do
   resources :users
   resources :events
   resources :invitations, only: [:destroy, :new, :create, :update]
-  resources :messages, only: [:create]
   get '/invitations', to: redirect('/events')
 
   mount ActionCable.server => '/cable'

@@ -34,23 +34,6 @@ body {
   min-height: 70px;
 }
 
-/* match all ids beginning with 'message-display-' */
-div[id^='message-display-'], #message-chat-display {
-  padding: 30px;
-  border: solid 2px #363636;
-  overflow-y: auto;
-  overflow-wrap: break-word;
-  height:400px;
-}
-
-.green-online-icon {
-  color: #257942;
-}
-
-.gray-away-icon {
-  color: gray;
-}
-
 i {
   position: relative;
   top: 3px;
