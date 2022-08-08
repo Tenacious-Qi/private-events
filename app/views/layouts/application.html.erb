@@ -7,7 +7,7 @@
     <%= csp_meta_tag %>
     
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
   </head>
 
   <body id="main">
@@ -32,10 +32,10 @@
           <% if current_user %>
             <%= link_to "My Events", user_path(current_user), class:  "navbar-item" %>
             <%= link_to current_user.name, edit_user_path(current_user), class: "navbar-item has-text-info has-text-weight-bold" %>
-            <%= link_to "Logout", logout_path, method: "delete", class: "navbar-item has-text-warning-dark" %>
+            <%= button_to "Log out", logout_path, {method: :delete, form_class: "navbar-item", class: "button is-small has-text-weight-bold"} %>
           <% else %>
             <%= link_to "Sign Up", signup_path, class: "navbar-item"%>
-            <%= link_to "Login", login_path, class: "navbar-item has-text-primary-dark"%>
+            <%= link_to "Log in", login_path, class: "navbar-item has-text-primary-dark"%>
           <% end %>
 
         </div>

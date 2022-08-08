@@ -10,6 +10,7 @@ module PrivateEvents
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 6.1
+    config.navigational_formats = ['/', :html, :turbo_stream]
 
     # Include the authenticity token in remote forms.
     # config.action_view.embed_authenticity_token_in_remote_forms = true  

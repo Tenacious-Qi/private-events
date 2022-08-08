@@ -54,13 +54,13 @@ This is the repository for a Rails app similar to Eventbrite. It is a project in
 
 #### To run all the tests
 
-- `rspec spec/` from the `private-events` directory.
+- `bundle exec rspec spec/` from the `private-events` directory.
 
 #### To run specific spec categories
 
-- `rspec spec/features`
-- `rspec spec/models`
-- `rspec spec/requests`
+- `bundle exec rspec spec/features`
+- `bundle exec rspec spec/models`
+- `bundle exec rspec spec/requests`
 
 ### Authentication and Login
 

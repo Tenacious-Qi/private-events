@@ -21,6 +21,10 @@ body {
   font-weight: 500;
 }
 
+.button_to {
+  border: none;
+}
+
 .event-description {
   height: 100%;
 }

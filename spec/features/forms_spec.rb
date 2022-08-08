@@ -68,7 +68,7 @@ RSpec.feature "Forms", type: :feature do
         fill_in :session_password, with: person.password
         click_on 'Log In'
 
-        click_on 'Logout'
+        click_button 'Log out'
         expect(page).to have_content('You have logged out')
       end
     end
@@ -156,7 +156,7 @@ RSpec.feature "Forms", type: :feature do
         expect(page).to have_link(invitee.name)
 
         expect(page).to have_button('uninvite')
-        page.accept_confirm { click_on 'uninvite' }
+        click_on 'uninvite'
 
         # name no longer appears in invitees list after clicking 'uninvite'
         expect(page).to have_no_link(invitee.name)
